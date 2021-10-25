@@ -1,0 +1,408 @@
+body {
+    overflow-x: hidden;
+}
+
+.material-icons {
+    font-size: 2rem;
+}
+
+/*cell*/
+@media only screen and (max-width: 600px) {
+    *, *::after, *::before {
+        font-size: 8px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    *, *::after, *::before {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    *, *::after, *::before {
+        font-size: 12px;
+    }
+   
+    /*Menu*/
+    header{
+        width: 100%;
+        height: 10vh;
+        background-color: var(--colorPrimary);
+        display: flex;
+        align-items: center;
+        padding-left: 5%;
+        padding-right: 5%;
+
+        justify-content: flex-end;
+        gap: 2vw;
+    }
+
+    header > h1{
+        color: white;
+        font-size: 1.5rem;
+        user-select: none;
+        position: absolute;
+        left: 0;
+        margin-left: 3%;
+    }
+
+    header > nav {
+        width: 50%;
+        height: 10vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    header > nav > ul{
+        width: 100%;
+        display: flex;
+        gap: 3%;
+        justify-content: flex-end;
+    }
+
+    header > nav > ul > li{
+        list-style: none;
+        text-decoration: none;
+        font-weight: bold;
+        color: #FFF;
+
+        
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, sans-serif;
+    }
+
+    header > nav > ul > li:hover{
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+
+    header > a{
+        width: 10vw;
+        height: 6vh;
+        outline: none;
+        background-color: var(--corBackgroundLight);
+        color: var(--corTerciaria);
+        border: none;
+        font-weight: 600;
+        border-radius: 3rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        /* position: absolute;
+        right: 0;
+        margin-right: 3%; */
+    }
+
+    header > a:hover{
+        box-shadow: 0px 0px .5rem var(--corEscura);
+        color: var(--colorSecundary);
+    }
+
+    /*Seção do title*/
+    .section-title{
+        width: 100%;
+        height: 50vh;
+        background-color: var(--corBackgroundLight);
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 2vw;
+    }
+
+    .section-title > figure{
+        width: 30%;
+        height: 100%;
+
+        background-image: url(../Assets//home-title-teste.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .section-title > h1{
+        margin-top: 3vh;
+        width: 30%;
+        height: auto;
+        font-size: 1.5rem;
+        color: var(--corEscura);
+        text-decoration: underline;
+        text-align: center;
+    }
+
+    .section-title > div{
+        width: 30%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        gap: 3%;
+
+        justify-content: center;
+    }
+
+    .section-title > div > h2{
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+
+    .section-title > div > p{
+        font-weight: lighter;
+    }
+
+    /*Seção de serviços*/
+    .section-services{
+        height: 50vh;
+        grid-template-columns: 33% 33% 33%;
+        grid-template-areas: "figureLeft" "main-services" "figureRight";
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--colorPrimary);
+
+    }
+
+    .section-services > main{
+        width: 100%;
+        height: 100%;
+        grid-area: main-services;
+        text-align: justify;
+        color: white;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1%;
+        line-height: 10px;
+        text-align: start;
+    }
+
+    h1{
+        font-size: 1.5rem;
+    }
+
+    .figure-left{
+        width: 100%;
+        height: 80%;
+        
+        grid-area: figureLeft;
+
+        background-image: url(../Assets/home-image-1.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .figure-right{
+        width: 100%;
+        height: 80%;
+        grid-area: figureRight;
+
+        background-image: url(../Assets/home-image-2.png);
+
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    /*Seção Sobre nós*/
+    .section-sobre{
+        width: 100%;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--corEscura);
+        line-height: 10px;
+    }
+
+    .section-sobre > h1{
+        font-size: 1.2rem;
+    }
+
+    .section-sobre > p{
+        text-align: center;
+        padding-left: 12%;
+        padding-right: 12%;
+        margin: 2%;
+    }
+
+    .section-sobre > h2{
+        color: var(--colorPrimary);
+        cursor: pointer;
+    }
+
+    /*Seção Seja um admin*/
+    .section-admin{
+        width: 100%;
+        height: 50vh;
+        background-color: var(--colorPrimary);
+        color: #FFF;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .section-admin > div{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 2%;
+
+        width: 50%;
+        height: auto;
+        padding-left: 3%;
+    }
+
+    .section-admin > div > h1{
+        margin-top: 3%;   
+        font-size: 1.3rem;
+    }
+
+    .section-admin > div > p{
+        text-align: start;
+        margin-top: 3%;
+        font-size: 1.1rem;
+    }
+
+    .section-admin > div > h2{
+        font-size: 1.2rem;
+    }
+
+    .section-admin > div > div{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        width: auto;
+        height: auto;
+    }
+
+    .section-admin > figure{
+        width: 30%;
+        height: 100%;
+
+        background-image: url(../Assets/home-admin-image.png);
+
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-top: 3vh;
+    }
+
+    /*seção do mapa*/
+    .section-mapa{
+        width: 100%;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-bottom: 5%;
+    }
+
+    .section-mapa > h1{
+        height: 10%;
+        width: 100%;
+        padding-left: 3%;
+        font-size: 1.2rem;
+        font-weight: 600;
+        
+        display: flex;
+        align-items: center;
+    }
+    .section-mapa > div{
+        width: 30%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .section-mapa > div > div{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 5%;
+    }
+
+    .section-mapa > div > h1{
+        font-weight: 500;
+        font-size: 1.2rem;
+    }
+
+    #imgWhatsapp{
+        width: 20%;
+        height: 50%;
+        
+        
+        background-image: url(../Assets/whatsapp.png);
+
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    #imgInstagram{
+        width: 20%;
+        height: 50%;
+
+        background-image: url(../Assets/instagram.png);
+
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    #imglinkedin{
+        margin-left: -.5rem;
+        width: 20%;
+        height: 52%;
+        background-image: url(../Assets/linkedin.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    /* seção do rodapé */
+    footer{
+        position: absolute;
+        bottom: -9999;
+        width: 100%;
+        height: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        background-color: var(--colorPrimary);
+        font-size: 1.2rem;
+    }
+
+    /*colocar as coisas a partir deste local*/
+    script{
+    	display: none
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    *, *::after, *::before {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    *, *::after, *::before {
+        font-size: 16px;
+    }
+}

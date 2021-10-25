@@ -1,0 +1,18 @@
+@font-face {
+	src: url(../fonts/materiais-icons-outlined.woff2) format('woff2');
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	color: rgba(116, 116, 116, 0.342);
+}
+
+*, *::before, *::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font: 16px Roboto, sans-serif;
+}
+
+.material-icons {
+	font-family: 'Material Icons' !important;
+}

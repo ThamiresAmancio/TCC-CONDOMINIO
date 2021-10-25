@@ -1,0 +1,40 @@
+.container-dashboard{
+    width: 100vw;
+    height: 100vh;
+    background-color: corBackgroundLight;
+    display: grid;
+    grid-template-columns: 1fr 10fr 4fr;
+    grid-template-areas:
+    "menu main header"
+    "menu main aside"
+    "menu main aside";
+}
+
+.dashboard-menu{
+    width: 10vw;
+    height: 100vh;
+    grid-area: menu;
+    background-color: var(--colorPrimary);
+}
+
+.dashboard-main{
+    width: 60vw;
+    height: 100vh;
+    grid-area: main;
+    background-color: royalblue;
+}
+
+.dashboard-header{
+    width: 30vw;
+    height: 15vh;
+    grid-area: header;
+    background-color: salmon;
+    color: #1c1c1c70;
+}
+
+.dashboard-aside{
+    width: 30vw;
+    height: 85vh;
+    grid-area: aside;
+    background-color: skyblue;
+}
