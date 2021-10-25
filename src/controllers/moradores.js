@@ -71,7 +71,7 @@ module.exports = {
         
         const passwordHash = bcrypt.hashSync(password);
 
-        moradores= await Morador.create({
+        moradores= await apartamento.createMorador({
 
             name:name,
             surname:surname,
@@ -79,7 +79,7 @@ module.exports = {
             birth:birth,
             email:email,
             password:passwordHash,
-            apartamentos_id : id
+            apartamento_id : id
 
         })
 
@@ -100,7 +100,6 @@ module.exports = {
                 cpf:moradores.cpf,
                 birth: moradores.birth,
                 email: moradores.email,
-      
             },
             token,
             apartamento

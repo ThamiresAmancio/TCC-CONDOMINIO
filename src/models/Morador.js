@@ -21,8 +21,7 @@ class Morador extends Model {
     static associate(models){
 
         this.belongsTo(models.Apartamento);
-        this.hasMany(models.Visitante,{ foreignKey:'morador_id', as:'visitante'});
-
+        this.hasMany(models.VisitanteMorador,{ foreignKey:'morador_id', as:'visitante'});
     }
 }
 

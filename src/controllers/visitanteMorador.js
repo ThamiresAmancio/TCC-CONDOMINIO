@@ -1,6 +1,5 @@
-const CadastroVisitante = require("../models/Visitante");
+const CadastroVisitante = require("../models/VisitanteMorador");
 const Morador = require("../models/Morador")
-const Sindico = require("../models/Sindico")
 const { generateToken } = require("../util");
 
 module.exports = {
@@ -50,21 +49,15 @@ module.exports = {
           return res.status(400).send({ error: "Campo imagem é obrigatório" });
 
         const{name,rg,cpf} = req.body;
-        const {moradorId} = req.params;
-        const {sindicoId} = req.params;
-
+        const {id} = req.params;
+    
 
         try {
-          let morador= await Morador.findByPk(moradorId)
-          let sindico= await Sindico.findByPk(sindicoId)
+          let morador= await Morador.findByPk(id)
 
   
           if(!morador)
           return res.status(404).send({error:'Morador não encontrado'})
-
-          if(!sindico)
-          return res.status(404).send({error:'Síndico não encontrado'})
-  
 
         let visitante = await CadastroVisitante.findOne({
             where:{
@@ -86,8 +79,7 @@ module.exports = {
             rg:rg,
             cpf:cpf,
             image: firebaseUrl,
-            morador_id : moradorId,
-            sindico_id : sindicoId
+            morador_id : id,
         })
 
 
@@ -112,7 +104,7 @@ module.exports = {
 
             token,
             morador,
-            sindico
+
         })
       } catch (error) {
         console.log(error)

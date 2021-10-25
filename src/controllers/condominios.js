@@ -1,6 +1,5 @@
 const CadastroCondominio = require("../models/Condomino");
 const bcrypt = require("bcryptjs")
-const { generateToken } = require("../util");
 const CadastroAdmin = require("../models/Admin");
 
 module.exports = {

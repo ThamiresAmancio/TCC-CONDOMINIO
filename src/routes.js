@@ -6,12 +6,14 @@ const adminsController = require("./controllers/admins");
 const porteiroController = require("./controllers/porteiros")
 const blocoController = require("./controllers/blocos")
 const sindicoController = require("./controllers/sindicos");
-const visitanteControler = require("./controllers/visitantes");
 const cadastradoCondominioCoontroller = require("./controllers/condominios");
 const cadastroMoradorController = require("./controllers/moradores");
 const apartamentoController = require("./controllers/apartamentos");
 const authMiddleware = require("./middlewares/authorization");
 const uploadSingleImage = require("./middlewares/uploadSingleImage");
+const visitanteSindicoControler = require("./controllers/visitanteSindico");
+const visitanteMoradorControler = require("./controllers/visitanteMorador");
+
 const uploadImageFirebase = require("./services/firebase");
 
 //sessions
@@ -56,14 +58,17 @@ routes.put("/sindicos/:id", sindicoController.update);
 routes.delete("/sindicos/:id", sindicoController.delete);
 
 //rotas de cadastro visitantes
-routes.get("/visitantes", visitanteControler.index);
-routes.get("/visitantes/:id", visitanteControler.find);
-routes.post("/visitantes/:moradorId", uploadSingleImage ,uploadImageFirebase, visitanteControler.store);
-routes.post("/visitantes/:sindicoId", uploadSingleImage ,uploadImageFirebase, visitanteControler.store);
-routes.put("/visitantes/:id", visitanteControler.update);
-routes.delete("/visitantes/:id", visitanteControler.delete);
+routes.get("/visitantes", visitanteSindicoControler.index);
+routes.get("/visitantes/:id", visitanteSindicoControler.find);
+routes.post("/visitantes/:id", uploadSingleImage ,uploadImageFirebase, visitanteSindicoControler.store);
+routes.put("/visitantes/:id", visitanteSindicoControler.update);
+routes.delete("/visitantes/:id", visitanteSindicoControler.delete);
 
-
+routes.get("/visitantes/morador", visitanteMoradorControler.index);
+routes.get("/visitantes/morador/:id", visitanteMoradorControler.find);
+routes.post("/visitantes/morador/:id", uploadSingleImage ,uploadImageFirebase, visitanteMoradorControler.store);
+routes.put("/visitantes/morador/:id", visitanteMoradorControler.update);
+routes.delete("/visitantes/morador/:id", visitanteMoradorControler.delete);
 
 //rotas públicas condominio
 routes.post("/condominios/:id", cadastradoCondominioCoontroller.store);
@@ -75,7 +80,7 @@ routes.delete("/condominios/:id", cadastradoCondominioCoontroller.delete);
 
 
 //rotas moradores
-routes.post("/moradores/:id", cadastroMoradorController.store );
+routes.post("/moradores/:id", cadastroMoradorController.store);
 routes.get("/moradores", cadastroMoradorController.index);
 routes.get("/moradores/:id", cadastroMoradorController.find);
 routes.put("/moradores/:id", cadastroMoradorController.update);

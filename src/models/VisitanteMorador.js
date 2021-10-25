@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 
 
-class Visitante extends Model {
+class VisitanteMorador extends Model {
     static init(connection){
         super.init({
 
@@ -16,10 +16,7 @@ class Visitante extends Model {
     }
     static associate(models){
        this.belongsTo(models.Morador);
-        this.belongsTo(models.Sindico);
     }
 }
 
-
-
-module.exports = Visitante;
+module.exports = VisitanteMorador;
