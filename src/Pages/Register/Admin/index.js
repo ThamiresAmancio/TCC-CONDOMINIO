@@ -89,7 +89,7 @@ const handleSubmit = async (e) => {
 
             <div className="fields">
               <label>Nascimento</label>
-              <InputHoshi id="birth" type="text" name="birth"  value={admin.birth} handler={handleInput} />
+              <InputHoshi id="birth" type="date" name="birth"  value={admin.birth} handler={handleInput} />
             </div>
 
             

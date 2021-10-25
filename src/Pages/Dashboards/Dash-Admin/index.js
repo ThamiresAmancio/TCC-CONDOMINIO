@@ -2,17 +2,32 @@ import { ButtonActionDashboard, ContainerDashboard, NavButtonIcon, NavDashboard 
 import '../../../Styles/icons.css';
 import '../../../StylesGlobal';
 import { StyleGlobals } from '../../../StylesGlobal';
+import  $  from  "jquery" ;
+import InputHoshi from '../../../components/input';
 
 function AdminDashboard(){
+
+    $( "body" ).on( "click", "#home", function() {
+        $("main").empty().append(`
+        <form id="formSindico" style={{backgroundColor: 'green'}}>
+        <input placeholder="teste" />
+    </form> `);  
+    });
+
+
+    $( "body" ).on( "click", "#noti", function() {
+        $("#formSindico").show();
+    });
+
     return(
         <ContainerDashboard>
             <StyleGlobals/>
             {/* menu lateral */}
             <NavDashboard>
-                <NavButtonIcon className="material-icons">
+                <NavButtonIcon className="material-icons" id="home">
                     home
                 </NavButtonIcon>
-                <NavButtonIcon className="material-icons">
+                <NavButtonIcon className="material-icons" id="noti">
                     notification_important
                 </NavButtonIcon>
                 <NavButtonIcon className="material-icons">
@@ -28,8 +43,13 @@ function AdminDashboard(){
                     feedback
                 </NavButtonIcon>
             </NavDashboard>
-            <main>
-                main
+            <main id="main">
+                
+
+                <form id="formSindico" style={{backgroundColor: 'green'}} hidden>
+                    <InputHoshi id="input" label="Nome Terciario" value="Carine" />
+                    <InputHoshi id="" label="Nome" value="Brayan" />
+                </form> 
             </main>
             <header>
             </header>
