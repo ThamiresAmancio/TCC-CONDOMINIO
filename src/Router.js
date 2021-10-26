@@ -5,6 +5,7 @@ import Login from './Pages/Login';
 import LoginAdmin from './Pages/Login/LoginAdmin';
 import LoginUser from './Pages/Login/LoginUsers';
 import RegisterAdmin from './Pages/Register/Admin';
+import REgisterCondominio from './Pages/Register/Condominio';
 
 function Rotas() {
 
@@ -28,6 +29,9 @@ function Rotas() {
                 </Route>
                 <Route exact path="/Dashboard/Admin">
                     <AdminDashboard/>
+                </Route>
+                <Route exact path="/Register/Condominio">
+                    <REgisterCondominio/>
                 </Route>
             </Switch>
         </BrowserRouter>
