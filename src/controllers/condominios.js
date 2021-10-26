@@ -39,7 +39,7 @@ module.exports = {
   
       const{name,bairro,estado,cep,rua,cidade,numero,cnpj} = req.body;
 
-      const {id} = req;
+      const {id} = req.params;
       console.log(id)
 
       
