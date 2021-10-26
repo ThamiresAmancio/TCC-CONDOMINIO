@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import { useHistory, useParams } from "react-router";
+import { useHistory} from "react-router";
 import "./condominio.css";
 import "../../../Styles/styles.css";
 
 import { api } from "../../../services/api";
-import { getUser, signIn } from "../../../services/security";
+import { getUser} from "../../../services/security";
 import InputHoshi from "../../../components/input";
 import { Link } from "react-router-dom";
 
-function REgisterCondominio() {
+function REgisterCondominio({handleReload}) {
   
   const history = useHistory();
 
-  const admin = getUser();
+  const admin = getUser()
 
   const [condominio, setCondominio] = useState({
     name:"",
@@ -23,7 +23,7 @@ function REgisterCondominio() {
     cidade: "",
     numero: "",
     cnpj: "",
- 
+
   });
 
   const [isLoading,setIsLoading] = useState(false);
@@ -41,7 +41,7 @@ const handleSubmit = async (e) => {
   try {
     const { name, bairro, estado, cep , rua,cidade, numero,cnpj} = condominio;
 
-    const response = await api.post(`/condominios/${admin.id}`, {
+    const response = await api.post(`/condominios/${admin.adminId}`, {
 
       name,
       bairro,
@@ -53,10 +53,9 @@ const handleSubmit = async (e) => {
       cnpj
     });
 
-    console.log(admin)
-
         setIsLoading(false);
-  
+
+        
         history.push("/");
       } catch (error) {
         console.error(error);
@@ -122,7 +121,6 @@ const handleSubmit = async (e) => {
                     check_circle_outline
                   </span>
               </button>
-              <Link to="/Login/Admin" >Já possui uma conta?</Link>
             </div>
           </form>
         </div>

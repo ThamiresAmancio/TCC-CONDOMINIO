@@ -7,6 +7,7 @@ import { api } from "../../../services/api";
 import { signIn } from "../../../services/security";
 import InputHoshi from "../../../components/input";
 import { Link } from "react-router-dom";
+import ReactInputMask from "react-input-mask";
 
 function RegisterAdmin() {
   
@@ -54,7 +55,7 @@ const handleSubmit = async (e) => {
   
         setIsLoading(false);
   
-        history.push("/Dashboard/Admin");
+        history.push("/Login");
       } catch (error) {
         console.error(error);
         alert(error.response.data.error);
@@ -62,6 +63,7 @@ const handleSubmit = async (e) => {
       }
     };
 
+  
 
   return (
     <main>
@@ -83,7 +85,7 @@ const handleSubmit = async (e) => {
 
             <div className="fields">
               <label>cpf</label>
-              <InputHoshi id="cpf" type="text" name="cpf" value={admin.cpf} handler={handleInput} />
+              <InputHoshi id="cpf" type="text" name="cpf" value={admin.cpf} handler={handleInput} maxLength='14'/> 
             </div>
 
 

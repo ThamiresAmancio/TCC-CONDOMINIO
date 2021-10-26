@@ -3,6 +3,7 @@ import { api } from "./api";
 
 const USER_KEY = "@user";
 
+
 export const signIn = (user) => {
     localStorage.setItem(USER_KEY, JSON.stringify(user));
 
@@ -10,7 +11,7 @@ export const signIn = (user) => {
     api.defaults.headers.common["Authorization"] = `Bearer ${user.token}`;
 };
 
-/* Deslogando */
+
 export const signOut = () => {
     localStorage.removeItem(USER_KEY);
 
@@ -19,10 +20,11 @@ export const signOut = () => {
 
 /*Pegando usuario */
 export const getUser = () => {
-    const { admin } = JSON.parse(localStorage.getItem(USER_KEY));
+    const { admin} = JSON.parse(localStorage.getItem(USER_KEY));
 
     return admin;
 };
+
 
 /* Setando um usuário */
 export const setUser = (admin) => {
@@ -32,6 +34,8 @@ export const setUser = (admin) => {
 
     localStorage.setItem(USER_KEY, JSON.stringify(user));
 };
+
+
 
 /*Esta logado?*/
 export const isSignedIn = () => {
