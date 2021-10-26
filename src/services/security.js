@@ -20,7 +20,7 @@ export const signOut = () => {
 
 /*Pegando usuario */
 export const getUser = () => {
-    const { admin} = JSON.parse(localStorage.getItem(USER_KEY));
+    const {admin} = JSON.parse(localStorage.getItem(USER_KEY));
 
     return admin;
 };
@@ -30,7 +30,7 @@ export const getUser = () => {
 export const setUser = (admin) => {
     const user = JSON.parse(localStorage.getItem(USER_KEY));
     
-    user.admin = admin;
+    user = admin;
 
     localStorage.setItem(USER_KEY, JSON.stringify(user));
 };
