@@ -41,10 +41,10 @@ Morador.associate(connection.models);
 Apartamento.associate(connection.models);
 Bloco.associate(connection.models)
 
-for (let assoc of Object.keys(Sindico.associations)) {
-    for (let accessor of Object.keys(Sindico.associations[assoc].accessors)) {
-        console.log(Sindico.name + '.' + Sindico.associations[assoc].accessors[accessor] + '()');
-    }
-}
+// for (let assoc of Object.keys(Sindico.associations)) {
+//     for (let accessor of Object.keys(Sindico.associations[assoc].accessors)) {
+//         console.log(Sindico.name + '.' + Sindico.associations[assoc].accessors[accessor] + '()');
+//     }
+// }
 
 module.exports = connection;

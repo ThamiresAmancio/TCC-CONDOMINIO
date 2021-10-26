@@ -1,5 +1,5 @@
 const CadastroCondominio = require("../models/Condomino");
-const bcrypt = require("bcryptjs")
+const { generateToken } = require("../util");
 const CadastroAdmin = require("../models/Admin");
 
 module.exports = {
@@ -39,7 +39,7 @@ module.exports = {
   
       const{name,bairro,estado,cep,rua,cidade,numero,cnpj} = req.body;
 
-      const {id} = req.params;
+      const {id} = req;
       console.log(id)
 
       
@@ -73,8 +73,13 @@ module.exports = {
           cidade:cidade,
           numero:numero,
           cnpj:cnpj,
-          admin_id: id
+          admin_id : id
+
       })
+
+      const token = generateToken({
+        condominioId: condominio.id,
+      });
 
       res.send({
 
@@ -89,7 +94,8 @@ module.exports = {
               numero:condominio.numero,
               cnpj:condominio.cnpj,
           },
-          admin
+          admin,
+          token
       })
       } catch (error) {
         console.log(error)
