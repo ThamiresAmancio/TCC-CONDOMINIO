@@ -30,7 +30,7 @@ export const getUser = () => {
 export const setUser = (admin) => {
     const user = JSON.parse(localStorage.getItem(USER_KEY));
     
-    user = admin;
+    user.admin = admin;
 
     localStorage.setItem(USER_KEY, JSON.stringify(user));
 };

@@ -56,7 +56,7 @@ const handleSubmit = async (e) => {
         setIsLoading(false);
 
         
-        history.push("/");
+        history.push("/Dashboard/Admin");
       } catch (error) {
         console.error(error);
         alert(error.response.data.error);

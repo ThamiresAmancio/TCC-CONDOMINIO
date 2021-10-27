@@ -1,41 +1,54 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory} from "react-router";
 import "./porteiros.css";
 import "../../../Styles/styles.css";
 
 import { api } from "../../../services/api";
-import { getUser} from "../../../services/security";
 import InputHoshi from "../../../components/input";
+import axios from "axios";
+import { data } from "jquery";
 
 
 function RegisterPorteiros() {
   
   const history = useHistory();
 
-  const condominio = getUser()
-
   const [porteiros, setPorteiros] = useState({
     name:"",
     telephone: "",
     email:"",
     password:"",
+    condominio_id : "",
   });
 
+ 
   const [isLoading,setIsLoading] = useState(false);
+
+  const [condominios, setCondominios] = useState([])
+
+  useEffect(() => {
+    api.get("/condominios").then(({data}) => {
+      setCondominios(data)
+    });
+  },[])
+
+  console.log(condominios)
+
 
   const handleInput = (e) => {
    setPorteiros({ ...porteiros, [e.target.id]: e.target.value });
  };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  setIsLoading(true);
-
+    setIsLoading(true);
+ 
   try {
     const { name, telephone, email, password } = porteiros;
 
-    const response = await api.post(`/porteiros/${condominio.condominioId}`,{
+  
+    const response = await api.post(`/porteiros/`,{
 
       name,
       telephone,
@@ -43,10 +56,9 @@ const handleSubmit = async (e) => {
       password,
     });
 
-
         setIsLoading(false);
 
-        history.push("/");
+        history.push("/Dashboard/Admin");
       } catch (error) {
         console.error(error);
         alert(error.response.data.error);
@@ -82,6 +94,16 @@ const handleSubmit = async (e) => {
               <label>Senha</label>
               <InputHoshi id="password" type="password" value={porteiros.password} handler={handleInput} />
             </div>
+            <label>
+              Escolha um  Condomínio : 
+
+              <select>
+                {condominios.map((condominio) => {
+                  <option value={porteiros.condominio_id}>{condominio.name}</option> 
+                  {console.log(condominio.name)}
+                })}
+              </select>
+            </label>
             <div className="btn-post">
               <button type="submit">
                   Finalizar Cadastro

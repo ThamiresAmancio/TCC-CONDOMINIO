@@ -11,9 +11,6 @@ import { signIn } from "../../../services/security"
 
 
 function LoginAdmin() {
-
-
-
     const history = useHistory();
 
     const [isLoading, setIsLoading] = useState(false);

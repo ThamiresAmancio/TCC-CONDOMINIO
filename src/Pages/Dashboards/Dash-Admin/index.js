@@ -4,6 +4,7 @@ import '../../../StylesGlobal';
 import { StyleGlobals } from '../../../StylesGlobal';
 import  $  from  "jquery" ;
 import InputHoshi from '../../../components/input';
+import { useHistory } from 'react-router';
 
 function AdminDashboard(){
 
@@ -18,6 +19,8 @@ function AdminDashboard(){
     $( "body" ).on( "click", "#noti", function() {
         $("#formSindico").show();
     });
+
+    const history = useHistory();
 
     return(
         <ContainerDashboard>
@@ -58,15 +61,15 @@ function AdminDashboard(){
                   <span className="material-icons">person_add</span>
                   <span>Cadastrar Morador</span>
               </ButtonActionDashboard>
-              <ButtonActionDashboard>
+              <ButtonActionDashboard onClick={()=> history.push("/Register/Porteiros")}>
                   <span className="material-icons">person_add</span>
                   <span>Cadastrar Porteiro</span>
               </ButtonActionDashboard>
-              <ButtonActionDashboard>
+              <ButtonActionDashboard >
                   <span className="material-icons">person_add</span>
                   <span>Cadastrar Síndico</span>
               </ButtonActionDashboard>
-              <ButtonActionDashboard>
+              <ButtonActionDashboard onClick={()=> history.push("/Register/Condominio")}>
                   <span className="material-icons">apartment</span>
                   <span>Cadastrar Condomínio</span>
               </ButtonActionDashboard>
