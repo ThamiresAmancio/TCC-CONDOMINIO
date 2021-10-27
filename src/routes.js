@@ -45,7 +45,7 @@ routes.delete("/admins/:id", adminsController.delete);
 //rotas de cadastro porteiros
 routes.get("/porteiros", porteiroController.index);
 routes.get("/porteiros/:id", porteiroController.find);
-routes.post("/porteiros/:id", porteiroController.store);
+routes.post("/porteiros/", porteiroController.store);
 routes.put("/porteiros/:id", porteiroController.update);
 routes.delete("/porteiros/:id", porteiroController.delete);
 

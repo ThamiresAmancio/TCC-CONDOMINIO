@@ -39,7 +39,7 @@ module.exports = {
   
       const{name,bairro,estado,cep,rua,cidade,numero,cnpj} = req.body;
 
-      const {id} = req;
+      const {id} = req.params;
       console.log(id)
 
       
@@ -77,10 +77,6 @@ module.exports = {
 
       })
 
-      const token = generateToken({
-        condominioId: condominio.id,
-      });
-
       res.send({
 
           condominio:{
@@ -95,7 +91,6 @@ module.exports = {
               cnpj:condominio.cnpj,
           },
           admin,
-          token
       })
       } catch (error) {
         console.log(error)
