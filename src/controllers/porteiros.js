@@ -36,15 +36,15 @@ module.exports = {
 
   async store(req, res) {
     //recebendo os dados no body
-    const { name, telephone, email, password, condominio_id } = req.body;
+    const { name, telephone, email, password, condominio_id} = req.body;
 
     // const { id } = req.params;
 
-    // try {
-    //   let condominio = await Condominio.findByPk(id);
+   try {
+       let condominio = await Condominio.findByPk(condominio_id);
 
-    //   if (!condominio)
-    //     return res.status(404).send({ error: "Condomínio não encontrado" });
+       if (!condominio)
+         return res.status(404).send({ error: "Condomínio não encontrado" });
 
       let porteiro = await CadastroPorteiro.findOne({
         where: {
@@ -59,9 +59,13 @@ module.exports = {
           .send({ error: "Este Porteiro já está cadastrado" });
       }
 
+      
+
       const passwordHash = bcrypt.hashSync(password);
 
+      console.log('aaaaaaaa' + condominio_id)
       porteiro = await CadastroPorteiro.create({
+        
         name: name,
         telephone: telephone,
         email: email,
@@ -86,10 +90,10 @@ module.exports = {
         token,
         condominio_id,
       });
-    // } catch (error) {
-    //   console.log(error);
-    //   res.status(500).send(error);
-    // }
+    } catch (error) {
+      console.log(error);
+      res.status(500).send(error);
+    }
   },
 
   async update(req, res) {
