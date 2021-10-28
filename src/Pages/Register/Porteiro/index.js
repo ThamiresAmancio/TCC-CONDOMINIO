@@ -8,18 +8,9 @@ import InputHoshi from "../../../components/input";
 import axios from "axios";
 import { data } from "jquery";
 
+
 function RegisterPorteiros() {
   const history = useHistory();
-
-  const [porteiros, setPorteiros] = useState({
-    name: "",
-    telephone: "",
-    email: "",
-    password: "",
-    condominio_id: "",
-  });
-
-  const [isLoading, setIsLoading] = useState(false);
 
   const [condominios, setCondominios] = useState([]);
 
@@ -29,10 +20,31 @@ function RegisterPorteiros() {
     });
   }, []);
 
+  console.log(condominios[0])
 
+  const [porteiros, setPorteiros] = useState({
+    name: "",
+    telephone: "",
+    email: "",
+    password: "",
+    condominio_id: ""
+  });
+
+  console.log(condominios);
+  
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [condominioSelId, setCondominioSelId] = useState(undefined);
+
+  
   const handleInput = (e) => {
     setPorteiros({ ...porteiros, [e.target.id]: e.target.value });
   };
+
+  const handleCondominioSelId = (e) => {
+    setCondominioSelId(e.target.value)
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,14 +52,14 @@ function RegisterPorteiros() {
     setIsLoading(true);
 
     try {
-      const { name, telephone, email, password,condominio_id } = porteiros;
+      const { name, telephone, email, password , condominio_id } = porteiros;
 
       const response = await api.post(`/porteiros/`, {
         name,
         telephone,
         email,
         password,
-        condominio_id
+        condominio_id: condominioSelId
       });
 
       setIsLoading(false);
@@ -108,7 +120,8 @@ function RegisterPorteiros() {
             </div>
             <label>
               Escolha um Condomínio :
-              <select>
+              <select id={condominios.condominio_id} value={condominioSelId} onChange={handleCondominioSelId}> 
+                <option value="">Selecione</option>
                 {condominios.map((c) => (
                   <option key={c.id} value={c.id}>
                     {c.name}

@@ -31,7 +31,7 @@ function Login(){
                     <span className="material-icons">
                         apartment
                     </span>
-                    <Link to="/Login/User">
+                    <Link to="/Login/Morador">
                         Acesso para morador
                     </Link>
                 </CardIconePerfil>
@@ -39,7 +39,7 @@ function Login(){
                     <span className="material-icons">
                         person
                     </span>
-                    <Link to="/Login/User">
+                    <Link to="/Login/Sindico">
                         Sindico
                     </Link>
                 </CardIconePerfil>
@@ -47,7 +47,7 @@ function Login(){
                     <span className="material-icons">
                         contact_phone
                     </span>
-                    <Link to="/Login/User">
+                    <Link to="/Login/Portaria">
                         Portaria
                     </Link>
                 </CardIconePerfil>

@@ -3,6 +3,7 @@ import AdminDashboard from './Pages/Dashboards/Dash-Admin';
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import LoginAdmin from './Pages/Login/LoginAdmin';
+import LoginPorteiros from './Pages/Login/LoginPorteiro';
 import LoginUser from './Pages/Login/LoginUsers';
 import RegisterAdmin from './Pages/Register/Admin';
 import RegisterCondominio from './Pages/Register/Condominio';
@@ -25,6 +26,9 @@ function Rotas() {
                 </Route>
                 <Route exact path="/Login/User">
                     <LoginUser/>
+                </Route>
+                <Route exact path="/Login/Portaria">
+                    <LoginPorteiros/>
                 </Route>
                 <Route exact path="/Register/Admin">
                     <RegisterAdmin />
