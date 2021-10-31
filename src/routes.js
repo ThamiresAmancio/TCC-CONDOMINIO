@@ -53,14 +53,14 @@ routes.delete("/porteiros/:id", porteiroController.delete);
 //rotas de cadastro síndico
 routes.get("/sindicos", sindicoController.index);
 routes.get("/sindicos/:id", sindicoController.find);
-routes.post("/sindicos/:id", sindicoController.store);
+routes.post("/sindicos", sindicoController.store);
 routes.put("/sindicos/:id", sindicoController.update);
 routes.delete("/sindicos/:id", sindicoController.delete);
 
 //rotas de cadastro visitantes
 routes.get("/visitantes", visitanteSindicoControler.index);
 routes.get("/visitantes/:id", visitanteSindicoControler.find);
-routes.post("/visitantes/:id", uploadSingleImage ,uploadImageFirebase, visitanteSindicoControler.store);
+routes.post("/visitantes/sindico/:id", uploadSingleImage ,uploadImageFirebase, visitanteSindicoControler.store);
 routes.put("/visitantes/:id", visitanteSindicoControler.update);
 routes.delete("/visitantes/:id", visitanteSindicoControler.delete);
 
@@ -80,24 +80,24 @@ routes.delete("/condominios/:id", cadastradoCondominioCoontroller.delete);
 
 
 //rotas moradores
-routes.post("/moradores/:id", cadastroMoradorController.store);
+routes.post("/moradores", cadastroMoradorController.store);
 routes.get("/moradores", cadastroMoradorController.index);
 routes.get("/moradores/:id", cadastroMoradorController.find);
 routes.put("/moradores/:id", cadastroMoradorController.update);
 routes.delete("/moradores/:id", cadastroMoradorController.delete);
 
 //apartamentos
-routes.post("/apartamentos/:id", apartamentoController.store );
+routes.post("/apartamentos", apartamentoController.store );
 routes.get("/apartamentos", apartamentoController.index);
 routes.get("/apartamentos/:id", apartamentoController.find);
 routes.put("/apartamentos/:id", apartamentoController.update);
 routes.delete("/apartamentos/:id", apartamentoController.delete);
 
 //rotas bloco
-routes.post("/blocos/:id", blocoController.store );
+routes.post("/blocos", blocoController.store );
 routes.get("/blocos", blocoController.index);
 routes.get("/blocos/:id", blocoController.find);
-routes.put("/blocos", blocoController.update);
+routes.put("/blocos/:id", blocoController.update);
 routes.delete("/blocos/:id", blocoController.delete);
 
 

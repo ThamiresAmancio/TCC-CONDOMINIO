@@ -1,4 +1,4 @@
-const Visitante = require("../models/VisitanteSindico");
+const CadastroVisitante = require("../models/VisitanteSindico");
 const Sindico = require("../models/Sindico")
 const { generateToken } = require("../util");
 
@@ -7,7 +7,7 @@ module.exports = {
     async index(req, res) {
         try {
 
-          const visitante = await Visitante.findAll();
+          const visitante = await CadastroVisitante.findAll();
 
             res.send(visitante);
           } catch (error) {
@@ -22,7 +22,7 @@ module.exports = {
         const visitanteId = req.params.id;
 
         try {
-          let visitante = await Visitante.findByPk(visitanteId, {
+          let visitante = await CadastroVisitante.findByPk(visitanteId, {
             attributes: ["id", "name", "cpf" ]
             
           });
@@ -49,23 +49,21 @@ module.exports = {
           return res.status(400).send({ error: "Campo imagem é obrigatório" });
 
         const{name,rg,cpf} = req.body;
+
         const {id} = req.params;
     
-
         try {
           let sindico= await Sindico.findByPk(id)
 
-  
           if(!sindico)
           return res.status(404).send({error:'Síndico não encontrado'})
 
-        let visitante = await Visitante.findOne({
+          let visitante = await CadastroVisitante.findOne({
             where:{
                 name:name,
                 cpf:cpf
             }
         })
-
 
         if(visitante){
             return res.status(400)
@@ -73,22 +71,13 @@ module.exports = {
         }
 
 
-        visitante = await sindico.createVisitante({
+        visitante = await CadastroVisitante.create({
 
             name:name,
             rg:rg,
             cpf:cpf,
             image: firebaseUrl,
         })
-
-
-        // aqui vai ser gerado o token
-
-        const token = generateToken({
-
-            visitanteId: visitante.id,
-            visitanteName: visitante.name,
-        });
        
         res.send({
 
@@ -101,7 +90,6 @@ module.exports = {
 
             },
 
-            token,
             sindico,
 
         })
@@ -120,7 +108,7 @@ module.exports = {
     const { name,rg,cpf} = req.body;
 
     try {
-      let visitante = await Visitante.findByPk(visitanteId);
+      let visitante = await CadastroVisitante.findByPk(visitanteId);
 
       if (!visitante) res.status(404).send({ error: "Visitante não encontrado" });
 
@@ -146,7 +134,7 @@ module.exports = {
         const visitanteId = req.params.id;
 
         try {
-          let visitante = await Visitante.findByPk(visitanteId);
+          let visitante = await CadastroVisitante.findByPk(visitanteId);
     
           if (!visitante)
             return res.status(404).send({ error: "Visitante não encontrado" });

@@ -38,12 +38,11 @@ module.exports = {
     async store(req, res) {
 
         //recebendo os dados no body
-        const{numero} = req.body;
+        const{numero,bloco_id} = req.body;
 
-        const {id} = req.params;
 
         try {
-          let bloco= await Bloco.findByPk(id)
+          let bloco= await Bloco.findByPk(bloco_id)
   
   
           if(!bloco)
@@ -62,7 +61,7 @@ module.exports = {
         }
         apartamento= await apartamentos.create({
            numero:numero,
-           bloco_id :id
+           bloco_id :bloco_id
         })
 
         res.send({
@@ -70,7 +69,6 @@ module.exports = {
             apartamento:{
                 apartamentoId: apartamento.id,
                 numero:apartamento.numero,
-               
             },
             bloco
         })
@@ -81,7 +79,6 @@ module.exports = {
     },
 
     async update(req, res) {
-
 
     const apartamentoId = req.params.id;
 

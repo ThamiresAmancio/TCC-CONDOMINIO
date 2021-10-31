@@ -21,7 +21,6 @@ module.exports = {
 
         async find(req, res) {
 
-
         const sindicoId = req.params.id;
 
         try {
@@ -45,12 +44,11 @@ module.exports = {
     async store(req, res) {
 
         //recebendo os dados no body
-        const{name,surname,cpf,birth,email,password} = req.body;
+        const{name,surname,cpf,birth,email,password,apartamento_id} = req.body;
 
-        const {id} = req.params;
 
         try {
-          let apartamento= await Apartamento.findByPk(id)
+          let apartamento= await Apartamento.findByPk(apartamento_id)
   
   
           if(!apartamento)
@@ -78,7 +76,7 @@ module.exports = {
             birth:birth,
             email:email,
             password:passwordHash,
-            apartamento_id : id
+            apartamento_id : apartamento_id
         })
 
 

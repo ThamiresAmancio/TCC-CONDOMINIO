@@ -43,13 +43,10 @@ module.exports = {
     async store(req, res) {
 
         //recebendo os dados no body
-        const{name} = req.body;
+        const{name,condominio_id} = req.body;
 
-        const {id} = req.params;
-
-      
       try {
-        let condominio= await Condominio.findByPk(id)
+        let condominio= await Condominio.findByPk(condominio_id)
 
 
         if(!condominio)
@@ -70,7 +67,7 @@ module.exports = {
 
         bloco= await Bloco.create({
             name:name,
-            condominio_id: id
+            condominio_id: condominio_id
         })
         res.send({
 
