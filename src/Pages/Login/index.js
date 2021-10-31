@@ -32,7 +32,7 @@ function Login(){
                         apartment
                     </span>
                     <Link to="/Login/Morador">
-                        Acesso para morador
+                        Morador
                     </Link>
                 </CardIconePerfil>
                 <CardIconePerfil>

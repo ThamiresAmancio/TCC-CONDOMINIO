@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import "./porteiros.css";
+import "./bloco.css";
 import "../../../Styles/styles.css";
 
 import { api } from "../../../services/api";
@@ -9,7 +9,7 @@ import axios from "axios";
 import { data } from "jquery";
 
 
-function RegisterPorteiros() {
+function RegisterBlocos() {
   const history = useHistory();
 
   const [condominios, setCondominios] = useState([]);
@@ -20,25 +20,18 @@ function RegisterPorteiros() {
     });
   }, []);
 
-  console.log(condominios[0])
-
-  const [porteiros, setPorteiros] = useState({
+  const [bloco, setBloco] = useState({
     name: "",
-    telephone: "",
-    email: "",
-    password: "",
-    condominio_id: ""
+    condominio_id :""
   });
 
-  
-
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading,setIsLoading] = useState(false);
 
   const [condominioSelId, setCondominioSelId] = useState(undefined);
 
   
   const handleInput = (e) => {
-    setPorteiros({ ...porteiros, [e.target.id]: e.target.value });
+    setBloco({ ...bloco, [e.target.id]: e.target.value });
   };
 
   const handleCondominioSelId = (e) => {
@@ -51,19 +44,16 @@ function RegisterPorteiros() {
     setIsLoading(true);
 
     try {
-      const { name, telephone, email, password , condominio_id } = porteiros;
+      const { name, condominio_id } = bloco;
 
-      const response = await api.post(`/porteiros/`, {
+      const response = await api.post(`/blocos`, {
         name,
-        telephone,
-        email,
-        password,
         condominio_id: condominioSelId
       });
 
       setIsLoading(false);
 
-      history.push("/Dashboard/Admin");
+      history.push("/");
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
@@ -74,7 +64,7 @@ function RegisterPorteiros() {
   return (
     <main>
       <div className="card-post">
-        <h1>Registrar Porteiros</h1>
+        <h1>Registrar Blocos</h1>
         <div className="line-post"></div>
         <div className="card-body-post">
           <form id="form" onSubmit={handleSubmit}>
@@ -83,37 +73,7 @@ function RegisterPorteiros() {
               <InputHoshi
                 id="name"
                 type="text"
-                value={porteiros.name}
-                handler={handleInput}
-              />
-            </div>
-
-            <div className="fields">
-              <label>Telefone</label>
-              <InputHoshi
-                id="telephone"
-                type="text"
-                value={porteiros.telephone}
-                handler={handleInput}
-              />
-            </div>
-
-            <div className="fields">
-              <label>Email</label>
-              <InputHoshi
-                id="email"
-                type="text"
-                value={porteiros.email}
-                handler={handleInput}
-              />
-            </div>
-
-            <div className="fields">
-              <label>Senha</label>
-              <InputHoshi
-                id="password"
-                type="password"
-                value={porteiros.password}
+                value={bloco.name}
                 handler={handleInput}
               />
             </div>
@@ -141,4 +101,4 @@ function RegisterPorteiros() {
   );
 }
 
-export default RegisterPorteiros;
+export default RegisterBlocos;

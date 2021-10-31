@@ -1,13 +1,16 @@
-import { Link, useHistory } from 'react-router-dom';
-import { RightSideLoginAdmin } from '../LoginAdmin/styles';
-import { BodyLoginPerfils, LoginLeftSide, LogoTowers } from '../styles';
+import { Link , useHistory } from 'react-router-dom';
 import { useState } from "react";
 import InputHoshi from "../../../components/input";
+
+
+import { BodyLoginPerfils, LoginLeftSide, LogoTowers } from '../styles';
+import './styles';
+import { RightSideLogin } from './styles';
 import { api } from "../../../services/api";
 import { signIn } from "../../../services/security"
 
 
-function LoginMorador() {
+function LoginSindicos() {
     const history = useHistory();
 
     const [isLoading, setIsLoading] = useState(false);
@@ -25,7 +28,7 @@ function LoginMorador() {
     setIsLoading(true);
 
     try {
-      const response = await api.post("/sessionsMoradores", login);
+      const response = await api.post("/sessionsSindicos", login);
 
       signIn(response.data);
 
@@ -63,7 +66,7 @@ function LoginMorador() {
                     </p>
                 </div>
             </LoginLeftSide>
-            <RightSideLoginAdmin>
+            <RightSideLogin>
                 <h1>Faça seu Login</h1>
                 <alert message={message} type="error" handleClose={setMessage}/>
                 <form onSubmit={handleSubmit}>
@@ -79,9 +82,9 @@ function LoginMorador() {
 
                     <Link to="/" style={{ fontSize: '1.2rem' }}>Voltar para home</Link>
                 </form>
-            </RightSideLoginAdmin>
+            </RightSideLogin>
         </BodyLoginPerfils>
     );
 }
 
-export default LoginMorador;
+export default LoginSindicos;

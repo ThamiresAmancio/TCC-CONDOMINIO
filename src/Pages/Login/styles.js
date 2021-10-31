@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import ImgLogo from '../../Assets/predio-comercial.png';
+
 export const BodyLoginPerfils = styled.body`
     width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: row;
 `;
+
 
 export const LoginLeftSide = styled.div`
     width: 50%;
