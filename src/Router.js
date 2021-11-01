@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Chat from './Pages/Chat';
 import AdminDashboard from './Pages/Dashboards/Dash-Admin';
 import Home from './Pages/Home';
 import Login from './Pages/Login';
@@ -61,6 +62,9 @@ function Rotas() {
                 </Route>
                 <Route exact path="/Register/Apartamentos">
                     <RegisterApto/>
+                </Route>
+                <Route exact path="/Chat">
+                    <Chat/>
                 </Route>
             </Switch>
         </BrowserRouter>

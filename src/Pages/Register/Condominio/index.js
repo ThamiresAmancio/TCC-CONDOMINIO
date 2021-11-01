@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory} from "react-router";
 import "./condominio.css";
 import "../../../Styles/styles.css";
@@ -7,6 +7,7 @@ import { api } from "../../../services/api";
 import { getUser} from "../../../services/security";
 import InputHoshi from "../../../components/input";
 import { Link } from "react-router-dom";
+import { mascaraCep } from "../../../utils";
 
 function REgisterCondominio({handleReload}) {
   
@@ -31,6 +32,22 @@ function REgisterCondominio({handleReload}) {
   const handleInput = (e) => {
    setCondominio({ ...condominio, [e.target.id]: e.target.value });
  };
+
+ const handleCepCondominio = (e) => {
+   let cep = e.target.value
+   cep = mascaraCep(cep)
+   setCondominio({...condominio,cep:cep})
+ }
+
+
+ useEffect(() => {
+   const getEndereco = async (cep) =>{
+     const dados = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+     const endereco = await dados.json();
+     setCondominio({...condominio, rua: endereco.logradouro, bairro:endereco.bairro, cidade:endereco.localidade, estado:endereco.uf  })
+   } 
+ }
+ )
 
 const handleSubmit = async (e) => {
   e.preventDefault();
