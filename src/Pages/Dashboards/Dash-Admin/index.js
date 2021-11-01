@@ -57,21 +57,29 @@ function AdminDashboard(){
             <header>
             </header>
             <aside>
-              <ButtonActionDashboard>
+            <ButtonActionDashboard onClick={()=> history.push("/Register/Condominio")}>
+                  <span className="material-icons">apartment</span>
+                  <span>Cadastrar Condomínio</span>
+              </ButtonActionDashboard>
+              <ButtonActionDashboard onClick={()=> history.push("/Register/Blocos")}>
+                  <span className="material-icons">business</span>
+                  <span>Cadastrar Blocos</span>
+              </ButtonActionDashboard>
+              <ButtonActionDashboard onClick={()=> history.push("/Register/Apartamentos")}>
+                  <span className="material-icons">business</span>
+                  <span>Cadastrar Apartamentos</span>
+              </ButtonActionDashboard>
+              <ButtonActionDashboard onClick={()=> history.push("/Register/Moradores")} >
                   <span className="material-icons">person_add</span>
-                  <span>Cadastrar Morador</span>
+                  <span>Cadastrar Moradores</span>
+              </ButtonActionDashboard>
+              <ButtonActionDashboard onClick={()=> history.push("/Register/Sindicos")} >
+                  <span className="material-icons">person_add</span>
+                  <span>Cadastrar Síndicos</span>
               </ButtonActionDashboard>
               <ButtonActionDashboard onClick={()=> history.push("/Register/Porteiros")}>
                   <span className="material-icons">person_add</span>
-                  <span>Cadastrar Porteiro</span>
-              </ButtonActionDashboard>
-              <ButtonActionDashboard >
-                  <span className="material-icons">person_add</span>
-                  <span>Cadastrar Síndico</span>
-              </ButtonActionDashboard>
-              <ButtonActionDashboard onClick={()=> history.push("/Register/Condominio")}>
-                  <span className="material-icons">apartment</span>
-                  <span>Cadastrar Condomínio</span>
+                  <span>Cadastrar Porteiros</span>
               </ButtonActionDashboard>
             </aside>
         </ContainerDashboard>

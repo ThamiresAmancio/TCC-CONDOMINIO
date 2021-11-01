@@ -5,7 +5,8 @@ import { useState } from "react";
 import InputHoshi from "../../../components/input";
 import { api } from "../../../services/api";
 import { signIn } from "../../../services/security"
-
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function LoginMorador() {
     const history = useHistory();
@@ -34,7 +35,8 @@ function LoginMorador() {
       history.push("/");
     } catch (error) {
       console.error(error);
-      setMessage({ title: "Ops...", description: error.response.data.error });
+     toast.error("usuário e/ou senha inválidos")
+     setMessage({ title: "Ops...", description: error.response.data.error });
       setIsLoading(false);
     }
   };
@@ -44,7 +46,9 @@ function LoginMorador() {
   };
 
     return (
+        
         <BodyLoginPerfils>
+            <ToastContainer/> 
             <LoginLeftSide>
                 <LogoTowers>
                     <figure>

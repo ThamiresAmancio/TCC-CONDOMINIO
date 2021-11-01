@@ -1,8 +1,8 @@
 import { Link , useHistory } from 'react-router-dom';
 import { useState } from "react";
 import InputHoshi from "../../../components/input";
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { BodyLoginPerfils, LoginLeftSide, LogoTowers } from '../styles';
 import './styles';
 import { RightSideLogin } from './styles';
@@ -37,6 +37,7 @@ function LoginSindicos() {
       history.push("/");
     } catch (error) {
       console.error(error);
+      toast.error("usuário e/ou senha inválidos")
       setMessage({ title: "Ops...", description: error.response.data.error });
       setIsLoading(false);
     }
@@ -49,6 +50,7 @@ function LoginSindicos() {
     return (
         <BodyLoginPerfils>
             <LoginLeftSide>
+                <ToastContainer/>
                 <LogoTowers>
                     <figure>
 
