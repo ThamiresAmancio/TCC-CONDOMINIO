@@ -7,6 +7,7 @@ import { api } from "../../../services/api";
 import InputHoshi from "../../../components/input";
 import axios from "axios";
 import { data } from "jquery";
+import { mascaraCel } from "../../../utils";
 
 
 function RegisterPorteiros() {
@@ -30,6 +31,12 @@ function RegisterPorteiros() {
     condominio_id: ""
   });
 
+
+  const handleCell = (e) =>{
+    let cell = e.target.value;
+    cell = mascaraCel(cell);
+    setPorteiros({ ...porteiros, telephone: cell });
+}
   
 
   const [isLoading, setIsLoading] = useState(false);
@@ -94,7 +101,7 @@ function RegisterPorteiros() {
                 id="telephone"
                 type="text"
                 value={porteiros.telephone}
-                handler={handleInput}
+                handler={handleCell}
               />
             </div>
 

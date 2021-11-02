@@ -8,11 +8,10 @@ import { signIn } from "../../../services/security";
 import InputHoshi from "../../../components/input";
 import { Link } from "react-router-dom";
 
+import { mascaraCpf } from "../../../utils";
 function RegisterMoradores() {
   
   const history = useHistory();
-
-
 
   const [apartamentos, setApartamentos] = useState([]);
 
@@ -33,6 +32,13 @@ function RegisterMoradores() {
     password: "",
     apartamento_id :""
   });
+
+  const handleCpf = (e) =>{
+    let cpf = e.target.value;
+    cpf = mascaraCpf(cpf);
+    setMorador({ ...morador, cpf: cpf });
+}
+
 
   const [isLoading,setIsLoading] = useState(false);
 
@@ -100,7 +106,7 @@ const handleSubmit = async (e) => {
 
             <div className="fields">
               <label>cpf</label>
-              <InputHoshi id="cpf" type="text" name="cpf" value={morador.cpf} handler={handleInput} maxLength='14'/> 
+              <InputHoshi id="cpf" type="text" name="cpf" value={morador.cpf} handler={handleCpf} maxLength='14'/> 
             </div>
 
 

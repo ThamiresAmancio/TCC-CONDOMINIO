@@ -6,8 +6,7 @@ import "../../../Styles/styles.css";
 import { api } from "../../../services/api";
 import { getUser} from "../../../services/security";
 import InputHoshi from "../../../components/input";
-import { Link } from "react-router-dom";
-import { mascaraCep } from "../../../utils";
+import { mascaraCep, mascaraCnpj } from "../../../utils";
 
 function REgisterCondominio({handleReload}) {
   
@@ -39,15 +38,24 @@ function REgisterCondominio({handleReload}) {
    setCondominio({...condominio,cep:cep})
  }
 
+ const handleCnpj = (e) =>{
+   let cnpj = e.target.value
+   cnpj = mascaraCnpj(cnpj)
+   setCondominio({...condominio,cnpj:cnpj})
+ }
 
  useEffect(() => {
    const getEndereco = async (cep) =>{
      const dados = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
      const endereco = await dados.json();
      setCondominio({...condominio, rua: endereco.logradouro, bairro:endereco.bairro, cidade:endereco.localidade, estado:endereco.uf  })
-   } 
- }
- )
+   };
+ 
+   if (condominio.cep.length === 9) {
+    getEndereco(condominio.cep);
+  }
+}, [condominio.cep]);
+
 
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -95,19 +103,19 @@ const handleSubmit = async (e) => {
 
             <div className="fields">
               <label>Bairro</label>
-              <InputHoshi id="bairro" type="text"   value={condominio.bairro}  handler={handleInput} />
+              <InputHoshi id="bairro" type="text"   value={condominio.bairro}  handler={handleInput}  />
   
             </div>
 
             <div className="fields">
               <label>Estado</label>
-              <InputHoshi id="estado" type="text" value={condominio.estado} handler={handleInput} />
+              <InputHoshi id="estado" type="text"   value={condominio.estado} handler={handleInput} />
             </div>
 
 
             <div className="fields">
               <label>CEP</label>
-              <InputHoshi id="cep" type="text" value={condominio.cep} handler={handleInput} />
+              <InputHoshi id="cep" type="text" pattern="(\d{5})-(\d{3})/" value={condominio.cep} handler={handleCepCondominio} />
             </div>
 
             
@@ -128,7 +136,7 @@ const handleSubmit = async (e) => {
 
             <div className="fields">
               <label>CNPJ</label>
-              <InputHoshi id="cnpj" type="text" value={condominio.cnpj} handler={handleInput}/>
+              <InputHoshi id="cnpj" type="text" value={condominio.cnpj} handler={handleCnpj} />
             </div>
 
             <div className="btn-post">

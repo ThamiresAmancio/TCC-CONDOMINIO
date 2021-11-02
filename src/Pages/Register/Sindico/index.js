@@ -6,6 +6,7 @@ import "../../../Styles/styles.css";
 import { api } from "../../../services/api";
 import { signIn } from "../../../services/security";
 import InputHoshi from "../../../components/input";
+import { mascaraCpf } from "../../../utils";
 
 function RegisterSindico() {
   
@@ -30,6 +31,12 @@ function RegisterSindico() {
     password: "",
     apartamento_id :""
   });
+
+  const handleCpf = (e) =>{
+    let cpf = e.target.value;
+    cpf = mascaraCpf(cpf);
+    setSindico({ ...sindico, cpf: cpf });
+}
 
   const [isLoading,setIsLoading] = useState(false);
 
@@ -97,7 +104,7 @@ const handleSubmit = async (e) => {
 
             <div className="fields">
               <label>cpf</label>
-              <InputHoshi id="cpf" type="text" name="cpf" value={sindico.cpf} handler={handleInput} maxLength='14'/> 
+              <InputHoshi id="cpf" type="text" name="cpf" value={sindico.cpf} handler={handleCpf} maxLength='14'/> 
             </div>
 
 

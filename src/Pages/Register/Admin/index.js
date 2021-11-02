@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import "./admin.css";
 import "../../../Styles/styles.css";
-
 import { api } from "../../../services/api";
 import { signIn } from "../../../services/security";
 import InputHoshi from "../../../components/input";
 import { Link } from "react-router-dom";
+import { mascaraCpf } from "../../../utils";
 
 function RegisterAdmin() {
   
@@ -20,8 +20,15 @@ function RegisterAdmin() {
     birth:"",
     email:"",
     password: "",
- 
   });
+
+
+  const handleCpfAdmin = (e) =>{
+    let cpf = e.target.value;
+    cpf = mascaraCpf(cpf);
+    setAdmin({ ...admin, cpf: cpf });
+}
+
 
   //eslint-disable-next-line
   const [isLoading,setIsLoading] = useState(false);
@@ -31,10 +38,12 @@ function RegisterAdmin() {
    setAdmin({ ...admin, [e.target.id]: e.target.value });
  };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  setIsLoading(true);
+    setIsLoading(true);
+
+
 
 
   try {
@@ -62,8 +71,6 @@ const handleSubmit = async (e) => {
       }
     };
 
-  
-
   return (
     <main>
       <div className="card-post">
@@ -84,7 +91,7 @@ const handleSubmit = async (e) => {
 
             <div className="fields">
               <label>cpf</label>
-              <InputHoshi id="cpf" type="text" name="cpf" value={admin.cpf} handler={handleInput} maxLength='14'/> 
+              <InputHoshi id="cpf" type="text" name="cpf" value={admin.cpf} handler={handleCpfAdmin} maxLength='14'/> 
             </div>
 
 
