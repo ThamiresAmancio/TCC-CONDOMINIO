@@ -10,6 +10,8 @@ import { mascaraCep, mascaraCnpj } from "../../../utils";
 
 function REgisterCondominio({handleReload}) {
   
+  let [isCadastrandoCondominio, setIsCadastrandoCondominio] = useState(false);
+
   const history = useHistory();
 
   const admin = getUser()
@@ -28,7 +30,7 @@ function REgisterCondominio({handleReload}) {
 
   const [isLoading,setIsLoading] = useState(false);
 
-  const handleInput = (e) => {
+  const handleInputCondominio = (e) => {
    setCondominio({ ...condominio, [e.target.id]: e.target.value });
  };
 
@@ -98,18 +100,18 @@ const handleSubmit = async (e) => {
           <form id="form" onSubmit={handleSubmit} >
             <div className="fields">
               <label>Nome</label>
-              <InputHoshi id="name" type="text" value={condominio.name} handler={handleInput} />
+              <InputHoshi id="name" type="text" value={condominio.name} handler={handleInputCondominio} />
             </div>
 
             <div className="fields">
               <label>Bairro</label>
-              <InputHoshi id="bairro" type="text"   value={condominio.bairro}  handler={handleInput}  />
+              <InputHoshi id="bairro" type="text"   value={condominio.bairro}  handler={handleInputCondominio}  />
   
             </div>
 
             <div className="fields">
               <label>Estado</label>
-              <InputHoshi id="estado" type="text"   value={condominio.estado} handler={handleInput} />
+              <InputHoshi id="estado" type="text"   value={condominio.estado} handler={handleInputCondominio} />
             </div>
 
 
@@ -121,17 +123,17 @@ const handleSubmit = async (e) => {
             
             <div className="fields">
               <label>Rua</label>
-              <InputHoshi id="rua" type="text" value={condominio.rua} handler={handleInput} />
+              <InputHoshi id="rua" type="text" value={condominio.rua} handler={handleInputCondominio} />
             </div>
 
             <div className="fields">
               <label>Cidade</label>
-              <InputHoshi id="cidade" type="text" value={condominio.cidade} handler={handleInput}/>
+              <InputHoshi id="cidade" type="text" value={condominio.cidade} handler={handleInputCondominio}/>
             </div>
 
             <div className="fields">
               <label>Número</label>
-              <InputHoshi id="numero" type="text" value={condominio.numero} handler={handleInput}/>
+              <InputHoshi id="numero" type="text" value={condominio.numero} handler={handleInputCondominio}/>
             </div>
 
             <div className="fields">
@@ -146,6 +148,7 @@ const handleSubmit = async (e) => {
                     check_circle_outline
                   </span>
               </button>
+              
             </div>
           </form>
         </div>

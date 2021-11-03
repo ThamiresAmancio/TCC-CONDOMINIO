@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
 import { mascaraCpf } from "../../../utils";
 function RegisterMoradores() {
   
+  let [isCadastrandoMorador, setCadastrandoMorador] = useState(true);
+
   const history = useHistory();
 
   const [apartamentos, setApartamentos] = useState([]);

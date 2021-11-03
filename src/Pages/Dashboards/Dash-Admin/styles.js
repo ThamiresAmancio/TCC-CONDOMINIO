@@ -94,4 +94,5 @@ export const ButtonActionDashboard = styled.button`
         color: #FFF;
         font-size: 1.5rem;
     }
+    
 `;
