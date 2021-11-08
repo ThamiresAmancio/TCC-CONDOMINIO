@@ -24,7 +24,6 @@ module.exports = {
 
       setTimeout(() => {
         res.status(201).send({
-          morador: {
             moradorId: morador.id,
             name:morador.name,
             surname: morador.surname,
@@ -32,7 +31,6 @@ module.exports = {
             cpf:morador.cpf,
             birth:morador.birth,
             email:morador.email,
-          },
           token,
         });
       }, 3000);

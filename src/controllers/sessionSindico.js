@@ -23,16 +23,13 @@ module.exports = {
       });
       setTimeout(() => {
         res.status(201).send({
-          sindico: {
             sindicoId: sindico.id,
             name: sindico.name,
             surname:sindico.surname,
             cpf:sindico.cpf,
             birth:sindico.birth,
             email:sindico.email,
-            
-          },
-          token,
+            token,
         });
       }, 3000);
     } catch (error) {
