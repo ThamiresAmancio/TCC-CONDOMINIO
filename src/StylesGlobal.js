@@ -38,6 +38,7 @@ export const StyleGlobals = createGlobalStyle`
 
     .material-icons {
         font-family: 'Material Icons' !important;
+        
     }
 
     a, a:focus, a:hover {

@@ -34,7 +34,7 @@ function LoginSindicos() {
 
       setIsLoading(false);
 
-      history.push("/");
+      history.push("/Dashboard/Sindico");
     } catch (error) {
       console.error(error);
       toast.error("usuário e/ou senha inválidos")

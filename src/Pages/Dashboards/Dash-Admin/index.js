@@ -2,15 +2,10 @@ import { ButtonActionDashboard, ContainerDashboard, NavButtonIcon, NavDashboard 
 import '../../../Styles/icons.css';
 import '../../../StylesGlobal';
 import { StyleGlobals } from '../../../StylesGlobal';
-import $ from "jquery";
-import InputHoshi from '../../../components/input';
 import { useHistory } from 'react-router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './dashboard.css';
 import REgisterCondominio from '../../Register/Condominio';
-import { getUser, signIn } from '../../../services/security';
-import { mascaraCep, mascaraCnpj, mascaraCpf } from '../../../utils';
-import { api } from '../../../services/api';
 import RegisterMoradores from '../../Register/Morador';
 import RegisterBlocos from '../../Register/Bloco';
 import RegisterApto from '../../Register/Apartamento';
@@ -72,6 +67,7 @@ function AdminDashboard() {
                         <button className="btn-close-modal" onClick={() => { setIsCadastrandoCondominio(false) }}>
                             fechar cadastro
                         </button>
+                        
                     </>
                 ) : (<div hidden></div>)}
 

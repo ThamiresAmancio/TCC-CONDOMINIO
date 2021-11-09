@@ -55,7 +55,7 @@ export const NavDashboard = styled.nav`
 `;
 
 export const NavButtonIcon = styled.button`
-    width: 4.5rem;
+    width: 3.5rem;
     height: 4.5rem;
     border-radius: 2.25rem;
     border: none;
