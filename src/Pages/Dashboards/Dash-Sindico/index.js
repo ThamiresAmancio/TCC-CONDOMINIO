@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../../../";
 import Avisos from "../../../components/Avisos";
+import AvisosForm from "../../../components/Avisos/avisosFom";
 
 import {
   ButtonAside,
@@ -35,7 +36,7 @@ function DashboardSindico() {
          {
            isAvisos ? (
              <>
-              <Avisos
+              {/* <Avisos
                 title="Reuniões"
                 link="https://meet.google.com/?pli=1"
                 informacoes="As reuniões irão ocorrer hoje as 18:00 de forma remota."
@@ -44,7 +45,8 @@ function DashboardSindico() {
                 title="Reuniões"
                 link="https://meet.google.com/?pli=1"
                 informacoes="As reuniões irão ocorrer hoje as 18:00 de forma remota."
-                urgencia="urgente"/>
+                urgencia="urgente"/> */}
+                <AvisosForm />
                  <button className="btn-close-modal" onClick={() => { setAviso(false) }}>
                   fechar cadastro
                  </button>
@@ -72,16 +74,16 @@ function DashboardSindico() {
       </header>
       <aside>
         <ButtonAside>
-          <span className="material-icons">person_add</span>
+          <span className="material-icons">liquor</span>
           <span>Cadastrar visitantes</span>
-        </ButtonAside>
+        </ButtonAside>  
         <ButtonAside>
-          <span className="material-icons">accessibility</span>
+          <span className="material-icons">notifications_none</span>
           <span>Votação online</span>
         </ButtonAside>
         <ButtonAside>
-          <span className="material-icons">attach_money</span>
-          <span>Pagamento Condomínal</span>
+          <span className="material-icons">person_add</span>
+          <span>Adicionar visitantes</span>
         </ButtonAside>
       </aside>
     </ContentDashboard>

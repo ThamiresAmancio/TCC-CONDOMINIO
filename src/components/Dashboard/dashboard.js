@@ -92,7 +92,11 @@ export const ButtonAside = styled.button`
 
     >span{
         color: #FFF;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+
+        @media screen and (min-width: 1450px) {
+            font-size: 1.5rem;
+        }
     }
     
 `;

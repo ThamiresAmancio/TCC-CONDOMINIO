@@ -1,6 +1,7 @@
 import { ContentAviso, HeaderAviso } from "./stylesAvisos";
 
 function Avisos({title, link, informacoes, urgencia}){
+
     return(
         <>
             <ContentAviso>
