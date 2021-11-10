@@ -11,7 +11,7 @@ const cadastroMoradorController = require("./controllers/moradores");
 const apartamentoController = require("./controllers/apartamentos");
 const authMiddleware = require("./middlewares/authorization");
 const uploadSingleImage = require("./middlewares/uploadSingleImage");
-const visitanteSindicoControler = require("./controllers/visitanteSindico");
+const visitanteSindicoControler = require("./controllers/visitantes");
 const visitanteMoradorControler = require("./controllers/visitanteMorador");
 
 const uploadImageFirebase = require("./services/firebase");
@@ -58,11 +58,11 @@ routes.put("/sindicos/:id", sindicoController.update);
 routes.delete("/sindicos/:id", sindicoController.delete);
 
 //rotas de cadastro visitantes
-routes.get("/visitantes", visitanteSindicoControler.index);
-routes.get("/visitantes/:id", visitanteSindicoControler.find);
+routes.get("/visitantes/sindico", visitanteSindicoControler.index);
+routes.get("/visitantes/sindico/:id", visitanteSindicoControler.find);
 routes.post("/visitantes/sindico/:id", uploadSingleImage ,uploadImageFirebase, visitanteSindicoControler.store);
-routes.put("/visitantes/:id", visitanteSindicoControler.update);
-routes.delete("/visitantes/:id", visitanteSindicoControler.delete);
+routes.put("/visitantes/sindico/:id", visitanteSindicoControler.update);
+routes.delete("/visitantes/sindico/:id", visitanteSindicoControler.delete);
 
 routes.get("/visitantes/morador", visitanteMoradorControler.index);
 routes.get("/visitantes/morador/:id", visitanteMoradorControler.find);

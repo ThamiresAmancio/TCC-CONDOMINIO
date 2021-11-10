@@ -9,9 +9,7 @@ require("./database");
 const cors = require("cors");
 
 
-
 // app.use("/uploads", expresse.static("uploads"));
-
 
 app.use(cors())
 

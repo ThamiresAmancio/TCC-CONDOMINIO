@@ -20,7 +20,7 @@ class Sindico extends Model{
     }
         static associate(models){
             this.belongsTo(models.Apartamento);
-            this.hasMany(models.visitanteSindico,{ foreignKey:'sindico_id', as:'visitante'});
+            this.hasMany(models.VisitantesSindicos,{ foreignKey:'sindico_id', as:'visitante'});
         }
 }
 

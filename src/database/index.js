@@ -11,7 +11,7 @@ const Bloco = require("../models/Bloco");
 const Admin = require("../models/Admin");
 const Morador = require("../models/Morador");
 const VisitanteMorador = require("../models/VisitanteMorador");
-const visitanteSindico = require("../models/visitanteSindico");
+const visitantes = require("../models/VisitanteSindicos");
 const Sindico = require("../models/Sindico");
 const Porteiro = require("../models/Porteiro");
 
@@ -24,11 +24,11 @@ Admin.init(connection);
 Porteiro.init(connection);
 Sindico.init(connection);
 VisitanteMorador.init(connection);
-visitanteSindico.init(connection);
 Condominio.init(connection);
 Morador.init(connection);
 Apartamento.init(connection);
 Bloco.init(connection);
+visitantes.init(connection)
 
 
 Admin.associate(connection.models);
@@ -36,15 +36,15 @@ Condominio.associate(connection.models);
 Porteiro.associate(connection.models);
 Sindico.associate(connection.models);
 VisitanteMorador.associate(connection.models);
-visitanteSindico.associate(connection.models);
+visitantes.associate(connection.models)
 Morador.associate(connection.models);
 Apartamento.associate(connection.models);
 Bloco.associate(connection.models)
 
-// for (let assoc of Object.keys(Sindico.associations)) {
-//     for (let accessor of Object.keys(Sindico.associations[assoc].accessors)) {
-//         console.log(Sindico.name + '.' + Sindico.associations[assoc].accessors[accessor] + '()');
-//     }
-// }
+for (let assoc of Object.keys(visitantes.associations)) {
+    for (let accessor of Object.keys(visitantes.associations[assoc].accessors)) {
+        console.log(visitantes.name + '.' + visitantes.associations[assoc].accessors[accessor] + '()');
+    }
+}
 
 module.exports = connection;

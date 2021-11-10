@@ -1,6 +1,6 @@
 const CadastroVisitante = require("../models/VisitanteMorador");
 const Morador = require("../models/Morador")
-const { generateToken } = require("../util");
+
 
 module.exports = {
 
@@ -82,15 +82,6 @@ module.exports = {
             morador_id : id,
         })
 
-
-        // aqui vai ser gerado o token
-
-        const token = generateToken({
-
-            visitanteId: visitante.id,
-            visitanteName: visitante.name,
-        });
-       
         res.send({
 
             visitante:{
@@ -102,7 +93,6 @@ module.exports = {
 
             },
 
-            token,
             morador,
 
         })
