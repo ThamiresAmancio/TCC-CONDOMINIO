@@ -15,6 +15,7 @@ import RegisterCondominio from './Pages/Register/Condominio';
 import RegisterMoradores from './Pages/Register/Morador';
 import RegisterPorteiros from './Pages/Register/Porteiro';
 import RegisterSindico from './Pages/Register/Sindico';
+import RegisterVisitante from './Pages/Register/Visitante';
 
 
 function Rotas() {
@@ -69,6 +70,9 @@ function Rotas() {
                 </Route>
                 <Route exact path="/Dashboard/Sindico">
                     <DashboardSindico/>
+                </Route>
+                <Route exact path="/Register/Visitante">
+                    <RegisterVisitante/>
                 </Route>
             </Switch>
         </BrowserRouter>

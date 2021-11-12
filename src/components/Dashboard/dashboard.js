@@ -94,9 +94,31 @@ export const ButtonAside = styled.button`
         color: #FFF;
         font-size: 1.3rem;
 
+        @media screen and (max-width: 750px) {
+            font-size: .8rem;
+        }
+
+        @media screen and (max-width: 860px) {
+            font-size: 1rem;
+        }
+
         @media screen and (min-width: 1450px) {
             font-size: 1.5rem;
         }
     }
     
+`;
+
+export const BtnCloseModal = styled.button`
+    position: relative;
+    z-index: 3;
+    width: 10%;
+    height: 5%;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+
+    color: #FFF;
+    background-color: red;
+    cursor: pointer;
 `;

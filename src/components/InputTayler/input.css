@@ -1,0 +1,115 @@
+* { box-sizing:border-box; }
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.group { 
+  position:relative; 
+  margin-bottom: 2.813rem;
+  width: 100%;
+  height: auto;
+}
+
+/* aqui é a input no estado padrão*/
+.group > input{
+  font-size:1.125rem;
+  padding:0.625rem 0.625rem 0.625rem 0.313rem;
+  display:block;
+  width: 100%;
+  border:none;
+  border-bottom: 0.06rem solid #1c1c1c;
+}
+.group>input:focus{
+  outline:none;
+}
+
+/* LABEL ======================================= */
+/*aqui é a label no estado padrão dela*/
+.group>label{
+  color: #1c1c1c; 
+  font-size:1.2rem;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:0.313rem;
+  top:0.625rem;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+/* Como a label ira ficar quando clicada */
+.group>input:focus ~ label, .group>input:valid ~ label 		{
+  top:-1.25rem;
+  font-size:0.938rem;
+  color: var(--colorPrimary);
+  font-weight: bold;
+}
+
+/* BOTTOM BARS ================================= */
+/*Esse cara define o tamanho da linha animada em baixo */
+.bar{
+  position:relative;
+  display:block;
+  width: 100%;
+}
+
+/*aqui é o risco quando clicado*/
+.bar:before, .bar:after 	{
+  content:'';
+  height:0.125rem; 
+  width:0;
+  bottom:0.06rem; 
+  position:absolute;
+  background: var(--colorPrimary); 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:6.25rem; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
