@@ -83,6 +83,7 @@ export const ButtonAside = styled.button`
     border: none;
     outline: none;
     cursor: pointer;
+    text-align: initial;
 
     >span:first-child{
         transform: scale(1.5);

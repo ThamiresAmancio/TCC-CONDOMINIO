@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const StyleGlobals = createGlobalStyle`
         
@@ -8,7 +8,15 @@ export const StyleGlobals = createGlobalStyle`
 	--corTerciaria: #6b6e6a;
 	--corEscura: #1c1c1c;
 	--corBackgroundLight: #fefefe;
-}
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+    -webkit-transition-delay: 9999s;
+    transition-delay: 9999s;
+    }
 
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 

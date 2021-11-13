@@ -92,7 +92,7 @@ function DashboardSindico() {
       <aside>
         <ButtonAside>
           <span className="material-icons">liquor</span>
-          <span>Cadastrar visitantes</span>
+          <span>Cadastrar área de festas</span>
         </ButtonAside>  
         <ButtonAside>
           <span className="material-icons">notifications_none</span>

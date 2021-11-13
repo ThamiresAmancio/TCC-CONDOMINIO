@@ -22,13 +22,14 @@ function RegisterVisitante() {
     setVisitante({ ...visitante, [e.target.id]: e.target.value });
   };
 
+
   const handleSubmit = async (e) => {
     // e.preventDefault();
 
     try {
       const { name, rg, cpf, foto } = visitante;
 
-      const response = await api.post("/visitante", {
+      const response = console.log("dados" + {
         name,
         rg,
         cpf,
@@ -45,9 +46,10 @@ function RegisterVisitante() {
       <h1>Registrar um visitante</h1>
       <div>
           <figure>
-
+            
           </figure>
-          
+          <label for="imageUpload">Escolher Imagem</label>
+          <input id="imageUpload" type="file" accept="image/*" value={visitante.foto} onChange={handleInput}/>   
       </div>
       <form onSubmit={handleSubmit}>
         <InputTayler id="name" label="Nome" value={visitante.name} handler={handleInput}/>
