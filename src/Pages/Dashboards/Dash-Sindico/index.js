@@ -154,7 +154,7 @@ function DashboardSindico() {
             }
           }
         >
-          <span className="material-icons">monetization_on</span>
+          <span className="material-icons">attach_money</span>
           <span>Pagar Mensalidade</span>
         </ButtonAside>
       </aside>
