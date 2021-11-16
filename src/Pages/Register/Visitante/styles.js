@@ -62,6 +62,11 @@ export const ContentVisitante = styled.section`
     width: 50%;
     height: 50%;
     padding: 0 3%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
   }
 
   > button {

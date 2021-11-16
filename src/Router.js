@@ -11,6 +11,7 @@ import LoginUser from './Pages/Login/LoginUsers';
 import PagamentoBeta from './Pages/Pagamento-beta';
 import RegisterAdmin from './Pages/Register/Admin';
 import RegisterApto from './Pages/Register/Apartamento';
+import CriandoAviso from './Pages/Register/Aviso';
 import RegisterBlocos from './Pages/Register/Bloco';
 import RegisterCondominio from './Pages/Register/Condominio';
 import RegisterMoradores from './Pages/Register/Morador';
@@ -74,6 +75,9 @@ function Rotas() {
                 </Route>
                 <Route exact path="/Register/Visitante">
                     <RegisterVisitante/>
+                </Route>
+                <Route exact path="/Register/Aviso">
+                    <CriandoAviso/>
                 </Route>
                 <Route exact path="/Pagamento">
                     <PagamentoBeta/>

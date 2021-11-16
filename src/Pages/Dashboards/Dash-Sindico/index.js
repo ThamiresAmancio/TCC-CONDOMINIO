@@ -12,15 +12,18 @@ import {
 } from "../../../components/Dashboard/dashboard";
 import Room from "../../Chat/chat";
 import PagamentoBeta from "../../Pagamento-beta";
+import CriandoAviso from "../../Register/Aviso";
 import RegisterVisitante from "../../Register/Visitante";
 import { SindicoMain } from "./styles";
 
 function DashboardSindico() {
-
   const history = useHistory();
 
   const [isChat, setChat] = useState(false);
+  //esse aviso abaixo é só um exemplo de como vai ficar no metodo get
   const [isAvisos, setAviso] = useState(false);
+  //ja este aviso é como ele vai ser setado
+  const [isCreateAviso, setCreateAviso] = useState(false);
   const [isCadastrandoVisitante, setCadastrandoVisitante] = useState(false);
   const [isPagamento, setPagamento] = useState(false);
 
@@ -34,7 +37,7 @@ function DashboardSindico() {
           className="material-icons"
           id="noti"
           onClick={() => {
-            setAviso(true);
+            setCreateAviso(true);
           }}
         >
           notification_important
@@ -53,6 +56,22 @@ function DashboardSindico() {
       </MenuDashboard>
 
       <SindicoMain>
+        {isCreateAviso ? (
+          <>
+            <CriandoAviso />
+            <button
+              className="btn-close-modal"
+              onClick={() => {
+                setCreateAviso(false);
+              }}
+            >
+              fechar cadastro
+            </button>
+          </>
+        ) : (
+          <div hidden></div>
+        )}
+
         {isCadastrandoVisitante ? (
           <>
             <RegisterVisitante />
@@ -148,11 +167,9 @@ function DashboardSindico() {
           <span>Adicionar visitantes</span>
         </ButtonAside>
         <ButtonAside
-          onClick={
-            () => {
-              history.push("/Pagamento")
-            }
-          }
+          onClick={() => {
+            history.push("/Pagamento");
+          }}
         >
           <span className="material-icons">attach_money</span>
           <span>Pagar Mensalidade</span>
