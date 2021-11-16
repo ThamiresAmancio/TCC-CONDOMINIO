@@ -8,6 +8,7 @@ import LoginAdmin from './Pages/Login/LoginAdmin';
 import LoginPorteiros from './Pages/Login/LoginPorteiro';
 import LoginSindicos from './Pages/Login/LoginSindico';
 import LoginUser from './Pages/Login/LoginUsers';
+import PagamentoBeta from './Pages/Pagamento-beta';
 import RegisterAdmin from './Pages/Register/Admin';
 import RegisterApto from './Pages/Register/Apartamento';
 import RegisterBlocos from './Pages/Register/Bloco';
@@ -73,6 +74,9 @@ function Rotas() {
                 </Route>
                 <Route exact path="/Register/Visitante">
                     <RegisterVisitante/>
+                </Route>
+                <Route exact path="/Pagamento">
+                    <PagamentoBeta/>
                 </Route>
             </Switch>
         </BrowserRouter>
