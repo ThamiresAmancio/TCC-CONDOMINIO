@@ -1,43 +1,66 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+
 import InputTayler from "../../../components/InputTayler";
 import { api } from "../../../services/api";
-import { mascaraCpf } from "../../../utils";
+import { getUser } from "../../../services/security";
+import { mascaraCpf, mascaraRg } from "../../../utils";
 import { ContentVisitante } from "./styles";
 
 function RegisterVisitante() {
-  const [visitante, setVisitante] = useState({
-    foto: "",
+  const imgRef = useRef();
+  const [image, setImage] = useState(null);
+  const handleFile = async (e) => {
+    setImage(e.target.files[0]);
+    imgRef.current.src = URL.createObjectURL(e.target.files[0]);
+  };
+
+  const usuario = getUser();
+
+  console.log(usuario)
+
+  const [visitante, setVisitantes] = useState({
     name: "",
     rg: "",
     cpf: "",
   });
+  
+  console.log(visitante);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleInput = (e) => {
+    setVisitantes({ ...visitante, [e.target.id]: e.target.value });
+  };
 
   const handleCpf = (e) => {
     let cpf = e.target.value;
     cpf = mascaraCpf(cpf);
-    setVisitante({ ...visitante, cpf: cpf });
+    setVisitantes({ ...visitante, cpf: cpf });
   };
 
-  const handleInput = (e) => {
-    setVisitante({ ...visitante, [e.target.id]: e.target.value });
+  const handleRg = (e) => {
+    let rg = e.target.value;
+    rg = mascaraRg(rg);
+    setVisitantes({ ...visitante, rg: rg });
   };
 
+   const teste = 1
 
-  const handleSubmit = async (e) => {
-    // e.preventDefault();
+  const addVisit = async () => {
+    const data = new FormData();
+
+    data.append("name", visitante.name);
+    data.append("rg", visitante.rg);
+    data.append("cpf", visitante.cpf);
+    data.append("image", image);
+    data.append("sindico_id", teste)
+
+
 
     try {
-      const { name, rg, cpf, foto } = visitante;
-
-      const response = console.log("dados" + {
-        name,
-        rg,
-        cpf,
-        foto,
-      });
+      const response = await api.post(`/visitantes/sindico/${teste}`, data);
+      console.log(response);
     } catch (error) {
-      console.error(error);
-      alert(error.response.data.error);
+      console.log(error);
     }
   };
 
@@ -45,18 +68,40 @@ function RegisterVisitante() {
     <ContentVisitante>
       <h1>Registrar um visitante</h1>
       <div>
+        {
           <figure>
-            
+            <img ref={imgRef} />
           </figure>
-          <label for="imageUpload">Escolher Imagem</label>
-          <input id="imageUpload" type="file" accept="image/*" value={visitante.foto} onChange={handleInput}/>   
+        }
+        <label for="imageUpload">Escolher Imagem</label>
+        <input
+          id="imageUpload"
+          type="file"
+          accept="image/*"
+          onChange={handleFile}
+        />
       </div>
-      <form onSubmit={handleSubmit}>
-        <InputTayler id="name" label="Nome" value={visitante.name} handler={handleInput}/>
-        <InputTayler id="rg" label="Rg" value={visitante.rg} handler={handleInput}/>
-        <InputTayler id="cpf" label="CPF" value={visitante.cpf} handler={handleCpf}/>
+      <form onSubmit={addVisit}>
+        <InputTayler
+          id="name"
+          label="Nome"
+          value={visitante.name}
+          handler={handleInput}
+        />
+        <InputTayler
+          id="rg"
+          label="Rg"
+          value={visitante.rg}
+          handler={handleRg}
+        />
+        <InputTayler
+          id="cpf"
+          label="CPF"
+          value={visitante.cpf}
+          handler={handleCpf}
+        />
       </form>
-      <button type="submit">
+      <button onClick={addVisit}>
         <span className="material-icons">check_circle_outline</span>
         Finalizar Cadastro
       </button>

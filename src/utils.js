@@ -32,3 +32,11 @@ export const mascaraCnpj = (cnpj) =>{
     .replace(/\.(\d{3})(\d)/,".$1/$2")           //Coloca uma barra entre o oitavo e o nono dígitos
     .replace(/(\d{4})(\d)/,"$1-$2") 
 }
+
+
+export const mascaraRg = (rg) =>{
+    return rg
+   .replace(/\D/g,"")
+   .replace(/^(\d{1,2})(\d{3})(\d{3})([\dX])$/,'$1.$2.$3-$4');
+
+}

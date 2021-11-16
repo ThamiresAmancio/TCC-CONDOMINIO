@@ -1,0 +1,21 @@
+ // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   setIsLoading(true);
+
+    // try {
+    //   const { name, rg, cpf, image } = visitante;
+
+    //   const response = await api.post(
+    //     `/visitantes/sindico/${sindico.sindicoId}`,
+    //     visitante
+    //   );
+
+  //     setIsLoading(false);
+  //     history.push("/");
+  //   } catch (error) {
+  //     console.error(error);
+  //     alert(error.response.data.error);
+  //     setIsLoading(false);
+  //   }
+  // };

@@ -34,11 +34,14 @@ export const ContentVisitante = styled.section`
         width: 10vw;
         height: 10vw;
         border-radius: 100%;
-
-        background-image: url(https://cdn-icons-png.flaticon.com/512/711/711769.png);
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
+        img{
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+        }
     }
 
     > figure + label {
@@ -82,5 +85,9 @@ export const ContentVisitante = styled.section`
     background: none;
     border: none;
     outline: none;
+  }
+
+  >button:hover{
+    cursor: pointer;
   }
 `;

@@ -168,7 +168,7 @@ function DashboardSindico() {
         </ButtonAside>
         <ButtonAside
           onClick={() => {
-            history.push("/Pagamento");
+            setPagamento(true)
           }}
         >
           <span className="material-icons">attach_money</span>

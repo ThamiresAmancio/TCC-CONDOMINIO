@@ -14,7 +14,9 @@ function REgisterCondominio({handleReload}) {
 
   const history = useHistory();
 
-  const admin = getUser()
+  const usuario = getUser()
+
+  console.log(usuario);
 
   const [condominio, setCondominio] = useState({
     name:"",
@@ -68,7 +70,7 @@ const handleSubmit = async (e) => {
   try {
     const { name, bairro, estado, cep , rua,cidade, numero,cnpj} = condominio;
 
-    const response = await api.post(`/condominios/${admin.adminId}`, {
+    const response = await api.post(`/condominios/${usuario.adminId}`, {
 
       name,
       bairro,
