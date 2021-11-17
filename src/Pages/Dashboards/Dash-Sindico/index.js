@@ -5,6 +5,7 @@ import Avisos from "../../../components/Avisos";
 
 import {
   BtnCloseModal,
+  BtnFecharModal,
   ButtonAside,
   ButtonMenu,
   ContentDashboard,
@@ -59,14 +60,13 @@ function DashboardSindico() {
         {isCreateAviso ? (
           <>
             <CriandoAviso />
-            <button
-              className="btn-close-modal"
+            <BtnFecharModal
               onClick={() => {
                 setCreateAviso(false);
               }}
             >
-              fechar cadastro
-            </button>
+              X
+            </BtnFecharModal>
           </>
         ) : (
           <div hidden></div>
@@ -75,14 +75,13 @@ function DashboardSindico() {
         {isCadastrandoVisitante ? (
           <>
             <RegisterVisitante />
-            <button
-              className="btn-close-modal"
+            <BtnFecharModal
               onClick={() => {
                 setCadastrandoVisitante(false);
               }}
             >
-              fechar cadastro
-            </button>
+              X
+            </BtnFecharModal>
           </>
         ) : (
           <div hidden></div>
@@ -102,15 +101,13 @@ function DashboardSindico() {
               informacoes="As reuniões irão ocorrer hoje as 18:00 de forma remota."
               urgencia="urgente"
             />
-
-            <button
-              className="btn-close-modal"
+            <BtnFecharModal
               onClick={() => {
                 setAviso(false);
               }}
             >
-              fechar cadastro
-            </button>
+              X
+            </BtnFecharModal>
           </>
         ) : (
           <div hidden></div>
@@ -119,14 +116,13 @@ function DashboardSindico() {
         {isChat ? (
           <>
             <Room></Room>
-            <button
-              className="btn-close-modal"
+            <BtnFecharModal
               onClick={() => {
                 setChat(false);
               }}
             >
-              fechar cadastro
-            </button>
+              X
+            </BtnFecharModal>
           </>
         ) : (
           <div hidden></div>
@@ -134,14 +130,13 @@ function DashboardSindico() {
         {isPagamento ? (
           <>
             <PagamentoBeta />
-            <button
-              className="btn-close-modal"
+            <BtnFecharModal
               onClick={() => {
-                setChat(false);
+                setPagamento(false);
               }}
             >
-              fechar cadastro
-            </button>
+              X
+            </BtnFecharModal>
           </>
         ) : (
           <div hidden></div>
@@ -168,7 +163,7 @@ function DashboardSindico() {
         </ButtonAside>
         <ButtonAside
           onClick={() => {
-            setPagamento(true)
+            setPagamento(true);
           }}
         >
           <span className="material-icons">attach_money</span>

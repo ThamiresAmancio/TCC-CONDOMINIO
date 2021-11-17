@@ -1,6 +1,28 @@
 import styled from "styled-components";
 import '../../StylesGlobal';
 
+export const BtnFecharModal = styled.button`
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-radius: 25px;
+    color: #fff;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+
+    :hover{
+        border: solid 2px #fff;
+        box-shadow: 0px 0px 1.5rem #1c1c1c6e;
+    }
+`;
+
 export const ContentDashboard = styled.div`
     width: 100vw;
     height: 100vh;

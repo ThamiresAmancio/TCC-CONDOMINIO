@@ -8,6 +8,7 @@ export const SindicoMain = styled.main`
   align-items: center;
   gap: 2%;
   overflow-y: scroll;
+  position: relative;
 
   ::-webkit-scrollbar {
     display: none;
