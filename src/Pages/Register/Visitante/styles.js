@@ -37,10 +37,12 @@ export const ContentVisitante = styled.section`
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
+
         img{
-          width: 200px;
-          height: 200px;
+          width: 250px;
+          height: 250px;
           border-radius: 50%;
+          margin-left: -30px;
         }
     }
 

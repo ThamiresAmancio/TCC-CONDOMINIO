@@ -18,6 +18,7 @@ import RegisterMoradores from './Pages/Register/Morador';
 import RegisterPorteiros from './Pages/Register/Porteiro';
 import RegisterSindico from './Pages/Register/Sindico';
 import RegisterVisitante from './Pages/Register/Visitante';
+import VisualizarMoradores from './Pages/VisualizarMoradores';
 
 
 function Rotas() {
@@ -81,6 +82,9 @@ function Rotas() {
                 </Route>
                 <Route exact path="/Pagamento">
                     <PagamentoBeta/>
+                </Route>
+                <Route exact path="/Visualizar/Moradores">
+                    <VisualizarMoradores/>
                 </Route>
             </Switch>
         </BrowserRouter>

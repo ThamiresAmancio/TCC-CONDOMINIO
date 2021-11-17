@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 
 import InputTayler from "../../../components/InputTayler";
 import { api } from "../../../services/api";
-import { getUser } from "../../../services/security";
+import { getUser } from "../../../services/securitySecurity";
 import { mascaraCpf, mascaraRg } from "../../../utils";
 import { ContentVisitante } from "./styles";
 
@@ -14,9 +14,8 @@ function RegisterVisitante() {
     imgRef.current.src = URL.createObjectURL(e.target.files[0]);
   };
 
-  const usuario = getUser();
-
-  console.log(usuario)
+  const sindicoId = getUser();
+  console.log(sindicoId)
 
   const [visitante, setVisitantes] = useState({
     name: "",
@@ -52,12 +51,12 @@ function RegisterVisitante() {
     data.append("rg", visitante.rg);
     data.append("cpf", visitante.cpf);
     data.append("image", image);
-    data.append("sindico_id", teste)
+    data.append("sindico_id", sindicoId)
 
 
 
     try {
-      const response = await api.post(`/visitantes/sindico/${teste}`, data);
+      const response = await api.post(`/visitantes/sindico/${sindicoId}`, data);
       console.log(response);
     } catch (error) {
       console.log(error);

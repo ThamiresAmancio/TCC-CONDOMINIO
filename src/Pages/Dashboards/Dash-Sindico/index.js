@@ -15,6 +15,7 @@ import Room from "../../Chat/chat";
 import PagamentoBeta from "../../Pagamento-beta";
 import CriandoAviso from "../../Register/Aviso";
 import RegisterVisitante from "../../Register/Visitante";
+import VisualizarMoradores from "../../VisualizarMoradores";
 import { SindicoMain } from "./styles";
 
 function DashboardSindico() {
@@ -28,6 +29,7 @@ function DashboardSindico() {
   const [isCadastrandoVisitante, setCadastrandoVisitante] = useState(false);
   const [isPagamento, setPagamento] = useState(false);
 
+  const [isVisualizar, setVisualizar] = useState(false);
   return (
     <ContentDashboard>
       <MenuDashboard>
@@ -141,13 +143,31 @@ function DashboardSindico() {
         ) : (
           <div hidden></div>
         )}
+
+        {
+          isVisualizar ? (
+            <>
+              <VisualizarMoradores>
+
+              </VisualizarMoradores>
+              <BtnFecharModal
+              onClick={() => {
+                setVisualizar(false);
+              }}
+            >
+              X
+            </BtnFecharModal>
+            </>
+          ): (
+            <div hidden></div>
+          )}
       </SindicoMain>
 
       <header></header>
       <aside>
-        <ButtonAside>
+        <ButtonAside onClick={() => {setVisualizar(true)}}>
           <span className="material-icons">liquor</span>
-          <span>Cadastrar área de festas</span>
+          <span>Visualizar moradores</span>
         </ButtonAside>
         <ButtonAside>
           <span className="material-icons">notifications_none</span>
