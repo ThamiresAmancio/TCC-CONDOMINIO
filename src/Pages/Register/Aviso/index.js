@@ -1,34 +1,52 @@
-import { useState } from "react";
+import { data } from "jquery";
+import { useEffect, useState } from "react";
 import InputTayler from "../../../components/InputTayler";
+import { api } from "../../../services/api";
 import { ContentFormAviso } from "./styles";
 
 function CriandoAviso() {
+  const [condominios, setCondominios] = useState([]);
+
+  useEffect(() => {
+    api.get("/condominios").then(({ data }) => {
+      setCondominios(data);
+    });
+   
+  }, []);
+
   const [aviso, setAviso] = useState({
-    title: "",
-    description: "",
+    titulo: "",
+    mensagem: "",
     link: "",
-    urgencia: "",
+    status: "",
+    data: new Date(),
+    condominio_id: "",
   });
+
+  const [condominioSelectId, setCondominioSelectId] = useState(undefined);
+
+  const handleCondominioSelectlId = (e) => {
+    setCondominioSelectId(e.target.value);
+  };
 
   const handleInput = (e) => {
     setAviso({ ...aviso, [e.target.id]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     try {
-      const { titulo, description, link, urgencia } = aviso;
+      const { titulo, mensagem, link, status, data, condominio_id } = aviso;
 
-      const response = console.log(
-        "dados" +
-          {
-            titulo,
-            description,
-            link,
-            urgencia,
-          }
-      );
+      const response = await api.post(`/avisos`, {
+        titulo,
+        mensagem,
+        link,
+        status,
+        data,
+        condominio_id: condominioSelectId,
+      });
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
@@ -41,8 +59,9 @@ function CriandoAviso() {
         <InputTayler
           placeholder="Selecione o título"
           list="TitulosAvisos"
+          value={aviso.titulo}
           handler={handleInput}
-          required
+          
         />
         <datalist id="TitulosAvisos">
           <option value="Reunião" />
@@ -52,16 +71,21 @@ function CriandoAviso() {
       </header>
       <main>
         <InputTayler
+          value={aviso.mensagem}
           placeholder="Descrição do aviso"
-          required
           handler={handleInput}
         />
 
-        <InputTayler placeholder="Link (Opcional)" handler={handleInput} />
+        <InputTayler
+          value={aviso.link}
+          placeholder="Link (Opcional)"
+          handler={handleInput}
+        />
 
         <InputTayler
           placeholder="Selecione"
           list="urgenciaAvisos"
+          value={aviso.status}
           handler={handleInput}
         />
         <datalist id="urgenciaAvisos">
@@ -69,6 +93,21 @@ function CriandoAviso() {
           <option value="Urgência" />
           <option value="Tendência" />
         </datalist>
+        <label>
+          Escolha um Condomínio :
+          <select
+            id={condominios.condominio_id}
+            value={condominioSelectId}
+            onChange={handleCondominioSelectlId}
+          >
+            <option value="">Selecione</option>
+            {condominios.map((condoItem) => (
+              <option key={condoItem.id} value={condoItem.id}>
+                {condoItem.name}
+              </option>
+            ))}
+          </select>
+        </label>
       </main>
       <button type="submit">
         <span class="material-icons">task_alt</span>

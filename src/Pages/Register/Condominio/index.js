@@ -46,6 +46,7 @@ function REgisterCondominio({handleReload}) {
    let cnpj = e.target.value
    cnpj = mascaraCnpj(cnpj)
    setCondominio({...condominio,cnpj:cnpj})
+   console.log(cnpj);
  }
 
  useEffect(() => {
@@ -119,7 +120,7 @@ const handleSubmit = async (e) => {
 
             <div className="fields">
               <label>CEP</label>
-              <InputHoshi id="cep" type="text" pattern="(\d{5})-(\d{3})/" value={condominio.cep} handler={handleCepCondominio} />
+              <InputHoshi id="cep" type="text" value={condominio.cep} handler={handleCepCondominio} />
             </div>
 
             

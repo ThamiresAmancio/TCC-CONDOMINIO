@@ -44,7 +44,7 @@ function RegisterBlocos() {
     setIsLoading(true);
 
     try {
-      const { name, condominio_id } = bloco;
+      const { name} = bloco;
 
       const response = await api.post(`/blocos`, {
         name,
