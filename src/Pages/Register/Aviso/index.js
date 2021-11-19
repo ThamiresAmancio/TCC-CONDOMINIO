@@ -33,8 +33,7 @@ function CriandoAviso() {
     setAviso({ ...aviso, [e.target.id]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
 
     try {
       const { titulo, mensagem, link, status, data, condominio_id } = aviso;
@@ -57,6 +56,7 @@ function CriandoAviso() {
     <ContentFormAviso onSubmit={handleSubmit}>
       <header>
         <InputTayler
+          id="titulo"
           placeholder="Selecione o título"
           list="TitulosAvisos"
           value={aviso.titulo}
@@ -71,23 +71,27 @@ function CriandoAviso() {
       </header>
       <main>
         <InputTayler
+          id="mensagem"
           value={aviso.mensagem}
           placeholder="Descrição do aviso"
           handler={handleInput}
         />
 
         <InputTayler
+          id="link"
           value={aviso.link}
           placeholder="Link (Opcional)"
           handler={handleInput}
         />
 
         <InputTayler
+          id="urgencia"
           placeholder="Selecione"
           list="urgenciaAvisos"
           value={aviso.status}
-          handler={handleInput}
+          handler={handleInput}          
         />
+
         <datalist id="urgenciaAvisos">
           <option value="Gravidade" />
           <option value="Urgência" />
