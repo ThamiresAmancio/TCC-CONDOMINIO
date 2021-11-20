@@ -10,7 +10,14 @@ module.exports = {
 
         try {
             
-            const sindico = await CadastroSindico.findAll();
+            const sindico = await CadastroSindico.findAll({
+              include: [
+                {
+                  association: "Apartamento",
+                  attributes: ["id", "numero","bloco_id"],
+                },
+              ]
+            });
 
             res.send(sindico);
           } catch (error) {

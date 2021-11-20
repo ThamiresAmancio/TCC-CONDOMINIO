@@ -8,6 +8,12 @@ module.exports = {
 
     try {
       const sindico = await CadastroSindico.findOne({
+        include: [
+          {
+            association: "Apartamento",
+            attributes: ["id","numero"],
+          },
+        ],
         where: {
           email,
         },
@@ -21,7 +27,7 @@ module.exports = {
         userName: sindico.name,
         perfil: "sindico"
       });
-      setTimeout(() => {
+     
         res.status(201).send({
             sindicoId: sindico.id,
             name: sindico.name,
@@ -31,7 +37,6 @@ module.exports = {
             email:sindico.email,
             token,
         });
-      }, 3000);
     } catch (error) {
       console.log(error);
       res.status(500).send(error);

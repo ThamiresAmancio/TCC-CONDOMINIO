@@ -8,6 +8,12 @@ module.exports = {
 
     try {
       const morador = await CadastroMorador.findOne({
+          include: [
+            {
+              association: "Apartamento",
+              attributes: ["id","numero"],
+            },
+          ],
         where: {
           email,
         },
@@ -22,7 +28,6 @@ module.exports = {
         perfil: "morador"
       });
 
-      setTimeout(() => {
         res.status(201).send({
             moradorId: morador.id,
             name:morador.name,
@@ -33,7 +38,6 @@ module.exports = {
             email:morador.email,
           token,
         });
-      }, 3000);
     } catch (error) {
       console.log(error);
       res.status(500).send(error);

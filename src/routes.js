@@ -13,7 +13,7 @@ const authMiddleware = require("./middlewares/authorization");
 const uploadSingleImage = require("./middlewares/uploadSingleImage");
 const visitanteSindicoControler = require("./controllers/visitantes");
 const visitanteMoradorControler = require("./controllers/visitanteMorador");
-
+const avisoController = require("./controllers/avisos");
 const uploadImageFirebase = require("./services/firebase");
 
 //sessions
@@ -100,6 +100,11 @@ routes.get("/blocos/:id", blocoController.find);
 routes.put("/blocos/:id", blocoController.update);
 routes.delete("/blocos/:id", blocoController.delete);
 
+
+routes.post("/avisos", avisoController.store);
+routes.get("/avisos", avisoController.index);
+routes.put("/avisos/:id", avisoController.update);
+routes.delete("/avisos/:id", avisoController.delete);
 
 routes.use(authMiddleware)
 

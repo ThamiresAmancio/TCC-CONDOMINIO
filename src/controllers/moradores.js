@@ -8,7 +8,14 @@ module.exports = {
     async index(req, res) {
   
         try {
-            const moradores = await Morador.findAll();
+            const moradores = await Morador.findAll({
+              include: [
+              {
+                association: "Apartamento",
+                attributes: ["id", "numero","bloco_id"],
+              },
+            ]
+            });
       
             res.send(moradores);
           } catch (error) {

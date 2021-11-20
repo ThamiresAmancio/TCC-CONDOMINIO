@@ -9,8 +9,15 @@ module.exports = {
     async index(req, res) {
 
         try {
-            const bloco = await Bloco.findAll();
-
+            const bloco = await Bloco.findAll({
+              attributes: ["id", "name"],
+              include: [
+              {
+                association: "Condominio",
+                attributes: ["id", "name"],
+              },
+            ]
+            });
             res.send(bloco);
           } catch (error) {
             console.log(error);

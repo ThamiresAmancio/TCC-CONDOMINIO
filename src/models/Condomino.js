@@ -25,6 +25,7 @@ class Condominio extends Model {
         this.belongsTo(models.Admin)
         this.hasMany(models.Porteiro, { foreignKey:'condominio_id', as:'porteiros'})
         this.hasMany(models.Bloco, { foreignKey:'condominio_id', as:'blocos'})
+        this.hasMany(models.Aviso, { foreignKey:'condominio_id', as:'avisos'})
     }
 }
 

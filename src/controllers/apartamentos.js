@@ -6,7 +6,15 @@ module.exports = {
     async index(req, res) {
 
         try {
-            const apartamento = await apartamentos.findAll();
+            const apartamento = await apartamentos.findAll({
+              attributes: ["id", "numero"],
+              include: [
+              {
+                association: "Bloco",
+                attributes: ["id", "name","condominio_id"],
+              },
+            ]
+            });
             res.send(apartamento);
           } catch (error) {
             console.log(error);
@@ -20,7 +28,13 @@ module.exports = {
 
         try {
           let apartamento = await apartamentos.findByPk(apartamentoId, {
-            attributes: ["id", "numero"]
+            attributes: ["id", "numero"],
+            include: [
+              {
+                association: "Bloco",
+                attributes: ["bloco_id", "name"],
+              },
+            ]
             
           });
     
@@ -40,7 +54,6 @@ module.exports = {
         //recebendo os dados no body
         const{numero,bloco_id} = req.body;
 
-
         try {
           let bloco= await Bloco.findByPk(bloco_id)
   
@@ -53,7 +66,6 @@ module.exports = {
               numero,
             }
         })
-
 
         if(apartamento){
             return res.status(400)
