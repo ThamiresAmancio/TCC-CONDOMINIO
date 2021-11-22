@@ -23,7 +23,7 @@ module.exports = {
 
         try {
           let visitante = await Visitantes.findByPk(visitanteId, {
-            attributes: ["id", "name", "cpf" ]
+            attributes: ["id", "name" ]
             
           });
     
@@ -48,7 +48,7 @@ module.exports = {
         if (!firebaseUrl)
           return res.status(400).send({ error: "Campo imagem é obrigatório" });
 
-        const{name,rg,cpf} = req.body;
+        const{name,rg,data} = req.body;
         const {id} = req.params;
     
 
@@ -62,7 +62,7 @@ module.exports = {
         let visitanteSindico = await Visitantes.findOne({
             where:{
                 name:name,
-                cpf:cpf
+                data: data
             }
         })
 
@@ -77,7 +77,7 @@ module.exports = {
 
             name:name,
             rg:rg,
-            cpf:cpf,
+            data:data,
             image: firebaseUrl,
             sindico_id : id,
         })
@@ -88,7 +88,7 @@ module.exports = {
                 visitanteId: visitanteSindico.id,
                 name:visitanteSindico.name,
                 rg:visitanteSindico.rg,
-                cpf:visitanteSindico.cpf,
+                data:visitanteSindico.data,
                 image:visitanteSindico.image
 
             },
@@ -108,7 +108,7 @@ module.exports = {
     const visitanteId = req.params.id;
 
     //recuperar o dados do corpo
-    const { name,rg,cpf} = req.body;
+    const { name, data} = req.body;
 
     try {
       let visitanteSindico = await Visitantes.findByPk(visitanteId);
@@ -117,7 +117,7 @@ module.exports = {
 
       visitanteSindico.name = name;
       visitanteSindico.rg = rg;
-      visitanteSindico.cpf = cpf;
+      visitanteSindico.data = data;
     
 
       visitanteSindico.save();

@@ -73,7 +73,7 @@ routes.delete("/visitantes/morador/:id", visitanteMoradorControler.delete);
 //rotas públicas condominio
 routes.post("/condominios/:id", cadastradoCondominioCoontroller.store);
 
-routes.get("/condominios", cadastradoCondominioCoontroller.index);
+routes.get("/condominios/admin/:id", cadastradoCondominioCoontroller.index);
 routes.get("/condominios/:id", cadastradoCondominioCoontroller.find);
 routes.put("/condominios/:id", cadastradoCondominioCoontroller.update);
 routes.delete("/condominios/:id", cadastradoCondominioCoontroller.delete);

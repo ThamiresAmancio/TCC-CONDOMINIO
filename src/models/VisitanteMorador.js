@@ -7,7 +7,7 @@ class VisitanteMorador extends Model {
 
             name: DataTypes.STRING,
             rg:DataTypes.STRING,
-            cpf:DataTypes.STRING,
+            data:DataTypes.STRING,
             image:DataTypes.STRING,
         },
         {

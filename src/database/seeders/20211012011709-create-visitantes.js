@@ -5,8 +5,8 @@ module.exports = {
    
       await queryInterface.bulkInsert('visitantes', [{
         name: 'Maria',
-        rg : '502025712',
-        cpf:'11155578923'
+          rg : '502025712',
+         data:'12/08/2021'
       }], {});
     
   },

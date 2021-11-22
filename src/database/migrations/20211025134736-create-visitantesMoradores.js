@@ -4,7 +4,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     
-      await queryInterface.createTable('visitantes_sindicos', 
+      await queryInterface.createTable('visitantes_moradors', 
         { 
           
           
@@ -22,7 +22,7 @@ module.exports = {
             type: Sequelize.STRING,
             allowNull: false
           },
-          cpf:{
+          data:{
             type: Sequelize.STRING,
             allowNull: false
           },
@@ -38,11 +38,11 @@ module.exports = {
             type: Sequelize.DATE,
             allowNull: true
           },
-          sindico_id:{
-            type: Sequelize.INTEGER,
+           morador_id:{
+            type: Sequelize.INTEGER,        
             allowNull: false,
             references: {
-              model: "sindicos",
+              model: "moradors",
               key: "id"
             },
           },
@@ -52,7 +52,7 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     
       
-      await queryInterface.dropTable('visitantes_sindicos');
+      await queryInterface.dropTable('visitantes_moradors');
      
   }
 };

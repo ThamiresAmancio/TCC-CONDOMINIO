@@ -6,7 +6,7 @@ class VisitantesSindicos extends Model{
         super.init({
             name: DataTypes.STRING,
             rg:DataTypes.STRING,
-            cpf:DataTypes.STRING,
+            data:DataTypes.STRING,
             image:DataTypes.STRING,
         },
         {
