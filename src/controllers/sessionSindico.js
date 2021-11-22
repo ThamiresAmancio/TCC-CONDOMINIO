@@ -11,7 +11,19 @@ module.exports = {
         include: [
           {
             association: "Apartamento",
-            attributes: ["id","numero"],
+            attributes: ["id", "numero"],
+            include: [
+              {
+                association: "Bloco",
+                attributes: ["id", "name", ],
+                include: [
+                  {
+                    association: "Condominio",
+                    attributes: ["id", "name", "cnpj"]
+                  }
+                ]
+              },
+            ],
           },
         ],
         where: {
@@ -25,18 +37,39 @@ module.exports = {
       const token = generateToken({
         userId: sindico.id,
         userName: sindico.name,
-        perfil: "sindico"
+        perfil: "sindico",
       });
-     
-        res.status(201).send({
-            sindicoId: sindico.id,
-            name: sindico.name,
-            surname:sindico.surname,
-            cpf:sindico.cpf,
-            birth:sindico.birth,
-            email:sindico.email,
-            token,
-        });
+
+      const apartamento = sindico.Apartamento;
+      const bloco = sindico.Apartamento.Bloco
+      const condominio = sindico.Apartamento.Bloco.Condominio
+
+      res.status(201).send({
+          sindicoId: sindico.id,
+          name: sindico.name,
+          surname:sindico.surname,
+          cpf:sindico.cpf,
+          birth:sindico.birth,
+          email:sindico.email,
+          apartamento: {
+            id: apartamento.id,
+            numero: apartamento.numero
+          },
+          bloco: {
+            id: bloco.id,
+            nome: bloco.name
+          },
+          condominio: {
+            id: condominio.id,
+            nome: condominio.name,
+            cnpj: condominio.cnpj
+          },
+          token,
+      });
+      // res.status(201).send({
+      //   sindico,
+      //   token,
+      // });
     } catch (error) {
       console.log(error);
       res.status(500).send(error);

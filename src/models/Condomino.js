@@ -12,8 +12,8 @@ class Condominio extends Model {
             cep:DataTypes.STRING,
             rua:DataTypes.STRING,
             cidade:DataTypes.STRING,
-            numero:DataTypes.INTEGER,
-            cnpj:DataTypes.INTEGER,
+            numero:DataTypes.STRING,
+            cnpj:DataTypes.STRING,
 
         },
         {

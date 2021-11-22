@@ -34,11 +34,11 @@ module.exports = {
         allowNull: false
       },
       numero: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false
       },
       cnpj: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false
       },
       created_at:{
