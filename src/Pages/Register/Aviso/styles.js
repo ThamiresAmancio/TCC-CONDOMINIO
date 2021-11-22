@@ -21,6 +21,7 @@ export const ContentFormAviso = styled.form`
 
     > div {
         width: 40%;
+
       > input {
         background-color: transparent;
         color: #fff;

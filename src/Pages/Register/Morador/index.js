@@ -55,8 +55,7 @@ function RegisterMoradores() {
    setApartamentoId(e.target.value)
  }
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+const handleSubmit = async () => {
 
   setIsLoading(true);
 
@@ -77,8 +76,6 @@ const handleSubmit = async (e) => {
        signIn(response.data);
   
         setIsLoading(false);
-  
-        history.push("/Login");
       } catch (error) {
         console.error(error);
         alert(error.response.data.error);

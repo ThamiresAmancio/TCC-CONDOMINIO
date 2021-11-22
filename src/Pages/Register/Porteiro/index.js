@@ -52,9 +52,8 @@ function RegisterPorteiros() {
     setCondominioSelId(e.target.value)
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
+    
     setIsLoading(true);
 
     try {
@@ -70,7 +69,6 @@ function RegisterPorteiros() {
 
       setIsLoading(false);
 
-      history.push("/Dashboard/Admin");
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);

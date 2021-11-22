@@ -8,7 +8,7 @@ import Login from './Pages/Login';
 import LoginAdmin from './Pages/Login/LoginAdmin';
 import LoginPorteiros from './Pages/Login/LoginPorteiro';
 import LoginSindicos from './Pages/Login/LoginSindico';
-import LoginUser from './Pages/Login/LoginUsers';
+import LoginUser from './Pages/Login/LoginMorador';
 import PagamentoBeta from './Pages/Pagamento-beta';
 import RegisterAdmin from './Pages/Register/Admin';
 import RegisterApto from './Pages/Register/Apartamento';

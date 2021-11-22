@@ -18,7 +18,7 @@ function CriandoAviso() {
     titulo: "",
     mensagem: "",
     link: "",
-    status: "",
+    status: "Importante",
     data: new Date(),
     condominio_id: "",
   });
@@ -86,10 +86,10 @@ function CriandoAviso() {
 
         <InputTayler
           id="urgencia"
-          placeholder="Selecione"
-          list="urgenciaAvisos"
           value={aviso.status}
-          handler={handleInput}          
+          handler={handleInput}
+          placeholder="Status:"
+          list="urgenciaAvisos"
         />
 
         <datalist id="urgenciaAvisos">

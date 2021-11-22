@@ -32,7 +32,7 @@ function LoginMorador() {
 
       setIsLoading(false);
 
-      history.push("/");
+      history.push("/Dashboard/Morador");
     } catch (error) {
       console.error(error);
      toast.error("usuário e/ou senha inválidos")

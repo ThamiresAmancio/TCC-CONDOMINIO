@@ -68,6 +68,21 @@ export const ContentDashboard = styled.div`
     }
 `;
 
+export const MainDashboard = styled.main`
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2%;
+  overflow-y: scroll;
+  position: relative;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
 export const MenuDashboard = styled.nav`
     display: flex;
     flex-direction: column;

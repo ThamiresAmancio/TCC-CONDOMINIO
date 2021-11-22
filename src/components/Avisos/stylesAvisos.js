@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 
 export const ContentAviso = styled.div`
-  width: 80%;
-  height: 45%;
+  width: 60vw;
+  min-height: 13.5rem;
   background-color: #fff;
   box-shadow: 0px 0px 0.5rem #1c1c1c79;
   display: flex;
@@ -92,7 +92,7 @@ export const ContentAviso = styled.div`
 
 export const HeaderAviso = styled.header`
   width: 100%;
-  height: 15%;
+  min-height: 15%;
   background-color: var(--colorPrimary);
   display: flex;
   align-items: center;

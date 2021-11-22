@@ -54,7 +54,6 @@ function DashboardSindico() {
         >
           question_answer
         </ButtonMenu>
-        <ButtonMenu className="material-icons">voice_chat</ButtonMenu>
         <ButtonMenu className="material-icons">feedback</ButtonMenu>
       </MenuDashboard>
 
@@ -166,7 +165,7 @@ function DashboardSindico() {
       <header></header>
       <aside>
         <ButtonAside onClick={() => {setVisualizar(true)}}>
-          <span className="material-icons">liquor</span>
+          <span className="material-icons">person_pin</span>
           <span>Visualizar moradores</span>
         </ButtonAside>
         <ButtonAside>

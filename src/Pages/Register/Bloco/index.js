@@ -38,8 +38,7 @@ function RegisterBlocos() {
     setCondominioSelId(e.target.value)
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
 
     setIsLoading(true);
 

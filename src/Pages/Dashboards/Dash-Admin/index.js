@@ -11,6 +11,8 @@ import RegisterBlocos from '../../Register/Bloco';
 import RegisterApto from '../../Register/Apartamento';
 import RegisterSindico from '../../Register/Sindico';
 import RegisterPorteiros from '../../Register/Porteiro';
+import { BtnCloseModal, BtnFecharModal, ButtonAside, ContentDashboard, MainDashboard } from '../../../components/Dashboard/dashboard';
+import { getUser } from '../../../services/security';
 
 
 function AdminDashboard() {
@@ -35,7 +37,7 @@ function AdminDashboard() {
     let [isCadastrandoPorteiros, setCadastrandoPorteiros] = useState(false);
 
     return (
-        <ContainerDashboard>
+        <ContentDashboard>
             <StyleGlobals />
             {/* menu lateral */}
             <NavDashboard>
@@ -52,21 +54,18 @@ function AdminDashboard() {
                     question_answer
                 </NavButtonIcon>
                 <NavButtonIcon className="material-icons" >
-                    voice_chat
-                </NavButtonIcon>
-                <NavButtonIcon className="material-icons" >
                     feedback
                 </NavButtonIcon>
             </NavDashboard>
-            <main id="main">
+            <MainDashboard id="main">
                 {isCadastrandoCondominio ? (
                     <>
                         <REgisterCondominio>
 
                         </REgisterCondominio>
-                        <button className="btn-close-modal" onClick={() => { setIsCadastrandoCondominio(false) }}>
-                            fechar cadastro
-                        </button>
+                        <BtnFecharModal onClick={() => { setIsCadastrandoCondominio(false) }}>
+                            X
+                        </BtnFecharModal>
                         
                     </>
                 ) : (<div hidden></div>)}
@@ -76,9 +75,9 @@ function AdminDashboard() {
                         <RegisterBlocos>
 
                         </RegisterBlocos>
-                        <button className="btn-close-modal" onClick={() => { setCadastrandoBlocos(false) }}>
-                            fechar cadastro
-                        </button>
+                        <BtnFecharModal onClick={() => { setCadastrandoBlocos(false) }}>
+                            X
+                        </BtnFecharModal>
                     </>
                 ) : (<div hidden></div>)}
 
@@ -87,9 +86,9 @@ function AdminDashboard() {
                         <RegisterApto>
 
                         </RegisterApto>
-                        <button className="btn-close-modal" onClick={() => { setCadastrandoApartamento(false) }}>
-                            fechar cadastro
-                        </button>
+                        <BtnFecharModal onClick={() => { setCadastrandoApartamento(false) }}>
+                            X
+                        </BtnFecharModal>
                     </>
                 ) : (<div hidden></div>)}
 
@@ -98,9 +97,9 @@ function AdminDashboard() {
                         <RegisterMoradores>
 
                         </RegisterMoradores>
-                        <button className="btn-close-modal" onClick={() => { setCadastrandoMorador(false) }}>
-                            fechar cadastro
-                        </button>
+                        <BtnFecharModal onClick={() => { setCadastrandoMorador(false) }}>
+                            X
+                        </BtnFecharModal>
                     </>
                 ) : (<div hidden></div>)}
 
@@ -108,9 +107,9 @@ function AdminDashboard() {
                     <>
                         <RegisterSindico>
                         </RegisterSindico>
-                        <button className="btn-close-modal" onClick={() => { setCadastrandoSindico(false) }}>
-                            fechar cadastro
-                        </button>
+                        <BtnFecharModal onClick={() => { setCadastrandoSindico(false) }}>
+                            X
+                        </BtnFecharModal>
                     </>
                 ):(<div hidden></div>)}
 
@@ -118,42 +117,42 @@ function AdminDashboard() {
                     <>
                         <RegisterPorteiros>
                         </RegisterPorteiros>
-                        <button className="btn-close-modal" onClick={() => { setCadastrandoPorteiros(false) }}>
-                            fechar cadastro
-                        </button>
+                        <BtnFecharModal onClick={() => { setCadastrandoPorteiros(false) }}>
+                            X
+                        </BtnFecharModal>
                     </>
                 ):(<div hidden></div>)}
 
-            </main>
+            </MainDashboard>
             <header>
             </header>
             <aside>
-                <ButtonActionDashboard onClick={() => { setIsCadastrandoCondominio(true); }}>
+                <ButtonAside onClick={() => { setIsCadastrandoCondominio(true); }}>
                     <span className="material-icons">apartment</span>
                     <span>Cadastrar Condomínio</span>
-                </ButtonActionDashboard>
-                <ButtonActionDashboard onClick={() => { setCadastrandoBlocos(true) }}>
+                </ButtonAside>
+                <ButtonAside onClick={() => { setCadastrandoBlocos(true) }}>
                     <span className="material-icons">business</span>
                     <span>Cadastrar Blocos</span>
-                </ButtonActionDashboard>
-                <ButtonActionDashboard onClick={() => { setCadastrandoApartamento(true) }}>
+                </ButtonAside>
+                <ButtonAside onClick={() => { setCadastrandoApartamento(true) }}>
                     <span className="material-icons">business</span>
                     <span>Cadastrar Apartamentos</span>
-                </ButtonActionDashboard>
-                <ButtonActionDashboard onClick={() => { setCadastrandoMorador(true) }} >
+                </ButtonAside>
+                <ButtonAside onClick={() => { setCadastrandoMorador(true) }} >
                     <span className="material-icons">person_add</span>
                     <span>Cadastrar Moradores</span>
-                </ButtonActionDashboard>
-                <ButtonActionDashboard onClick={() => { setCadastrandoSindico(true) }} >
+                </ButtonAside>
+                <ButtonAside onClick={() => { setCadastrandoSindico(true) }} >
                     <span className="material-icons">person_add</span>
                     <span>Cadastrar Síndicos</span>
-                </ButtonActionDashboard>
-                <ButtonActionDashboard onClick={()=> {setCadastrandoPorteiros(true) }}>
+                </ButtonAside>
+                <ButtonAside onClick={()=> {setCadastrandoPorteiros(true) }}>
                     <span className="material-icons">person_add</span>
                     <span>Cadastrar Porteiros</span>
-                </ButtonActionDashboard>
+                </ButtonAside>
             </aside>
-        </ContainerDashboard>
+        </ContentDashboard>
     );
 }
 

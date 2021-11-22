@@ -62,8 +62,7 @@ function REgisterCondominio({handleReload}) {
 }, [condominio.cep]);
 
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+const handleSubmit = async () => {
 
   setIsLoading(true);
 
