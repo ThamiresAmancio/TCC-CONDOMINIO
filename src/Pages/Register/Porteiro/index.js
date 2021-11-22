@@ -2,21 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import "./porteiros.css";
 import "../../../Styles/styles.css";
-
 import { api } from "../../../services/api";
 import InputHoshi from "../../../components/input";
-import axios from "axios";
-import { data } from "jquery";
 import { mascaraCel } from "../../../utils";
+import { getUser } from "../../../services/security";
 
 
 function RegisterPorteiros() {
   const history = useHistory();
 
+  const admin = getUser();
   const [condominios, setCondominios] = useState([]);
 
   useEffect(() => {
-    api.get("/condominios").then(({ data }) => {
+    api.get(`/condominios/admin/${admin.adminId}`).then(({ data }) => {
       setCondominios(data);
     });
   }, []);
@@ -68,7 +67,7 @@ function RegisterPorteiros() {
       });
 
       setIsLoading(false);
-
+      history("/Dashboard/Porteiro");
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);

@@ -1,4 +1,4 @@
-import { ButtonActionDashboard, ContainerDashboard, NavButtonIcon, NavDashboard } from './styles';
+import { NavButtonIcon, NavDashboard } from './styles';
 import '../../../Styles/icons.css';
 import '../../../StylesGlobal';
 import { StyleGlobals } from '../../../StylesGlobal';
@@ -11,9 +11,10 @@ import RegisterBlocos from '../../Register/Bloco';
 import RegisterApto from '../../Register/Apartamento';
 import RegisterSindico from '../../Register/Sindico';
 import RegisterPorteiros from '../../Register/Porteiro';
-import { BtnCloseModal, BtnFecharModal, ButtonAside, ContentDashboard, MainDashboard } from '../../../components/Dashboard/dashboard';
-import { getUser } from '../../../services/security';
-
+import {BtnFecharModal, ButtonAside, ContentDashboard, MainDashboard } from '../../../components/Dashboard/dashboard';
+import { signOut } from '../../../services/security';
+import { IconLogount } from "../Dash-Admin/styles";
+import VisualizarMoradores from "../../VisualizarMoradores";
 
 function AdminDashboard() {
     const history = useHistory();
@@ -36,6 +37,13 @@ function AdminDashboard() {
     /* Cadastrando Porteiros */
     let [isCadastrandoPorteiros, setCadastrandoPorteiros] = useState(false);
 
+    const [isVisualizar, setVisualizar] = useState(false);
+    
+    function logout(){
+    const removeUser = signOut()
+    history.push('/Login')
+    }
+
     return (
         <ContentDashboard>
             <StyleGlobals />
@@ -44,17 +52,22 @@ function AdminDashboard() {
                 <NavButtonIcon className="material-icons" id="home" >
                     home
                 </NavButtonIcon>
-                <NavButtonIcon className="material-icons" id="noti" >
-                    notification_important
+                <NavButtonIcon className="material-icons" id="noti"  >
+                    
                 </NavButtonIcon>
                 <NavButtonIcon className="material-icons" >
                     event
                 </NavButtonIcon>
                 <NavButtonIcon className="material-icons" >
-                    question_answer
+                   
                 </NavButtonIcon>
                 <NavButtonIcon className="material-icons" >
-                    feedback
+                   
+                </NavButtonIcon>
+                <NavButtonIcon className="material-icons" onClick={() => {
+            setVisualizar(true);
+          }}>
+                    person_search
                 </NavButtonIcon>
             </NavDashboard>
             <MainDashboard id="main">
@@ -123,8 +136,24 @@ function AdminDashboard() {
                     </>
                 ):(<div hidden></div>)}
 
+                {isVisualizar ? (
+                    <>
+                        <VisualizarMoradores></VisualizarMoradores>
+                        <BtnFecharModal
+                        onClick={() => {
+                            setVisualizar(false);
+                        }}
+                        >
+                        X
+                        </BtnFecharModal>
+                    </>
+                    ) : (
+                <div hidden></div>
+                )}
+
             </MainDashboard>
             <header>
+                <IconLogount onClick={() => logout()}/>
             </header>
             <aside>
                 <ButtonAside onClick={() => { setIsCadastrandoCondominio(true); }}>

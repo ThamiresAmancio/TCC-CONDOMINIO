@@ -20,16 +20,16 @@ export const signOut = () => {
 
 /*Pegando usuario */
 export const getUser = () => {
-    const userSindico  = JSON.parse(localStorage.getItem(USER_KEY));
+    const userMorador  = JSON.parse(localStorage.getItem(USER_KEY));
 
-    return userSindico ;
+    return userMorador ;
 };
 
 /* Setando um usuário */
-export const setUser = (userSindico ) => {
+export const setUser = (userMorador) => {
     const user = JSON.parse(localStorage.getItem(USER_KEY));
     
-    user.userSindico  = userSindico ;
+    user.userMorador  = userMorador;
 
     localStorage.setItem(USER_KEY, JSON.stringify(user));
 };

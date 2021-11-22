@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import {RiLoginBoxLine} from 'react-icons/ri'
 export const MoradorMain = styled.main`
  
   display: flex;
@@ -14,3 +14,16 @@ export const MoradorMain = styled.main`
     display: none;
   }
 `;
+
+
+export const IconLogount = styled(RiLoginBoxLine)`
+    font-size: 30px;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    margin-right: 40px;
+    float: right;
+    margin-top: -20px;
+    cursor: pointer;
+`

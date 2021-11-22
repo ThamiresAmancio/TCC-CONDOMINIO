@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import '../../../StylesGlobal';
+import {RiLoginBoxLine} from 'react-icons/ri'
 
 export const ContainerDashboard = styled.div`
     width: 100vw;
@@ -96,3 +97,16 @@ export const ButtonActionDashboard = styled.button`
     }
     
 `;
+
+
+export const IconLogount = styled(RiLoginBoxLine)`
+    font-size: 30px;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    margin-right: 40px;
+    float: right;
+    margin-top: -20px;
+    cursor: pointer;
+`

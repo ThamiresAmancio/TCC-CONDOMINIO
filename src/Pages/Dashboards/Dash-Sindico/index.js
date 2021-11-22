@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import "../../../";
-import AvisosVisaoSindico from "../../../components/Avisos";
-import Avisos from "../../../components/Avisos";
 import AvisosVisaoDoSindico from "../../../components/AvisosViewOfSindico";
 
 import {
-  BtnCloseModal,
   BtnFecharModal,
   ButtonAside,
   ButtonMenu,
@@ -19,11 +16,11 @@ import PagamentoBeta from "../../Pagamento-beta";
 import CriandoAviso from "../../Register/Aviso";
 import RegisterVisitante from "../../Register/Visitante";
 import VisualizarMoradores from "../../VisualizarMoradores";
-import { SindicoMain } from "./styles";
+import { IconLogount, SindicoMain } from "./styles";
+import { signOut } from '../../../services/securitySecurity';
 
 function DashboardSindico() {
   const history = useHistory();
-
   const [avisos, setAvisos] = useState([]);
 
   useEffect(() => {
@@ -33,7 +30,11 @@ function DashboardSindico() {
   }, []);
 
 
-  
+  function logout(){
+    const removeUser = signOut()
+    history.push('/Login')
+    }
+
 
   console.log("/////////");
   console.log(avisos);
@@ -167,7 +168,9 @@ function DashboardSindico() {
         )}
       </SindicoMain>
 
-      <header></header>
+      <header>
+        <IconLogount onClick={() => logout()}/>
+      </header>
       <aside>
         <ButtonAside
           onClick={() => {

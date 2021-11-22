@@ -4,17 +4,25 @@ import {FaPencilAlt} from 'react-icons/fa'
 
 export const Header = styled.header `
  
-    width: 90%;
-    height: 10%;
+    width: 100%;
+    height: 20%;
     background-color: var(--colorPrimary);
     display: flex;
     align-items: center;
     flex-direction:row;
-    justify-content: space-around;
-    padding: 0 2%;
-    >p{
-        color: white;
-        font-size: 1.4em;
+    justify-content: space-between;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    margin-top: -30px;
+    >div{
+       min-width: 30px ;
+        height: 25px;
+        >p{
+            color: white;
+            font-size: 1.4em;
+        }
     }
 `
 
@@ -37,15 +45,15 @@ export const ContainerVisualizar = styled.div`
 
 export const List = styled.div`
     width: 100%;
-    height: 50px;
-    border-top: 2px solid black;
+    height: 130px;
     border-bottom: 2px solid black;
     border-left: 2px solid black;
     display: flex;
     justify-content: space-between;
+    margin-top: -127px;
     >div{
         width: 20%;
-        height: 48px;
+        height: 129px;
         border-right: 2px solid black;
     }
 `

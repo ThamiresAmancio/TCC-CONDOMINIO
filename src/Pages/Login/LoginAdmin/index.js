@@ -81,7 +81,6 @@ function LoginAdmin() {
                         <InputHoshi id="password" name="passwor" type="password" value={login.password} handler={handleInput} required/>
                     </div>
                     <button style={{marginBottom: '2%'}}>continuar</button>
-                    <Link to="/Register/Admin" style={{ color: 'green', fontSize: '1.2rem' }}>Não tem uma conta?</Link>
                     <Link to="/" style={{ fontSize: '1.2rem' }}>Voltar para home</Link>
                 </form>
             </RightSideLoginAdmin>

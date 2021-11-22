@@ -2,11 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import "./apto.css";
 import "../../../Styles/styles.css";
-
 import { api } from "../../../services/api";
 import InputHoshi from "../../../components/input";
-import axios from "axios";
-import { data } from "jquery";
 
 
 function RegisterApto() {

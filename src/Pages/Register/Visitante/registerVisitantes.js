@@ -2,11 +2,11 @@ import { useRef, useState } from "react";
 
 import InputTayler from "../../../components/InputTayler";
 import { api } from "../../../services/api";
-import { getUser } from "../../../services/securitySecurity";
+import { getUser } from "../../../services/securityMorador";
 import { mascaraCpf, mascaraRg } from "../../../utils";
 import { ContentVisitante } from "./styles";
 
-function RegisterVisitante() {
+function RegisterVisitanteMorador() {
   const imgRef = useRef();
   const [image, setImage] = useState(null);
   const handleFile = async (e) => {
@@ -14,8 +14,8 @@ function RegisterVisitante() {
     imgRef.current.src = URL.createObjectURL(e.target.files[0]);
   };
 
-  const sindico = getUser();
-  console.log(sindico)
+  const morador = getUser();
+  console.log(morador)
 
   const [visitante, setVisitantes] = useState({
     name: "",
@@ -50,12 +50,10 @@ function RegisterVisitante() {
     data.append("rg", visitante.rg);
     data.append("cpf", visitante.cpf);
     data.append("image", image);
-    data.append("sindico_id", sindico)
-
-
+    data.append("morador_id", morador)
 
     try {
-      const response = await api.post(`/visitantes/sindico/${sindico.sindicoId}`, data);
+      const response = await api.post(`/visitantes/morador${morador.moradorId}`, data);
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -107,4 +105,4 @@ function RegisterVisitante() {
   );
 }
 
-export default RegisterVisitante;
+export default RegisterVisitanteMorador;

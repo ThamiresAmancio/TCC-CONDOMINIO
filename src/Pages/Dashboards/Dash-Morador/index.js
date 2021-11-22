@@ -9,11 +9,19 @@ import {
 } from "../../../components/Dashboard/dashboard";
 import { api } from "../../../services/api";
 import PagamentoBeta from "../../Pagamento-beta";
-import RegisterVisitante from "../../Register/Visitante";
+import RegisterVisitanteMorador from "../../Register/Visitante/registerVisitantes";
 import { MoradorMain } from "./styles";
+import Room from "../../Chat/chat";
+import { IconLogount } from "../Dash-Morador/styles";
+import { getUser, signOut } from "../../../services/securityMorador";
+import { useHistory } from "react-router";
 
 function DashboardMorador() {
+
+  const history = useHistory();
+  const [isChat, setChat] = useState(false);
   const [avisos, setAvisos] = useState([]);
+  const morador = getUser()
 
   useEffect(() => {
     api.get("/avisos").then(({ data }) => {
@@ -26,6 +34,11 @@ function DashboardMorador() {
   const [isVendoAviso, setIsVendoAviso] = useState(false);
 
   const [isPagandoMensalidade, setIsPagandoMensalidade] = useState(false);
+
+  function logout(){
+    const removeUser = signOut()
+    history.push('/Login')
+  }
 
   return (
     <ContentDashboard>
@@ -42,7 +55,10 @@ function DashboardMorador() {
           notification_important
         </ButtonMenu>
         <ButtonMenu className="material-icons">event</ButtonMenu>
-        <ButtonMenu className="material-icons">question_answer</ButtonMenu>
+        <ButtonMenu className="material-icons" onClick={() => {
+            setChat(true);
+          }}
+        >question_answer</ButtonMenu>
         <ButtonMenu className="material-icons">feedback</ButtonMenu>
       </MenuDashboard>
       <MoradorMain>
@@ -85,7 +101,7 @@ function DashboardMorador() {
 
         {isCadastrandoVisitante ? (
           <>
-            <RegisterVisitante />
+            <RegisterVisitanteMorador />
             <BtnFecharModal
               onClick={() => {
                 setCadastrandoVisitante(false);
@@ -97,8 +113,28 @@ function DashboardMorador() {
         ) : (
           <div hidden></div>
         )}
+
+        {isChat ? (
+          <>
+            <Room></Room>
+            <BtnFecharModal
+              onClick={() => {
+                setChat(false);
+              }}
+            >
+              X
+            </BtnFecharModal>
+          </>
+        ) : (
+          <div hidden></div>
+        )}
       </MoradorMain>
-      <header></header>
+      <header>
+        {/* <p>{morador.name}</p>
+        <br/>
+       <p> {morador.email}</p> */}
+      <IconLogount onClick={() => logout()}/>
+      </header>
       <aside>
         <ButtonAside
           onClick={() => {
