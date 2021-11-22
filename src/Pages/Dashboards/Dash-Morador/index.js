@@ -8,6 +8,7 @@ import {
   MenuDashboard,
 } from "../../../components/Dashboard/dashboard";
 import { api } from "../../../services/api";
+import PagamentoBeta from "../../Pagamento-beta";
 import RegisterVisitante from "../../Register/Visitante";
 import { MoradorMain } from "./styles";
 
@@ -20,11 +21,11 @@ function DashboardMorador() {
     });
   }, []);
 
-  console.log(avisos);
-
   const [isCadastrandoVisitante, setCadastrandoVisitante] = useState(false);
 
   const [isVendoAviso, setIsVendoAviso] = useState(false);
+
+  const [isPagandoMensalidade, setIsPagandoMensalidade] = useState(false);
 
   return (
     <ContentDashboard>
@@ -45,10 +46,25 @@ function DashboardMorador() {
         <ButtonMenu className="material-icons">feedback</ButtonMenu>
       </MenuDashboard>
       <MoradorMain>
+        {isPagandoMensalidade ? (
+          <>
+            <BtnFecharModal
+              onClick={() => {
+                setIsPagandoMensalidade(false);
+              }}
+            >
+              X
+            </BtnFecharModal>
+            <PagamentoBeta />
+          </>
+        ) : (
+          <div hidden></div>
+        )}
+
         {isVendoAviso ? (
           <>
             <BtnFecharModal
-              onClick={()=>{
+              onClick={() => {
                 setIsVendoAviso(false);
               }}
             >
@@ -56,11 +72,11 @@ function DashboardMorador() {
             </BtnFecharModal>
             {avisos?.map((avisos) => (
               <Avisos
-              title={avisos.titulo}
-              link={avisos.link}
-              informacoes={avisos.mensagem}
-              urgencia={avisos.status}
-            />
+                title={avisos.titulo}
+                link={avisos.link}
+                informacoes={avisos.mensagem}
+                urgencia={avisos.status}
+              />
             ))}
           </>
         ) : (
@@ -96,7 +112,11 @@ function DashboardMorador() {
           <span className="material-icons">accessibility</span>
           <span>Votação online</span>
         </ButtonAside>
-        <ButtonAside>
+        <ButtonAside
+          onClick={() => {
+            setIsPagandoMensalidade(true);
+          }}
+        >
           <span className="material-icons">attach_money</span>
           <span>Pagar Mensalidade</span>
         </ButtonAside>

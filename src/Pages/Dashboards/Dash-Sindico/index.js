@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import "../../../";
+import AvisosVisaoSindico from "../../../components/Avisos";
 import Avisos from "../../../components/Avisos";
+import AvisosVisaoDoSindico from "../../../components/AvisosViewOfSindico";
 
 import {
   BtnCloseModal,
@@ -11,6 +13,7 @@ import {
   ContentDashboard,
   MenuDashboard,
 } from "../../../components/Dashboard/dashboard";
+import { api } from "../../../services/api";
 import Room from "../../Chat/chat";
 import PagamentoBeta from "../../Pagamento-beta";
 import CriandoAviso from "../../Register/Aviso";
@@ -21,11 +24,25 @@ import { SindicoMain } from "./styles";
 function DashboardSindico() {
   const history = useHistory();
 
+  const [avisos, setAvisos] = useState([]);
+
+  useEffect(() => {
+    api.get("/avisos").then(({ data }) => {
+      setAvisos(data);
+    });
+  }, []);
+
+
+  
+
+  console.log("/////////");
+  console.log(avisos);
+
   const [isChat, setChat] = useState(false);
-  //esse aviso abaixo é só um exemplo de como vai ficar no metodo get
-  const [isAvisos, setAviso] = useState(false);
   //ja este aviso é como ele vai ser setado
   const [isCreateAviso, setCreateAviso] = useState(false);
+  const [isVendoAviso, setIsVendoAviso] = useState(false);
+
   const [isCadastrandoVisitante, setCadastrandoVisitante] = useState(false);
   const [isPagamento, setPagamento] = useState(false);
 
@@ -41,6 +58,7 @@ function DashboardSindico() {
           id="noti"
           onClick={() => {
             setCreateAviso(true);
+            setIsVendoAviso(true);
           }}
         >
           notification_important
@@ -64,6 +82,7 @@ function DashboardSindico() {
             <BtnFecharModal
               onClick={() => {
                 setCreateAviso(false);
+                setIsVendoAviso(false);
               }}
             >
               X
@@ -88,27 +107,16 @@ function DashboardSindico() {
           <div hidden></div>
         )}
 
-        {isAvisos ? (
+        {isVendoAviso ? (
           <>
-            <Avisos
-              title="Reuniões"
-              link="https://meet.google.com/?pli=1"
-              informacoes="As reuniões irão ocorrer hoje as 18:00 de forma remota."
-              urgencia="urgente"
-            />
-            <Avisos
-              title="Reuniões"
-              link="https://meet.google.com/?pli=1"
-              informacoes="As reuniões irão ocorrer hoje as 18:00 de forma remota."
-              urgencia="urgente"
-            />
-            <BtnFecharModal
-              onClick={() => {
-                setAviso(false);
-              }}
-            >
-              X
-            </BtnFecharModal>
+            {avisos?.map((avisos) => (
+              <AvisosVisaoDoSindico
+                title={avisos.titulo}
+                link={avisos.link}
+                informacoes={avisos.mensagem}
+                urgencia={avisos.status}
+              />
+            ))}
           </>
         ) : (
           <div hidden></div>
@@ -143,28 +151,29 @@ function DashboardSindico() {
           <div hidden></div>
         )}
 
-        {
-          isVisualizar ? (
-            <>
-              <VisualizarMoradores>
-
-              </VisualizarMoradores>
-              <BtnFecharModal
+        {isVisualizar ? (
+          <>
+            <VisualizarMoradores></VisualizarMoradores>
+            <BtnFecharModal
               onClick={() => {
                 setVisualizar(false);
               }}
             >
               X
             </BtnFecharModal>
-            </>
-          ): (
-            <div hidden></div>
-          )}
+          </>
+        ) : (
+          <div hidden></div>
+        )}
       </SindicoMain>
 
       <header></header>
       <aside>
-        <ButtonAside onClick={() => {setVisualizar(true)}}>
+        <ButtonAside
+          onClick={() => {
+            setVisualizar(true);
+          }}
+        >
           <span className="material-icons">person_pin</span>
           <span>Visualizar moradores</span>
         </ButtonAside>

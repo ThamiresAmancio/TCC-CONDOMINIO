@@ -10,6 +10,7 @@ export const ContentFormAviso = styled.form`
   align-items: center;
   justify-content: flex-start;
   position: relative;
+  margin-bottom: 3.5rem;
 
   > header {
     width: 100%;
