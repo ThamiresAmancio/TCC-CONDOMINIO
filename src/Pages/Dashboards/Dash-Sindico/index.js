@@ -17,7 +17,8 @@ import CriandoAviso from "../../Register/Aviso";
 import RegisterVisitante from "../../Register/Visitante";
 import VisualizarMoradores from "../../VisualizarMoradores";
 import { IconLogount, SindicoMain } from "./styles";
-import { signOut } from '../../../services/securitySecurity';
+import { signOut } from "../../../services/securitySecurity";
+import { ContentAvisoViewOfSindico, HeaderAvisoSindico } from "../../../components/AvisosViewOfSindico/styles";
 
 function DashboardSindico() {
   const history = useHistory();
@@ -29,12 +30,14 @@ function DashboardSindico() {
     });
   }, []);
 
-
-  function logout(){
-    const removeUser = signOut()
-    history.push('/Login')
-    }
-
+  function deleteAviso(id) {
+    api.delete(`/avisos/${id}`);
+  }
+  
+  function logout() {
+    const removeUser = signOut();
+    history.push("/Login");
+  }
 
   console.log("/////////");
   console.log(avisos);
@@ -111,12 +114,40 @@ function DashboardSindico() {
         {isVendoAviso ? (
           <>
             {avisos?.map((avisos) => (
-              <AvisosVisaoDoSindico
-                title={avisos.titulo}
-                link={avisos.link}
-                informacoes={avisos.mensagem}
-                urgencia={avisos.status}
-              />
+              <>
+                {/* <AvisosVisaoDoSindico
+                  title={avisos.titulo}
+                  link={avisos.link}
+                  informacoes={avisos.mensagem}
+                  urgencia={avisos.status}
+                /> */}
+
+                <ContentAvisoViewOfSindico>
+                  <HeaderAvisoSindico>
+                    <h1>{avisos.titulo}</h1>
+                  </HeaderAvisoSindico>
+                  <div>
+                    <span>{avisos.mensagem}</span>
+                    <span>
+                      <a target="_blank" href={avisos.link}>
+                        Link: {avisos.link}
+                      </a>
+                    </span>
+                    <span>{avisos.status}</span>
+                  </div>
+                  <div>
+                    <button
+                      onClick={() => {
+                        deleteAviso(avisos.id);
+                      }}
+                      className="material-icons"
+                    >
+                      delete
+                    </button>
+                    <button className="material-icons">edit</button>
+                  </div>
+                </ContentAvisoViewOfSindico>
+              </>
             ))}
           </>
         ) : (
@@ -169,7 +200,7 @@ function DashboardSindico() {
       </SindicoMain>
 
       <header>
-        <IconLogount onClick={() => logout()}/>
+        <IconLogount onClick={() => logout()} />
       </header>
       <aside>
         <ButtonAside

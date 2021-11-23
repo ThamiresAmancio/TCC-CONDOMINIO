@@ -1,13 +1,26 @@
 import { ContentAvisoViewOfSindico, HeaderAvisoSindico } from "./styles";
 import "../../Styles/styles.css";
 import { api } from "../../services/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function AvisosVisaoDoSindico({ title, link, informacoes, urgencia }) {
   const [avisos, setAvisos] = useState([]);
-  function deleteAviso(_id) {
-    api.delete(`/avisos/${_id}`);
+
+  function deleteAviso(id) {
+    api.delete(`/avisos/:${id}`);
   }
+
+  const [avisosVIew, setAvisosView] = useState([]);
+
+  useEffect(() => {
+    api.get("/avisos").then(({ data }) => {
+      setAvisosView(data);
+    });
+  }, []);
+
+  console.log("/////////");
+  console.log(avisosVIew);
+  console.log("/////////");
 
   return (
     <>
@@ -25,7 +38,12 @@ function AvisosVisaoDoSindico({ title, link, informacoes, urgencia }) {
           <span>{urgencia}</span>
         </div>
         <div>
-          <button onClick={() => deleteAviso(avisos.id)} className="material-icons">
+          <button
+            onClick={() => {
+              deleteAviso(avisos.id);
+            }}
+            className="material-icons"
+          >
             delete
           </button>
           <button className="material-icons">edit</button>
