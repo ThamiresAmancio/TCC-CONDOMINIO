@@ -9,13 +9,17 @@ import InputHoshi from "../../../components/input";
 function RegisterApto() {
   const history = useHistory();
 
+  
   const [blocos, setBlocos] = useState([]);
 
+
   useEffect(() => {
-    api.get("/blocos").then(({ data }) => {
+    api.get(`blocos`).then(({ data }) => {
       setBlocos(data);
     });
   }, []);
+
+  console.log(blocos[0].name)
 
 
   const [apartamentos, setApartamentos] = useState({
@@ -23,11 +27,10 @@ function RegisterApto() {
     bloco_id: ""
   });
 
-  
   const [isLoading, setIsLoading] = useState(false);
 
   const [blocoId, setBlocoId] = useState(undefined);
-
+  
   const handleInput = (e) => {
     setApartamentos({ ...apartamentos, [e.target.id]: e.target.value });
   };

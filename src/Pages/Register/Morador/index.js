@@ -6,15 +6,10 @@ import "../../../Styles/styles.css";
 import { api } from "../../../services/api";
 import { signIn } from "../../../services/security";
 import InputHoshi from "../../../components/input";
-import { Link } from "react-router-dom";
 
 import { mascaraCpf } from "../../../utils";
-function RegisterMoradores() {
+  function RegisterMoradores() {
   
-  let [isCadastrandoMorador, setCadastrandoMorador] = useState(true);
-
-  const history = useHistory();
-
   const [apartamentos, setApartamentos] = useState([]);
 
   useEffect(() => {

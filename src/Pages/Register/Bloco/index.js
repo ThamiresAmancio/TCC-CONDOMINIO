@@ -11,12 +11,15 @@ import { getUser } from "../../../services/security";
 function RegisterBlocos() {
   const history = useHistory();
 
-  const admin = getUser();
+  const admin = getUser(); 
+
+  console.log(admin)
   const [condominios, setCondominios] = useState([]);
 
   useEffect(() => {
-    api.get(`/condominios/admin/${admin.adminId}`).then(({ data }) => {
+    api.get(`/condominios/${admin.adminId}`).then(({ data }) => {
       setCondominios(data);
+      console.log(admin.adminId)
     });
   }, []);
 

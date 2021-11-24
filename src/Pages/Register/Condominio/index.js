@@ -70,7 +70,7 @@ const handleSubmit = async () => {
   try {
     const { name, bairro, estado, cep , rua,cidade, numero,cnpj} = condominio;
 
-    const response = await api.post(`/condominios/${usuario.adminId}`, {
+    const response = await api.post(`/condominio/${usuario.adminId}`, {
 
       name,
       bairro,
