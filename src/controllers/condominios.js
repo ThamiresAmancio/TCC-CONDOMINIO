@@ -9,19 +9,8 @@ module.exports = {
       
       try {
 
-        const id = req.params.id
+        const condominio = await CadastroCondominio.findAll();
         
-        let admin= await CadastroAdmin.findByPk(id)
-
-
-        if(!admin)
-        return res.status(404).send({error:'Admin não encontrado'})
-
-        const condominio = await CadastroCondominio.findAll({
-          where:{
-            admin_id: id
-          }
-        });
         res.send(condominio);
         } catch (error) {
           console.log(error);
