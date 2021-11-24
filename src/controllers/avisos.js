@@ -27,7 +27,7 @@ module.exports = {
 
       const{titulo, mensagem, link, status, data, condominio_id} = req.body;
 
-      console.log(req.body);
+      
 
       try {
 

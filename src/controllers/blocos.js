@@ -14,7 +14,7 @@ module.exports = {
               include: [
               {
                 association: "Condominio",
-                attributes: ["id", "name"],
+                attributes: ["id", "name", "admin_id"],
               },
             ]
             });

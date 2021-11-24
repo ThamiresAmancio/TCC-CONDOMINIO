@@ -6,6 +6,9 @@ module.exports = {
     async index(req, res) {
 
         try {
+
+            const id = req
+
             const apartamento = await apartamentos.findAll({
               attributes: ["id", "numero"],
               include: [
@@ -13,8 +16,10 @@ module.exports = {
                 association: "Bloco",
                 attributes: ["id", "name","condominio_id"],
               },
-            ]
-            });
+            ],
+          where:{
+            bloco_id: id
+          }});
             res.send(apartamento);
           } catch (error) {
             console.log(error);

@@ -71,8 +71,9 @@ routes.put("/visitantes/morador/:id", visitanteMoradorControler.update);
 routes.delete("/visitantes/morador/:id", visitanteMoradorControler.delete);
 
 //rotas públicas condominio
-routes.get("/condominios", cadastradoCondominioCoontroller.index);
-routes.post("/condominios/:id", cadastradoCondominioCoontroller.store);
+routes.post("/condominio/:id", cadastradoCondominioCoontroller.store);
+routes.get("/condominios/:id", cadastradoCondominioCoontroller.index);
+
 routes.get("/condominio/:id", cadastradoCondominioCoontroller.find);
 routes.put("/condominios/:id", cadastradoCondominioCoontroller.update);
 routes.delete("/condominios/:id", cadastradoCondominioCoontroller.delete);
@@ -88,14 +89,14 @@ routes.delete("/moradores/:id", cadastroMoradorController.delete);
 //apartamentos
 routes.post("/apartamentos", apartamentoController.store );
 routes.get("/apartamentos", apartamentoController.index);
-routes.get("/apartamentos/:id", apartamentoController.find);
+routes.get("/apartamento/:id", apartamentoController.find);
 routes.put("/apartamentos/:id", apartamentoController.update);
 routes.delete("/apartamentos/:id", apartamentoController.delete);
 
 //rotas bloco
 routes.post("/blocos", blocoController.store );
 routes.get("/blocos", blocoController.index);
-routes.get("/blocos/:id", blocoController.find);
+routes.get("/bloco/:id", blocoController.find);
 routes.put("/blocos/:id", blocoController.update);
 routes.delete("/blocos/:id", blocoController.delete);
 
