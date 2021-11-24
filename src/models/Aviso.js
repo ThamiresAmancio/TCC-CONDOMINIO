@@ -8,8 +8,7 @@ class Aviso extends Model {
             mensagem:DataTypes.STRING,
             link:DataTypes.STRING,
             status:DataTypes.STRING,
-            data:DataTypes.DATE,
-
+            data:DataTypes.STRING,
         },
         {
             sequelize:connection

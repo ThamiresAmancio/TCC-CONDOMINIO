@@ -27,7 +27,8 @@ module.exports = {
 
       const{titulo, mensagem, link, status, data, condominio_id} = req.body;
 
-      
+      console.log(req.body);
+
       try {
 
         let condominio= await Condominio.findByPk(condominio_id)

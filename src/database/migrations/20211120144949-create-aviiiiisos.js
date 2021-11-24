@@ -29,7 +29,7 @@ module.exports = {
       },
      
       data: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
         allowNull: true
       },
      
