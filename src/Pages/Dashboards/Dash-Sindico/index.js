@@ -8,6 +8,7 @@ import {
   ButtonAside,
   ButtonMenu,
   ContentDashboard,
+  HeaderDashboard,
   MenuDashboard,
 } from "../../../components/Dashboard/dashboard";
 import { api } from "../../../services/api";
@@ -17,10 +18,14 @@ import CriandoAviso from "../../Register/Aviso";
 import RegisterVisitante from "../../Register/Visitante";
 import VisualizarMoradores from "../../VisualizarMoradores";
 import { IconLogount, SindicoMain } from "./styles";
-import { signOut } from "../../../services/securitySecurity";
+import { getUser, signOut } from "../../../services/securitySindico";
 import { ContentAvisoViewOfSindico, HeaderAvisoSindico } from "../../../components/AvisosViewOfSindico/styles";
 
 function DashboardSindico() {
+
+  const sindico = getUser();
+  console.log(sindico);
+
   const history = useHistory();
   const [avisos, setAvisos] = useState([]);
 
@@ -32,6 +37,9 @@ function DashboardSindico() {
 
   function deleteAviso(id) {
     api.delete(`/avisos/${id}`);
+
+    setAvisos(avisos.filter(avisos => avisos.id !== id))
+
   }
   
   function logout() {
@@ -110,10 +118,10 @@ function DashboardSindico() {
         ) : (
           <div hidden></div>
         )}
-
         {isVendoAviso ? (
           <>
             {avisos?.map((avisos) => (
+              
               <>
                 {/* <AvisosVisaoDoSindico
                   title={avisos.titulo}
@@ -130,7 +138,7 @@ function DashboardSindico() {
                     <span>{avisos.mensagem}</span>
                     <span>
                       <a target="_blank" href={avisos.link}>
-                        Link: {avisos.link}
+                        {avisos.link}
                       </a>
                     </span>
                     <span>{avisos.status}</span>
@@ -199,9 +207,18 @@ function DashboardSindico() {
         )}
       </SindicoMain>
 
-      <header>
-        <IconLogount onClick={() => logout()} />
-      </header>
+      <HeaderDashboard>
+        <div>
+          <figure className="material-icons">
+              account_circle
+          </figure>
+          <div>
+              <h1>{sindico.name}</h1>
+              <h3>{sindico.email}</h3>
+          </div>
+        </div>
+        <IconLogount onClick={() => logout()}/>
+      </HeaderDashboard>
       <aside>
         <ButtonAside
           onClick={() => {

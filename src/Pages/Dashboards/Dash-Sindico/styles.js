@@ -25,6 +25,5 @@ export const IconLogount = styled(RiLoginBoxLine)`
     justify-content: center;
     margin-right: 40px;
     float: right;
-    margin-top: -20px;
     cursor: pointer;
 `

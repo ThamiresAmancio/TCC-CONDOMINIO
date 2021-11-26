@@ -32,7 +32,7 @@ function AvisosVisaoDoSindico({ title, link, informacoes, urgencia }) {
           <span>{informacoes}</span>
           <span>
             <a target="_blank" href={link}>
-              Link: {link}
+              {link}
             </a>
           </span>
           <span>{urgencia}</span>

@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 
 import InputTayler from "../../../components/InputTayler";
 import { api } from "../../../services/api";
-import { getUser } from "../../../services/securitySecurity";
+import { getUser } from "../../../services/securitySindico";
 import { mascaraCpf, mascaraRg } from "../../../utils";
 import { ContentVisitante } from "./styles";
 

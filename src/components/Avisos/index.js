@@ -10,7 +10,7 @@ function Avisos({title, link, informacoes, urgencia}){
                 </HeaderAviso>
                 <div>
                     <span>{informacoes}</span>
-                    <span><a target="_blank" href={link}>Link: {link}</a></span>
+                    <span><a target="_blank" href={link}>{link}</a></span>
                     <span>{urgencia}</span>
                 </div>
             </ContentAviso>

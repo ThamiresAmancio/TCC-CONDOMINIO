@@ -5,6 +5,7 @@ import {
   ButtonAside,
   ButtonMenu,
   ContentDashboard,
+  HeaderDashboard,
   MenuDashboard,
 } from "../../../components/Dashboard/dashboard";
 import { api } from "../../../services/api";
@@ -21,7 +22,8 @@ function DashboardMorador() {
   const history = useHistory();
   const [isChat, setChat] = useState(false);
   const [avisos, setAvisos] = useState([]);
-  const morador = getUser()
+  const morador = getUser();
+  console.log(morador);
 
   useEffect(() => {
     api.get("/avisos").then(({ data }) => {
@@ -129,12 +131,18 @@ function DashboardMorador() {
           <div hidden></div>
         )}
       </MoradorMain>
-      <header>
-        {/* <p>{morador.name}</p>
-        <br/>
-       <p> {morador.email}</p> */}
-      <IconLogount onClick={() => logout()}/>
-      </header>
+      <HeaderDashboard>
+        <div>
+          <figure className="material-icons">
+              account_circle
+          </figure>
+          <div>
+              <h1>{morador.name}</h1>
+              <h3>{morador.email}</h3>
+          </div>
+        </div>
+        <IconLogount onClick={() => logout()}/>
+      </HeaderDashboard>
       <aside>
         <ButtonAside
           onClick={() => {
