@@ -23,6 +23,50 @@ export const BtnFecharModal = styled.button`
     }
 `;
 
+export const HeaderDashboard = styled.header`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    >div{
+        width: 80%;
+        height: inherit;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+
+        >div{
+            
+            >h1{
+                color: #fff;
+            }
+            
+            >h3{
+                font-weight: lighter;
+                color: #fff;
+            }
+        }
+
+        >figure{
+            width: 5vw;
+            height: 5vw;
+            border-radius: 50%;
+            font-size: 4rem;
+            color: #fff;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-align-items: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+    }
+`;
+
 export const ContentDashboard = styled.div`
     width: 100vw;
     height: 100vh;
@@ -121,6 +165,10 @@ export const ButtonAside = styled.button`
     outline: none;
     cursor: pointer;
     text-align: initial;
+
+    :hover{
+        box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.21);
+    }
 
     >span:first-child{
         transform: scale(1.5);

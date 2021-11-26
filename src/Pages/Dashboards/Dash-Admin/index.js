@@ -11,13 +11,16 @@ import RegisterBlocos from '../../Register/Bloco';
 import RegisterApto from '../../Register/Apartamento';
 import RegisterSindico from '../../Register/Sindico';
 import RegisterPorteiros from '../../Register/Porteiro';
-import {BtnFecharModal, ButtonAside, ContentDashboard, MainDashboard } from '../../../components/Dashboard/dashboard';
-import { signOut } from '../../../services/security';
+import {BtnFecharModal, ButtonAside, ContentDashboard, HeaderDashboard, MainDashboard } from '../../../components/Dashboard/dashboard';
+import { getUser, signOut } from '../../../services/security';
 import { IconLogount } from "../Dash-Admin/styles";
 import VisualizarMoradores from "../../VisualizarMoradores";
 
 function AdminDashboard() {
     const history = useHistory();
+
+    const admin = getUser();
+    console.log(admin);
 
     /* Cadastrando um condomínio */
     let [isCadastrandoCondominio, setIsCadastrandoCondominio] = useState(false);
@@ -143,9 +146,18 @@ function AdminDashboard() {
                 )}
 
             </MainDashboard>
-            <header>
+            <HeaderDashboard>
+                <div>
+                    <figure className="material-icons">
+                        account_circle
+                    </figure>
+                    <div>
+                        <h1>{admin.name}</h1>
+                        <h3>{admin.email}</h3>
+                    </div>
+                </div>
                 <IconLogount onClick={() => logout()}/>
-            </header>
+            </HeaderDashboard>
             <aside>
                 <ButtonAside onClick={() => { setIsCadastrandoCondominio(true); }}>
                     <span className="material-icons">apartment</span>
