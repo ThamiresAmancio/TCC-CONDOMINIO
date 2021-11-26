@@ -1,5 +1,4 @@
 const CadastroCondominio = require("../models/Condomino");
-const { generateToken } = require("../util");
 const CadastroAdmin = require("../models/Admin");
 
 module.exports = {
@@ -12,7 +11,6 @@ module.exports = {
         const id = req.params.id
         
         let admin= await CadastroAdmin.findByPk(id)
-
 
         if(!admin)
         return res.status(404).send({error:'Admin não encontrado'})

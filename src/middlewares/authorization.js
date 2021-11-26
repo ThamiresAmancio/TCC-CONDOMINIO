@@ -25,7 +25,6 @@ module.exports = (req, res, next) => {
     req.userId = payload.userId;
     req.userPerfil = payload.perfil;
 
-    console.log(payload)
 
 
     //envia a requisição para frente (controller)

@@ -88,14 +88,12 @@ routes.delete("/moradores/:id", cadastroMoradorController.delete);
 
 //apartamentos
 routes.post("/apartamentos", apartamentoController.store );
-routes.get("/apartamentos", apartamentoController.index);
 routes.get("/apartamento/:id", apartamentoController.find);
 routes.put("/apartamentos/:id", apartamentoController.update);
 routes.delete("/apartamentos/:id", apartamentoController.delete);
 
 //rotas bloco
 routes.post("/blocos", blocoController.store );
-routes.get("/blocos", blocoController.index);
 routes.get("/bloco/:id", blocoController.find);
 routes.put("/blocos/:id", blocoController.update);
 routes.delete("/blocos/:id", blocoController.delete);
@@ -107,6 +105,9 @@ routes.put("/avisos/:id", avisoController.update);
 routes.delete("/avisos/:id", avisoController.delete);
 
 routes.use(authMiddleware)
+
+routes.get("/blocos", blocoController.index);
+routes.get("/apartamentos", apartamentoController.index);
 
 
 module.exports = routes;

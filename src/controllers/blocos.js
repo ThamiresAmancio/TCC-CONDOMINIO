@@ -1,96 +1,107 @@
 
-const { generateToken } = require("../util");
 const Bloco = require("../models/Bloco");
-const CadastroCondominio = require("../models/Condomino");
 const Condominio = require("../models/Condomino");
 
 module.exports = {
 
-    async index(req, res) {
+  async index(req, res) {
+    const { userId } = req
 
-        try {
-            const bloco = await Bloco.findAll({
-              attributes: ["id", "name"],
-              include: [
-              {
-                association: "Condominio",
-                attributes: ["id", "name", "admin_id"],
-              },
-            ]
-            });
-            res.send(bloco);
-          } catch (error) {
-            console.log(error);
-            res.status(500).send({ error: "bloco não encontrado"});
-          }
-        },
-
-        async find(req, res) {
-
-        const blocoId = req.params.id;
-
-        try {
-          let bloco = await Bloco.findByPk(blocoId, {
-            attributes: ["id", "name"]
-            
-          });
-    
-          //se aluno não encontrado, retornar not found
-          if (!bloco)
-            return res.status(404).send({ erro: "bloco não encontrado" });
-    
-          res.send(bloco);
-        } catch (error) {
-          console.log(error);
-          res.status(500).send({ error });
+    try {
+      
+      const condominios = await Condominio.findAll({
+        where: {
+          admin_id: userId
         }
+      })
 
-    },
+      if (!condominios) return res.status(404).send({ error: 'Condomínio não encontrado' })
 
-    async store(req, res) {
+      const condominioID = condominios.map((data) => {
+        const { id, ...props } = data.dataValues
+        return id
+      })
 
-        //recebendo os dados no body
-        const{name,condominio_id} = req.body;
-
-      try {
-        let condominio= await Condominio.findByPk(condominio_id)
-
-
-        if(!condominio)
-        return res.status(404).send({error:'Condomínio não encontrado'})
-
-
-        let bloco = await Bloco.findOne({
-            where:{
-                name:name
-            }
-        })
-
-        if(bloco){
-            return res.status(400)
-            .send({error: "Este bloco já está cadastrado"})
-
+      const bloco = await Bloco.findAll({
+        where: {
+          condominio_id: condominioID
         }
+      })
 
-        bloco= await Bloco.create({
-            name:name,
-            condominio_id: condominio_id
-        })
-        res.send({
+      if (!bloco) return res.status(404).send({ error: 'bloco não encontrado' })
 
-            bloco:{
-                blocoId: bloco.id,
-                name:bloco.name,
-            },
-             condominio,
-        })
-      } catch (error) {
-        console.log(error);
-        res.status(500).send(error);
+      return res.status(200).send({ Blocos: bloco })
+    } catch (error) {
+      res.status(500).send({ error });
+    }
+  },
+
+  async find(req, res) {
+
+    const blocoId = req.params.id;
+
+    try {
+      let bloco = await Bloco.findByPk(blocoId, {
+        attributes: ["id", "name"]
+
+      });
+
+      //se aluno não encontrado, retornar not found
+      if (!bloco)
+        return res.status(404).send({ erro: "bloco não encontrado" });
+
+      res.send(bloco);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ error });
+    }
+
+  },
+
+  async store(req, res) {
+
+    //recebendo os dados no body
+    const { name, condominio_id } = req.body;
+
+    try {
+      let condominio = await Condominio.findByPk(condominio_id)
+
+
+      if (!condominio)
+        return res.status(404).send({ error: 'Condomínio não encontrado' })
+
+
+      let bloco = await Bloco.findOne({
+        where: {
+          name: name
+        }
+      })
+
+      if (bloco) {
+        return res.status(400)
+          .send({ error: "Este bloco já está cadastrado" })
+
       }
-    },
 
-    async update(req, res) {
+      bloco = await Bloco.create({
+        name: name,
+        condominio_id: condominio_id
+      })
+      res.send({
+
+        bloco: {
+          blocoId: bloco.id,
+          name: bloco.name,
+        },
+        condominio,
+      })
+    } catch (error) {
+      console.log(error);
+      res.status(500).send(error);
+    }
+  },
+
+  async update(req, res) {
 
 
     const blocoId = req.params.id;
@@ -104,7 +115,7 @@ module.exports = {
       if (!bloco) res.status(404).send({ error: "bloco não encontrado" });
 
       bloco.name = name;
-     
+
       bloco.save();
 
       //retornar resposta
@@ -115,23 +126,23 @@ module.exports = {
     }
   },
 
-    async delete(req, res) {
+  async delete(req, res) {
 
-        const blocoId = req.params.id;
+    const blocoId = req.params.id;
 
-        try {
-          let bloco = await Bloco.findByPk(blocoId);
-    
-          if (!bloco)
-            return res.status(404).send({ error: "bloco não encontrado" });
-    
-          await bloco.destroy();
-    
-          //devolver resposta de sucesso
-          res.status(204).send();
-        } catch (error) {
-          console.log(error);
-          res.status(500).send(error);
-        }
+    try {
+      let bloco = await Bloco.findByPk(blocoId);
+
+      if (!bloco)
+        return res.status(404).send({ error: "bloco não encontrado" });
+
+      await bloco.destroy();
+
+      //devolver resposta de sucesso
+      res.status(204).send();
+    } catch (error) {
+      console.log(error);
+      res.status(500).send(error);
     }
+  }
 }
