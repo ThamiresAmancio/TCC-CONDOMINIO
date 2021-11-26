@@ -52,21 +52,12 @@ function AdminDashboard() {
                 <NavButtonIcon className="material-icons" id="home" >
                     home
                 </NavButtonIcon>
-                <NavButtonIcon className="material-icons" id="noti"  >
-                    
-                </NavButtonIcon>
                 <NavButtonIcon className="material-icons" >
                     event
                 </NavButtonIcon>
-                <NavButtonIcon className="material-icons" >
-                   
-                </NavButtonIcon>
-                <NavButtonIcon className="material-icons" >
-                   
-                </NavButtonIcon>
                 <NavButtonIcon className="material-icons" onClick={() => {
-            setVisualizar(true);
-          }}>
+                    setVisualizar(true);
+                }}>
                     person_search
                 </NavButtonIcon>
             </NavDashboard>

@@ -50,13 +50,9 @@ function Home() {
                     </h1>
                     <p>
                         Nossos serviços são acessados em duas maneiras:
-                    </p>
-                    <br />
-                    <p>
+                    <br/>
                         <u>Sistema Web</u> e <u>Aplicativo Mobile</u> (android).
-                    </p>
-                    <br />
-                    <p>
+                    <br/>
                         Para acessa-lo informe ao administrador do seu condomínio que deseja um login.
                     </p>
 

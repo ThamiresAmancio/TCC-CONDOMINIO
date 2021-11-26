@@ -81,13 +81,21 @@ export const LoginLeftSide = styled.div`
 export const LogoTowers = styled.div`
   margin-top: 5%;
   margin-bottom: 4%;
-
   background-color: #fff;
-  border-radius: 150px;
-  width: 300px;
-  height: 300px;
+  border-radius: 100%;
+  width: 20vw;
+  height: 20vw;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
   justify-content: center;
 
   > figure {
@@ -160,14 +168,16 @@ export const CardIconePerfil = styled.div`
   }
 
   > a {
-    width: 80%;
-    height: 50%;
+    width: 84%;
+    height: 100%;
     outline: none;
     border: none;
     color: #fff;
     font-size: 1.8rem;
     text-align: start;
     padding-left: 1rem;
+    display: flex;
+    align-items: center;
 
     :hover {
       color: white;

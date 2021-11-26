@@ -172,14 +172,28 @@ body {
         grid-area: main-services;
         text-align: justify;
         color: white;
-        
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        grid-gap: 1%;
         gap: 1%;
         line-height: 10px;
         text-align: start;
+        padding: 2% 2%;
+        position: relative;
+    }
+    
+    .section-services > main > p{
+        text-align: center;
+        font-size: 1.rem;
+        line-height: 2rem;
+    }
+    .section-services > main > h1{
+        position: absolute;
+        top: 23%;
+        text-decoration: underline;
+        text-underline-position: under;
     }
 
     h1{
@@ -252,20 +266,20 @@ body {
     }
 
     .section-admin > div{
+        height: inherit;
+        width: 50%;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
+        justify-content: center;
+        position: relative;
+        padding: 2% 2%;
         gap: 2%;
-
-        width: 50%;
-        height: auto;
-        padding-left: 3%;
     }
 
     .section-admin > div > h1{
-        margin-top: 3%;   
         font-size: 1.3rem;
+        position: absolute;
+        top: 10%;
     }
 
     .section-admin > div > p{
