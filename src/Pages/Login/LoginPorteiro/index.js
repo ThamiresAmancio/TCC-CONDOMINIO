@@ -34,7 +34,8 @@ function LoginPorteiros() {
 
       setIsLoading(false);
 
-      history.push("/");
+      history.push("/Dashboard/Porteiros");
+      
     } catch (error) {
       console.error(error);
       toast.error("usuário e/ou senha inválidos")

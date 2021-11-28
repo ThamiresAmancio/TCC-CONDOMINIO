@@ -4,21 +4,23 @@ import "./morador.css";
 import "../../../Styles/styles.css";
 
 import { api } from "../../../services/api";
-import { signIn } from "../../../services/security";
+import { getUser, signIn } from "../../../services/security";
 import InputHoshi from "../../../components/input";
 
 import { mascaraCpf } from "../../../utils";
   function RegisterMoradores() {
   
-  const [apartamentos, setApartamentos] = useState([]);
+    const admin = getUser(); 
 
-  useEffect(() => {
-    api.get("/apartamentos").then(({ data }) => {
-      setApartamentos(data);
-    });
-  }, []);
-
-  console.log(apartamentos)
+    const [apartamentos, setApartamentos] = useState([]);
+  
+    useEffect(() => {
+      api.get(`/apartamentos/${admin.adminId}`).then(({ data }) => {
+        setApartamentos(data);
+      });
+    }, []);
+  
+    console.log(apartamentos)
 
   const [morador, setMorador] = useState({
     name:"",

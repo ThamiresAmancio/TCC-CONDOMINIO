@@ -20,9 +20,10 @@ function RegisterVisitante() {
   const [visitante, setVisitantes] = useState({
     name: "",
     rg: "",
-    cpf: "",
+    data: new Date(),
   });
   
+  console.log(visitante)
 
 
   const handleInput = (e) => {
@@ -41,18 +42,16 @@ function RegisterVisitante() {
     setVisitantes({ ...visitante, rg: rg });
   };
 
-   const teste = 1
+  
 
   const addVisit = async () => {
     const data = new FormData();
 
     data.append("name", visitante.name);
     data.append("rg", visitante.rg);
-    data.append("cpf", visitante.cpf);
+    data.append("data", visitante.data);
     data.append("image", image);
     data.append("sindico_id", sindico)
-
-
 
     try {
       const response = await api.post(`/visitantes/sindico/${sindico.sindicoId}`, data);
@@ -93,9 +92,9 @@ function RegisterVisitante() {
           handler={handleRg}
         />
         <InputTayler
-          id="cpf"
-          label="CPF"
-          value={visitante.cpf}
+          id="data"
+          label="Data"
+          value={visitante.data}
           handler={handleCpf}
         />
       </form>

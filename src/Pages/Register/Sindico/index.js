@@ -4,18 +4,19 @@ import "./sindico.css";
 import "../../../Styles/styles.css";
 
 import { api } from "../../../services/api";
-import { signIn } from "../../../services/security";
+import { getUser, signIn } from "../../../services/security";
 import InputHoshi from "../../../components/input";
 import { mascaraCpf } from "../../../utils";
 
 function RegisterSindico() {
   
-  const history = useHistory();
+
+  const admin = getUser(); 
 
   const [apartamentos, setApartamentos] = useState([]);
 
   useEffect(() => {
-    api.get("/apartamentos").then(({ data }) => {
+    api.get(`/apartamentos/${admin.adminId}`).then(({ data }) => {
       setApartamentos(data);
     });
   }, []);

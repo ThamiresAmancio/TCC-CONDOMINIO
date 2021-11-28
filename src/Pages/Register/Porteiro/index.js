@@ -65,9 +65,9 @@ function RegisterPorteiros() {
         password,
         condominio_id: condominioSelId
       });
-
+      
       setIsLoading(false);
-      history("/Dashboard/Porteiro");
+     
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);

@@ -5,11 +5,11 @@ import { ContainerVisualizar, Header, IconEdit, IconRemove, List , Text } from "
 function VisualizarVisitantes() {
 
     const [visitantes, setVisitantes] = useState([])
-    console.log(visitantes)
+
     useEffect(()=>{
-        api.get("/visitantes/morador").then(({data}) =>{
-            console.log('aaaaaaaaaaaaaaaaaaaaaaa',data)
-            setVisitantes('bbbbbbbbbbbbbbbbb',data)
+        api.get("/visitantes/sindico").then(({data}) =>{
+            console.log(visitantes)
+            setVisitantes(data)
         });
     },[]);
 
@@ -18,10 +18,8 @@ function VisualizarVisitantes() {
         <>
             
             <ContainerVisualizar>
-           
             {
                     visitantes.map((item) =>{
-                        console.log('bbbbbbbbbbbbbbbbb',item)
                     return <>
                      <Header>
                          <div>
@@ -34,21 +32,21 @@ function VisualizarVisitantes() {
                             <p>RG</p>
                          </div>
                          <div>
-                            <p>CPF</p>
+                            <p>Data</p>
                          </div>
                         </Header>
                         <List>
                             <div>
-                             {item.name}
-                            </div>
-                            <div>
-                            
-                            </div>
-                            <div>
-                           
-                            </div>
-                            <div>
 
+                            </div>
+                            <div>
+                            <Text>{item.name}</Text>
+                            </div>
+                            <div>
+                            <Text>{item.rg}</Text>
+                            </div>
+                            <div>
+                            <Text>{item.data}</Text>
                             </div>
                     </List>
                         </>

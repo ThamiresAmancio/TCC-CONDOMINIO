@@ -90,7 +90,7 @@ function Rotas() {
                 <Route exact path="/Visualizar/Moradores">
                     <VisualizarMoradores/>
                 </Route>
-                <Route exact path="/Dashboard/Porteiro">
+                <Route exact path="/Dashboard/Porteiros">
                     <DashboardPorteiros/>
                 </Route>
             </Switch>

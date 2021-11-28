@@ -15,12 +15,11 @@ function RegisterVisitanteMorador() {
   };
 
   const morador = getUser();
-  console.log(morador)
 
   const [visitante, setVisitantes] = useState({
     name: "",
     rg: "",
-    cpf: "",
+    data: new Date(),
   });
   
 
@@ -48,12 +47,12 @@ function RegisterVisitanteMorador() {
 
     data.append("name", visitante.name);
     data.append("rg", visitante.rg);
-    data.append("cpf", visitante.cpf);
+    data.append("data", visitante.data);
     data.append("image", image);
     data.append("morador_id", morador)
 
     try {
-      const response = await api.post(`/visitantes/morador${morador.moradorId}`, data);
+      const response = await api.post(`/visitantes/morador/${morador.moradorId}`, data);
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -93,7 +92,7 @@ function RegisterVisitanteMorador() {
         <InputTayler
           id="cpf"
           label="CPF"
-          value={visitante.cpf}
+          value={visitante.data}
           handler={handleCpf}
         />
       </form>

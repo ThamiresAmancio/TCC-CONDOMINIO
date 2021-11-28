@@ -4,23 +4,22 @@ import "./apto.css";
 import "../../../Styles/styles.css";
 import { api } from "../../../services/api";
 import InputHoshi from "../../../components/input";
-
+import { getUser } from "../../../services/security";
 
 function RegisterApto() {
+
   const history = useHistory();
 
-  
+  const admin = getUser();
+
   const [blocos, setBlocos] = useState([]);
 
 
   useEffect(() => {
-    api.get(`blocos`).then(({ data }) => {
+    api.get(`/blocos/${admin.adminId}`).then(({ data }) => {
       setBlocos(data);
     });
   }, []);
-
-  console.log(blocos[0].name)
-
 
   const [apartamentos, setApartamentos] = useState({
     numero: "",
@@ -30,7 +29,7 @@ function RegisterApto() {
   const [isLoading, setIsLoading] = useState(false);
 
   const [blocoId, setBlocoId] = useState(undefined);
-  
+
   const handleInput = (e) => {
     setApartamentos({ ...apartamentos, [e.target.id]: e.target.value });
   };
@@ -80,7 +79,7 @@ function RegisterApto() {
             <div className="fields">
               <label>
                 Escolha um Bloco :
-                <select id={blocos.bloco_id} value={blocoId} onChange={handleBlocoSelId}> 
+                <select id={blocos.condominio_id} value={blocoId} onChange={handleBlocoSelId}>
                   <option value="">Selecione</option>
                   {blocos.map((c) => (
                     <option key={c.id} value={c.id}>
