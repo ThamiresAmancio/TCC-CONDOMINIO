@@ -25,7 +25,7 @@ module.exports = {
 
   async store(req, res) {
 
-      const{titulo, mensagem, link, status, data, condominio_id} = req.body;
+      const{titulo, mensagem, link, status, data} = req.body;
 
       
 
@@ -55,7 +55,7 @@ module.exports = {
           link:link,
           status:status,
           data:data,
-          condominio_id: condominio_id,
+          // condominio_id: condominio_id,
       })
 
       res.send({

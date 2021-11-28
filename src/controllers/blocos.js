@@ -5,10 +5,11 @@ const Condominio = require("../models/Condomino");
 module.exports = {
 
   async index(req, res) {
-    const { userId } = req
-
+  
     try {
-      
+    
+      const  userId  = req.params.id
+
       const condominios = await Condominio.findAll({
         where: {
           admin_id: userId
