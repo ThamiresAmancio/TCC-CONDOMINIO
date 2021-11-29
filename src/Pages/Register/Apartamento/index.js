@@ -7,23 +7,25 @@ import InputHoshi from "../../../components/input";
 import { getUser } from "../../../services/security";
 
 function RegisterApto() {
-
   const history = useHistory();
 
   const admin = getUser();
 
   const [blocos, setBlocos] = useState([]);
 
-
   useEffect(() => {
-    api.get(`/blocos/${admin.adminId}`).then(({ data }) => {
-      setBlocos(data);
-    });
+    try {
+      api.get(`/blocos/${admin.adminId}`).then(({ data }) => {
+        setBlocos(data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   const [apartamentos, setApartamentos] = useState({
     numero: "",
-    bloco_id: ""
+    bloco_id: "",
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -35,11 +37,10 @@ function RegisterApto() {
   };
 
   const handleBlocoSelId = (e) => {
-    setBlocoId(e.target.value)
-  }
+    setBlocoId(e.target.value);
+  };
 
   const handleSubmit = async () => {
-
     setIsLoading(true);
 
     try {
@@ -47,7 +48,7 @@ function RegisterApto() {
 
       const response = await api.post(`/apartamentos`, {
         numero,
-        bloco_id: blocoId
+        bloco_id: blocoId,
       });
 
       setIsLoading(false);
@@ -59,7 +60,10 @@ function RegisterApto() {
       setIsLoading(false);
     }
   };
-
+  console.log(blocos);
+  console.log(blocos.length != 0 ? blocos.length : "aaaaaaaaaa");
+  // console.log("///////////************");
+  // console.log("AAAAAAAAAAAA", blocos.Blocos.length);
   return (
     <main>
       <div className="card-post">
@@ -79,13 +83,20 @@ function RegisterApto() {
             <div className="fields">
               <label>
                 Escolha um Bloco :
-                <select id={blocos.condominio_id} value={blocoId} onChange={handleBlocoSelId}>
+                <select
+                  id={blocos.condominio_id}
+                  value={blocoId}
+                  onChange={handleBlocoSelId}
+                >
                   <option value="">Selecione</option>
-                  {blocos.map((c) => (
-                    <option key={c.id} value={c.id}>
-                      {c.name}
-                    </option>
-                  ))}
+
+                  {blocos.length != 0 ? (
+                    blocos.map((resposta) => (
+                      <option id={resposta.id}>{resposta.name}</option>
+                    ))
+                  ) : (
+                    <option>teste</option>
+                  )}
                 </select>
               </label>
             </div>
