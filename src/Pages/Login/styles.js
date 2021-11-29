@@ -55,6 +55,10 @@ export const LoginLeftSide = styled.div`
     color: #fff;
     gap: 2%;
 
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 5%;
+
     > p {
       font-size: 1.5rem;
       font-weight: lighter;
@@ -144,6 +148,10 @@ export const CardIconePerfil = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 2vh;
+
+  :hover{
+    box-shadow: 1px 4px 15px 3px rgba(28,28,28,0.49);
+  }
 
   > span {
     font-size: 4rem;

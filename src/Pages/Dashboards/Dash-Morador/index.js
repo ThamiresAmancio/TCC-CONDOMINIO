@@ -45,10 +45,11 @@ function DashboardMorador() {
   return (
     <ContentDashboard>
       <MenuDashboard>
-        <ButtonMenu className="material-icons" id="home">
+        <ButtonMenu className="material-icons" id="home" >
           home
         </ButtonMenu>
         <ButtonMenu
+          title="avisos"
           className="material-icons"
           onClick={() => {
             setIsVendoAviso(true);
@@ -56,12 +57,12 @@ function DashboardMorador() {
         >
           notification_important
         </ButtonMenu>
-        <ButtonMenu className="material-icons">event</ButtonMenu>
-        <ButtonMenu className="material-icons" onClick={() => {
+        <ButtonMenu className="material-icons" title="Agendamento">event</ButtonMenu>
+        <ButtonMenu className="material-icons" title="Chat" onClick={() => {
             setChat(true);
           }}
         >question_answer</ButtonMenu>
-        <ButtonMenu className="material-icons">feedback</ButtonMenu>
+        <ButtonMenu className="material-icons" title="Denúncias">feedback</ButtonMenu>
       </MenuDashboard>
       <MoradorMain>
         {isPagandoMensalidade ? (
@@ -153,7 +154,7 @@ function DashboardMorador() {
           <span>Adicionar visitantes</span>
         </ButtonAside>
         <ButtonAside>
-          <span className="material-icons">accessibility</span>
+          <span className="material-icons">how_to_vote</span>
           <span>Votação online</span>
         </ButtonAside>
         <ButtonAside

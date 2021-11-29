@@ -62,10 +62,11 @@ function DashboardSindico() {
   return (
     <ContentDashboard>
       <MenuDashboard>
-        <ButtonMenu className="material-icons" id="home">
+        <ButtonMenu className="material-icons" id="home" title="Home">
           home
         </ButtonMenu>
         <ButtonMenu
+          title="Avisos"
           className="material-icons"
           id="noti"
           onClick={() => {
@@ -75,8 +76,9 @@ function DashboardSindico() {
         >
           notification_important
         </ButtonMenu>
-        <ButtonMenu className="material-icons">event</ButtonMenu>
+        <ButtonMenu className="material-icons" title="Agendamento">event</ButtonMenu>
         <ButtonMenu
+          title="Chat"
           className="material-icons"
           onClick={() => {
             setChat(true);
@@ -84,7 +86,7 @@ function DashboardSindico() {
         >
           question_answer
         </ButtonMenu>
-        <ButtonMenu className="material-icons">feedback</ButtonMenu>
+        <ButtonMenu className="material-icons" title="Denúncias">feedback</ButtonMenu>
       </MenuDashboard>
 
       <SindicoMain>
@@ -229,7 +231,7 @@ function DashboardSindico() {
           <span>Visualizar moradores</span>
         </ButtonAside>
         <ButtonAside>
-          <span className="material-icons">notifications_none</span>
+          <span className="material-icons">how_to_vote</span>
           <span>Votação online</span>
         </ButtonAside>
         <ButtonAside
