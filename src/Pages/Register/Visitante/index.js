@@ -7,12 +7,15 @@ import { mascaraCpf, mascaraRg } from "../../../utils";
 import { ContentVisitante } from "./styles";
 
 function RegisterVisitante() {
+
   const imgRef = useRef();
+
   const [image, setImage] = useState(null);
   const handleFile = async (e) => {
     setImage(e.target.files[0]);
     imgRef.current.src = URL.createObjectURL(e.target.files[0]);
   };
+
 
   const sindico = getUser();
   console.log(sindico)
@@ -20,7 +23,10 @@ function RegisterVisitante() {
   const [visitante, setVisitantes] = useState({
     name: "",
     rg: "",
-    data: new Date(),
+    data:  new Date(Date.now()).getDate() +
+    "/" +
+    new Date(Date.now()).getMonth() + "/" + new Date(Date.now()).getFullYear()
+
   });
   
   console.log(visitante)

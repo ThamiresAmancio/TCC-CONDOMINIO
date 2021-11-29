@@ -20,7 +20,8 @@ import { getUser } from "../../../services/securityMorador";
 function DashboardPorteiros() {
 
   const userPorteiro = getUser();
-  console.log(userPorteiro);
+
+
 
   const history = useHistory();
 
@@ -75,10 +76,6 @@ function DashboardPorteiros() {
         <ButtonAside onClick={() => {setVisualizar(true)}}>
           <span className="material-icons">supervised_user_circle</span>
           <span>Visualizar visitantes</span>
-        </ButtonAside>
-        <ButtonAside>
-          <span className="material-icons">call_end</span>
-          <span>Telefones</span>
         </ButtonAside>
         <ButtonAside>
           <span className="material-icons">history</span>

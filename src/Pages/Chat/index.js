@@ -33,11 +33,11 @@ function Chat({ socket, username, room }) {
   return (
     <div className="chat-window">
       <div className="chat-body">
-        <ScrollToBottom className="message-container">
+        <ScrollToBottom className="message-container" >
           {messageList.map((messageContent) => {
             return (
               <div
-                className="message"
+                className="message" key={messageContent.id}
                 id={username === messageContent.author ? "you" : "other"}
               >
                 <div>

@@ -19,7 +19,7 @@ function RegisterVisitanteMorador() {
   const [visitante, setVisitantes] = useState({
     name: "",
     rg: "",
-    data: new Date(),
+    data:  new Date(Date.now()).getDate() + "/" +  new Date(Date.now()).getMonth() + "/" + new Date(Date.now()).getFullYear()
   });
   
 

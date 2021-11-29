@@ -15,6 +15,9 @@ import {BtnFecharModal, ButtonAside, ContentDashboard, HeaderDashboard, MainDash
 import { getUser, signOut } from '../../../services/security';
 import { IconLogount } from "../Dash-Admin/styles";
 import VisualizarMoradores from "../../VisualizarMoradores";
+import VisualizarPorteiros from '../../visualizarPorteiros';
+import VisualizarCondominios from '../../visualizarCondominios';
+
 
 function AdminDashboard() {
     const history = useHistory();
@@ -41,6 +44,9 @@ function AdminDashboard() {
     let [isCadastrandoPorteiros, setCadastrandoPorteiros] = useState(false);
 
     const [isVisualizar, setVisualizar] = useState(false);
+    const [isVisualizarPorteiros, setVisualizarPorteiros] = useState(false);
+    const [isVisualizarCondominios, setVisualizarCondominios] = useState(false);
+    
     
     function logout(){
     const removeUser = signOut()
@@ -55,11 +61,18 @@ function AdminDashboard() {
                 <NavButtonIcon className="material-icons" id="home" >
                     home
                 </NavButtonIcon>
-                <NavButtonIcon className="material-icons" >
+                <NavButtonIcon className="material-icons" onClick={() => {
+                    setVisualizarCondominios(true);
+                }} >
                     event
                 </NavButtonIcon>
                 <NavButtonIcon className="material-icons" onClick={() => {
                     setVisualizar(true);
+                }}>
+                    person_search
+                </NavButtonIcon>
+                <NavButtonIcon className="material-icons" onClick={() => {
+                    setVisualizarPorteiros(true);
                 }}>
                     person_search
                 </NavButtonIcon>
@@ -144,6 +157,36 @@ function AdminDashboard() {
                     ) : (
                 <div hidden></div>
                 )}
+                 {isVisualizarPorteiros ? (
+                    <>
+                        <VisualizarPorteiros></VisualizarPorteiros>
+                        <BtnFecharModal
+                        onClick={() => {
+                            setVisualizarPorteiros(false);
+                        }}
+                        >
+                        X
+                        </BtnFecharModal>
+                    </>
+                    ) : (
+                <div hidden></div>
+                )}
+                {
+                    isVisualizarCondominios ? (
+                        <>
+                        <VisualizarCondominios></VisualizarCondominios>
+                        <BtnFecharModal
+                        onClick={() => {
+                            setVisualizarCondominios(false);
+                        }}
+                        >
+                        X
+                        </BtnFecharModal>
+                    </>
+                    ): (
+                        <div hidden></div>
+                    )
+                }
 
             </MainDashboard>
             <HeaderDashboard>
