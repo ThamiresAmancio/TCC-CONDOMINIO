@@ -5,14 +5,11 @@ import "../../../Styles/styles.css";
 import { api } from "../../../services/api";
 import InputHoshi from "../../../components/input";
 import { getUser } from "../../../services/security";
-
 function RegisterApto() {
   const history = useHistory();
-
   const admin = getUser();
-
   const [blocos, setBlocos] = useState([]);
-
+  console.log(blocos)
   useEffect(() => {
     try {
       api.get(`/blocos/${admin.adminId}`).then(({ data }) => {
@@ -22,37 +19,27 @@ function RegisterApto() {
       console.log(error);
     }
   }, []);
-
   const [apartamentos, setApartamentos] = useState({
     numero: "",
     bloco_id: "",
   });
-
   const [isLoading, setIsLoading] = useState(false);
-
   const [blocoId, setBlocoId] = useState(undefined);
-
   const handleInput = (e) => {
     setApartamentos({ ...apartamentos, [e.target.id]: e.target.value });
   };
-
   const handleBlocoSelId = (e) => {
     setBlocoId(e.target.value);
   };
-
   const handleSubmit = async () => {
     setIsLoading(true);
-
     try {
-      const { numero, bloco_id } = apartamentos;
-
+      const {numero} = apartamentos;
       const response = await api.post(`/apartamentos`, {
         numero,
         bloco_id: blocoId,
       });
-
       setIsLoading(false);
-
       history.push("/Dashboard/Admin");
     } catch (error) {
       console.error(error);
@@ -60,10 +47,6 @@ function RegisterApto() {
       setIsLoading(false);
     }
   };
-  console.log(blocos);
-  console.log(blocos.length != 0 ? blocos.length : "aaaaaaaaaa");
-  // console.log("///////////************");
-  // console.log("AAAAAAAAAAAA", blocos.Blocos.length);
   return (
     <main>
       <div className="card-post">
@@ -89,7 +72,6 @@ function RegisterApto() {
                   onChange={handleBlocoSelId}
                 >
                   <option value="">Selecione</option>
-
                   {blocos.length != 0 ? (
                     blocos.map((resposta) => (
                       <option id={resposta.id}>{resposta.name}</option>
@@ -112,5 +94,4 @@ function RegisterApto() {
     </main>
   );
 }
-
 export default RegisterApto;

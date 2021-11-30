@@ -16,12 +16,18 @@ import Room from "../../Chat/chat";
 import { IconLogount } from "../Dash-Morador/styles";
 import { getUser, signOut } from "../../../services/securityMorador";
 import { useHistory } from "react-router";
+import Agendamento from "../../Agendamento";
 
 function DashboardMorador() {
 
   const history = useHistory();
+
   const [isChat, setChat] = useState(false);
+
   const [avisos, setAvisos] = useState([]);
+
+  const [agendamento, setAgendamento] = useState(false);
+
   const morador = getUser();
   console.log(morador);
 
@@ -57,7 +63,12 @@ function DashboardMorador() {
         >
           notification_important
         </ButtonMenu>
-        <ButtonMenu className="material-icons" title="Agendamento">event</ButtonMenu>
+        <ButtonMenu className="material-icons" title="Agendamento"
+          onClick={() => {
+            setAgendamento(true);
+        }}>
+          event
+        </ButtonMenu>
         <ButtonMenu className="material-icons" title="Chat" onClick={() => {
             setChat(true);
           }}
@@ -65,6 +76,20 @@ function DashboardMorador() {
         <ButtonMenu className="material-icons" title="Denúncias">feedback</ButtonMenu>
       </MenuDashboard>
       <MoradorMain>
+
+        {agendamento?(
+          <>
+            <Agendamento/>
+            <BtnFecharModal
+              onClick={() => {
+                setAgendamento(false);
+              }}
+            >
+              X
+            </BtnFecharModal>
+          </>
+        ):(<div hidden></div>)}
+
         {isPagandoMensalidade ? (
           <>
             <BtnFecharModal
