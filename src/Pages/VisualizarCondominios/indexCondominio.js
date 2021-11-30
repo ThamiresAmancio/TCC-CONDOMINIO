@@ -1,15 +1,17 @@
+
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { ContainerVisualizar, Header, IconEdit, IconRemove, List , Text } from "./style";
+import { getUser} from "../../services/security";
 
-
-
-function VisualizarCondominios() {
+function VisualizarCondominios(){
 
     const [condominios, setCondominios] = useState([])
+
+    const admin = getUser()
     
     useEffect(()=>{
-        api.get(`/condominios`).then(({data}) =>{
+        api.get(`/condominios/${admin.adminId}`).then(({data}) =>{
             setCondominios(data)
         });
     },[]);
@@ -20,14 +22,20 @@ function VisualizarCondominios() {
     }
 
     return(
+
         <>
             <Header>
                 <p>Nome:</p>
-                <p>Sobrenome:</p>
-                <p>Email:</p>
-                <p>Apartamento:</p>
+                <p>Bairro:</p>
+                <p>Estado:</p>
+                <p>CEP:</p>
+                <p>Rua:</p>
+                <p>Cidade:</p>
+                <p>Numero:</p>
+                <p>CNPJ:</p>
                 <p>Ações:</p>
             </Header>
+
             <ContainerVisualizar>
             {
                     condominios.map((item) =>{
@@ -38,13 +46,25 @@ function VisualizarCondominios() {
                                 <Text>{item.name}</Text>
                             </div>
                             <div>
-                            <Text>{item.surname}</Text>
+                            <Text>{item.bairro}</Text>
                             </div>
                             <div>
-                            <Text>{item.email}</Text>
+                            <Text>{item.estado}</Text>
                             </div>
                             <div>
-                            <Text></Text>
+                            <Text>{item.cep}</Text>
+                            </div>
+                            <div>
+                            <Text>{item.rua}</Text>
+                            </div>
+                            <div>
+                            <Text>{item.cidade}</Text>
+                            </div>
+                            <div>
+                            <Text>{item.numero}</Text>
+                            </div>
+                            <div>
+                            <Text>{item.cnpj}</Text>
                             </div>
                             <div>
                                <IconRemove onClick={() => delet(item.id)} />
@@ -56,6 +76,7 @@ function VisualizarCondominios() {
                 }
             </ContainerVisualizar>
         </>
+       
     )
 }
 

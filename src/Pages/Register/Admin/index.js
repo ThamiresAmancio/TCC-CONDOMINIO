@@ -8,6 +8,7 @@ import InputHoshi from "../../../components/input";
 import { Link } from "react-router-dom";
 import { mascaraCpf } from "../../../utils";
 
+
 function RegisterAdmin() {
   
   const history = useHistory();
@@ -42,9 +43,6 @@ function RegisterAdmin() {
     e.preventDefault();
 
     setIsLoading(true);
-
-
-
 
   try {
     const { name, surname, cpf, birth , email,password} = admin;

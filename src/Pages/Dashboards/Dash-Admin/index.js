@@ -16,7 +16,7 @@ import { getUser, signOut } from '../../../services/security';
 import { IconLogount } from "../Dash-Admin/styles";
 import VisualizarMoradores from "../../VisualizarMoradores";
 import VisualizarPorteiros from '../../visualizarPorteiros';
-import VisualizarCondominios from '../../visualizarCondominios';
+import VisualizarCondominios from '../../VisualizarCondominios/indexCondominio';
 
 
 function AdminDashboard() {
@@ -174,7 +174,7 @@ function AdminDashboard() {
                 {
                     isVisualizarCondominios ? (
                         <>
-                        <VisualizarCondominios></VisualizarCondominios>
+                        <VisualizarCondominios></VisualizarCondominios> 
                         <BtnFecharModal
                         onClick={() => {
                             setVisualizarCondominios(false);
