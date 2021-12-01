@@ -6,10 +6,8 @@ import { api } from "../../../services/api";
 import InputHoshi from "../../../components/input";
 import { getUser } from "../../../services/security";
 function RegisterApto() {
-  const history = useHistory();
   const admin = getUser();
   const [blocos, setBlocos] = useState([]);
-  console.log(blocos)
   useEffect(() => {
     try {
       api.get(`/blocos/${admin.adminId}`).then(({ data }) => {
@@ -19,10 +17,16 @@ function RegisterApto() {
       console.log(error);
     }
   }, []);
+
+  const history = useHistory();
+  console.log(blocos)
+  
+  
   const [apartamentos, setApartamentos] = useState({
     numero: "",
     bloco_id: "",
   });
+
   const [isLoading, setIsLoading] = useState(false);
   const [blocoId, setBlocoId] = useState(undefined);
   const handleInput = (e) => {

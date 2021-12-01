@@ -21,6 +21,18 @@ import RegisterSindico from './Pages/Register/Sindico';
 import RegisterVisitante from './Pages/Register/Visitante';
 import VisualizarMoradores from './Pages/VisualizarMoradores';
 import DashboardPorteiros from './Pages/Dashboards/Dash-Porteiros';
+import { Redirect } from "react-router";
+import { getUser,isSignedIn} from './services/security'
+
+function PrivateRoute({ role, children, ...rest }) {
+
+         if (!isSignedIn()) {
+             return <Redirect to="/Login" />
+         }
+        else{
+             return <Route {...rest}>{children} </Route>;
+     }
+}
 
 function Rotas() {
 
@@ -48,9 +60,9 @@ function Rotas() {
                 <Route exact path="/Register/Admin">
                     <RegisterAdmin />
                 </Route>
-                <Route exact path="/Dashboard/Admin">
+                <PrivateRoute exact path="/Dashboard/Admin">
                     <AdminDashboard/>
-                </Route>
+                </PrivateRoute>
                 <Route exact path="/Dashboard/Morador">
                     <DashboardMorador/>
                 </Route>
