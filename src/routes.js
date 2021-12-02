@@ -101,10 +101,9 @@ routes.delete("/blocos/:id", blocoController.delete);
 
 routes.post("/avisos", avisoController.store);
 routes.get("/avisos", avisoController.index);
+routes.get("/buscar_avisos", avisoController.findPorMorador);
 routes.put("/avisos/:id", avisoController.update);
 routes.delete("/avisos/:id", avisoController.delete);
-
-
 
 
 routes.use(authMiddleware)
@@ -112,5 +111,6 @@ routes.use(authMiddleware)
 routes.get("/blocos", blocoController.index);
 routes.get("/apartamentos", apartamentoController.index);
 routes.get("/condominios", cadastradoCondominioCoontroller.index);
+routes.get("/buscar_moradores", cadastroMoradorController.findMorador);
 
 module.exports = routes;

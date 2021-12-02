@@ -6,117 +6,143 @@ module.exports = {
 
   async index(req, res) {
 
-      try {
-        const aviso = await Avisos.findAll({
-          include: [
-            {
-              association: "Condominio",
-              attributes: ["id", "name"],
-            },
-          ]
-        });
-        res.send(aviso);
-        } catch (error) {
-          console.log(error);
-          res.status(500).send({ error: "Aviso não encontrado"});
-        }
-      },
+    try {
+      const aviso = await Avisos.findAll({
+        include: [
+          {
+            association: "Condominio",
+            attributes: ["id", "name"],
+          },
+        ]
+      });
+      res.send(aviso);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send( error);
+    }
+  },
 
+  async findPorMorador(req, res) {
+
+    const { condominio_id } = req.body
+
+    try {
+      const aviso = await Avisos.findAll({
+        include: [
+          {
+            association: "Condominio",
+            attributes: ["id", "name"],
+          },
+        ],
+        where: {
+          condominio_id: condominio_id
+        }
+      });
+      res.send(aviso);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ error: "Aviso não encontrado" });
+    }
+  },
 
   async store(req, res) {
 
-      const{titulo, mensagem, link, status, data} = req.body;
+    const {
+      titulo,
+      mensagem,
+      link,
+      status,
+      data,
+      condominio_id } = req.body;
 
-      
+    try {
 
-      try {
+      const condominio = await Condominio.findByPk(condominio_id)
 
-        let condominio= await Condominio.findByPk(condominio_id)
+      if (!condominio)
+        return res.status(404).send({ error: 'Condomínio não encontrado' })
 
-        if(!condominio)
-        return res.status(404).send({error:'Condomínio não encontrado'})
-
-        let aviso = await Avisos.findOne({
-          where:{
-              titulo:titulo,
-              mensagem:mensagem
-          }
+      let aviso = await Avisos.findOne({
+        where: {
+          titulo: titulo,
+          mensagem: mensagem
+        }
       })
 
-      if(aviso){
-          return res.status(400)
-          .send({error: "Este Aviso já está cadastrado"})
+      if (aviso) {
+        return res.status(400)
+          .send({ error: "Este Aviso já está cadastrado" })
       }
 
-      
+
       aviso = await Avisos.create({
-          titulo:titulo,
-          mensagem:mensagem,
-          link:link,
-          status:status,
-          data:data,
-          // condominio_id: condominio_id,
+        titulo: titulo,
+        mensagem: mensagem,
+        link: link,
+        status: status,
+        data: data,
+        condominio_id: condominio_id,
       })
 
       res.send({
 
-          aviso:{
-              avisoId: aviso.id,
-              titulo:aviso.titulo,
-              mensagem:aviso.mensagem,
-              link:aviso.link,
-              status:aviso.status,
-              data:aviso.data,
-          },
+        aviso: {
+          avisoId: aviso.id,
+          titulo: aviso.titulo,
+          mensagem: aviso.mensagem,
+          link: aviso.link,
+          status: aviso.status,
+          data: aviso.data,
+        },
 
-          condominio_id,
+        condominio_id,
       });
-      } catch (error) {
-        console.log(error)
-        res.status(500).send(error)
-      }
+    } catch (error) {
+      console.log(error)
+      res.status(500).send(error)
+    }
   },
 
   async update(req, res) {
 
-  const avisoId = req.params.id;
+    const avisoId = req.params.id;
 
-  const {titulo,mensagem,link,status,data} = req.body;
+    const { titulo, mensagem, link, status, data } = req.body;
 
-  try {
-    let aviso = await Avisos.findByPk(avisoId);
+    try {
+      let aviso = await Avisos.findByPk(avisoId);
 
-    if (!aviso) res.status(404).send({ error: "Aviso não encontrado" });
+      if (!aviso) res.status(404).send({ error: "Aviso não encontrado" });
 
-    aviso.titulo = titulo;
-    aviso.mensagem = mensagem;
-    aviso.link = link;
-    aviso.status = status;
-    aviso.data = data;
+      aviso.titulo = titulo;
+      aviso.mensagem = mensagem;
+      aviso.link = link;
+      aviso.status = status;
+      aviso.data = data;
 
-    aviso.save();
+      aviso.save();
 
-    //retornar resposta
-    res.status(204).send();
-  } catch (error) {
-    console.log(error);
-    res.status(500).send(error);
-  }
+      //retornar resposta
+      res.status(204).send();
+    } catch (error) {
+      console.log(error);
+      res.status(500).send(error);
+    }
   },
 
   async delete(req, res) {
-      const avisoId = req.params.id;
-      try {
-        let aviso = await Avisos.findByPk(avisoId);
+    const avisoId = req.params.id;
+    try {
+      let aviso = await Avisos.findByPk(avisoId);
 
-        if (!aviso)
-          return res.status(404).send({ error: "Aviso não encontrado" });
-          await aviso.destroy();
-  
-        res.status(204).send();
-      } catch (error) {
-        console.log(error);
-        res.status(500).send(error);
-      }
+      if (!aviso)
+        return res.status(404).send({ error: "Aviso não encontrado" });
+      await aviso.destroy();
+
+      res.status(204).send();
+    } catch (error) {
+      console.log(error);
+      res.status(500).send(error);
+    }
   },
 };

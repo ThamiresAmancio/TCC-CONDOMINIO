@@ -5,7 +5,7 @@ module.exports = {
 
   async index(req, res) {
 
-    const  {userId}  = req 
+    const { userId } = req
 
     try {
 
@@ -83,7 +83,7 @@ module.exports = {
         bloco_id: bloco_id
       })
 
-      res.send({
+      res.status(201).send({
 
         apartamento: {
           apartamentoId: apartamento.id,
