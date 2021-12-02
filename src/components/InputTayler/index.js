@@ -1,11 +1,12 @@
 import "./input.css";
 
-function InputTayler({ id, list, type, placeholder, label, value, handler, ...rest }) {
+function InputTayler({ id, name, list, type, placeholder, label, value, handler, ...rest }) {
   return (
     <>
       <div class="group">
         <input
           id={id}
+          name={name}
           list={list}
           placeholder={placeholder}
           typeof={type}

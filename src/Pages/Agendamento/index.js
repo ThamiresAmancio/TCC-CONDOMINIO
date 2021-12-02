@@ -32,7 +32,8 @@ function Agendamento() {
                 <button type="submit">
                     AGENDAR
                 </button>
-                <button type="button">
+                <button 
+                type="reset">
                     CANCELAR
                 </button>
             </form>

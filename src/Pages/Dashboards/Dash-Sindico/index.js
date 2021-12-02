@@ -21,6 +21,7 @@ import { IconLogount, SindicoMain } from "./styles";
 import { getUser, signOut } from "../../../services/securitySindico";
 import { ContentAvisoViewOfSindico, HeaderAvisoSindico } from "../../../components/AvisosViewOfSindico/styles";
 import Agendamento from "../../Agendamento";
+import Votacao from "../../Votacao";
 
 function DashboardSindico() {
 
@@ -42,7 +43,7 @@ function DashboardSindico() {
     setAvisos(avisos.filter(avisos => avisos.id !== id))
 
   }
-  
+
   function logout() {
     const removeUser = signOut();
     history.push("/Login");
@@ -60,10 +61,12 @@ function DashboardSindico() {
   const [isVendoAviso, setIsVendoAviso] = useState(false);
 
   const [isCadastrandoVisitante, setCadastrandoVisitante] = useState(false);
-  
+
   const [isPagamento, setPagamento] = useState(false);
 
   const [isVisualizar, setVisualizar] = useState(false);
+
+  const [IsCriandoVotacao, setIsCriandoVotacao] = useState(false);
   return (
     <ContentDashboard>
       <MenuDashboard>
@@ -82,10 +85,10 @@ function DashboardSindico() {
           notification_important
         </ButtonMenu>
         <ButtonMenu
-        onClick={()=> {
-          setIsAgendamento(true);
-        }}
-        className="material-icons" title="Agendamento">event</ButtonMenu>
+          onClick={() => {
+            setIsAgendamento(true);
+          }}
+          className="material-icons" title="Agendamento">event</ButtonMenu>
         <ButtonMenu
           title="Chat"
           className="material-icons"
@@ -115,9 +118,26 @@ function DashboardSindico() {
           <div hidden></div>
         )}
 
-        {isAgendamento?(
+        {IsCriandoVotacao ? (
           <>
-            <Agendamento/>
+            <Votacao
+              mensagem="Devemos Eleger um síndico?"
+            />
+            <BtnFecharModal
+              onClick={() => {
+                setIsCriandoVotacao(false);
+              }}
+            >
+              X
+            </BtnFecharModal>
+          </>
+        ) : (
+          <div hidden></div>
+        )}
+
+        {isAgendamento ? (
+          <>
+            <Agendamento />
             <BtnFecharModal
               onClick={() => {
                 setIsAgendamento(false)
@@ -126,7 +146,7 @@ function DashboardSindico() {
               X
             </BtnFecharModal>
           </>
-        ):(
+        ) : (
           <div hidden></div>
         )}
 
@@ -147,14 +167,8 @@ function DashboardSindico() {
         {isVendoAviso ? (
           <>
             {avisos?.map((avisos) => (
-              
+
               <>
-                {/* <AvisosVisaoDoSindico
-                  title={avisos.titulo}
-                  link={avisos.link}
-                  informacoes={avisos.mensagem}
-                  urgencia={avisos.status}
-                /> */}
 
                 <ContentAvisoViewOfSindico>
                   <HeaderAvisoSindico>
@@ -236,14 +250,14 @@ function DashboardSindico() {
       <HeaderDashboard>
         <div>
           <figure className="material-icons">
-              account_circle
+            account_circle
           </figure>
           <div>
-              <h1>{sindico.name}</h1>
-              <h3>{sindico.email}</h3>
+            <h1>{sindico.name}</h1>
+            <h3>{sindico.email}</h3>
           </div>
         </div>
-        <IconLogount onClick={() => logout()}/>
+        <IconLogount onClick={() => logout()} />
       </HeaderDashboard>
       <aside>
         <ButtonAside
@@ -254,9 +268,13 @@ function DashboardSindico() {
           <span className="material-icons">person_pin</span>
           <span>Visualizar moradores</span>
         </ButtonAside>
-        <ButtonAside>
+        <ButtonAside
+          onClick={() => {
+            setIsCriandoVotacao(true);
+          }}
+        >
           <span className="material-icons">how_to_vote</span>
-          <span>Votação online</span>
+          <span>Criar votação</span>
         </ButtonAside>
         <ButtonAside
           onClick={() => {

@@ -17,6 +17,7 @@ import { IconLogount } from "../Dash-Morador/styles";
 import { getUser, signOut } from "../../../services/securityMorador";
 import { useHistory } from "react-router";
 import Agendamento from "../../Agendamento";
+import Votacao from "../../Votacao";
 
 function DashboardMorador() {
 
@@ -27,6 +28,8 @@ function DashboardMorador() {
   const [avisos, setAvisos] = useState([]);
 
   const [agendamento, setAgendamento] = useState(false);
+
+  const [isVotacao, setIsVotacao] = useState(false);
 
   const morador = getUser();
   console.log(morador);
@@ -43,7 +46,7 @@ function DashboardMorador() {
 
   const [isPagandoMensalidade, setIsPagandoMensalidade] = useState(false);
 
-  function logout(){
+  function logout() {
     const removeUser = signOut()
     history.push('/Login')
   }
@@ -66,20 +69,20 @@ function DashboardMorador() {
         <ButtonMenu className="material-icons" title="Agendamento"
           onClick={() => {
             setAgendamento(true);
-        }}>
+          }}>
           event
         </ButtonMenu>
         <ButtonMenu className="material-icons" title="Chat" onClick={() => {
-            setChat(true);
-          }}
+          setChat(true);
+        }}
         >question_answer</ButtonMenu>
         <ButtonMenu className="material-icons" title="Denúncias">feedback</ButtonMenu>
       </MenuDashboard>
       <MoradorMain>
 
-        {agendamento?(
+        {agendamento ? (
           <>
-            <Agendamento/>
+            <Agendamento />
             <BtnFecharModal
               onClick={() => {
                 setAgendamento(false);
@@ -88,7 +91,7 @@ function DashboardMorador() {
               X
             </BtnFecharModal>
           </>
-        ):(<div hidden></div>)}
+        ) : (<div hidden></div>)}
 
         {isPagandoMensalidade ? (
           <>
@@ -127,6 +130,23 @@ function DashboardMorador() {
           <div hidden></div>
         )}
 
+        {isVotacao ? (
+          <>
+            <Votacao 
+            mensagem="Olá devemos eleger um novo sidico para o condomínio?"/>
+
+            <BtnFecharModal
+              onClick={() => {
+                setIsVotacao(false);
+              }}
+            >
+              X
+            </BtnFecharModal>
+          </>
+        ) : (
+          <div hidden></div>
+        )}
+
         {isCadastrandoVisitante ? (
           <>
             <RegisterVisitanteMorador />
@@ -160,14 +180,14 @@ function DashboardMorador() {
       <HeaderDashboard>
         <div>
           <figure className="material-icons">
-              account_circle
+            account_circle
           </figure>
           <div>
-              <h1>{morador.name}</h1>
-              <h3>{morador.email}</h3>
+            <h1>{morador.name}</h1>
+            <h3>{morador.email}</h3>
           </div>
         </div>
-        <IconLogount onClick={() => logout()}/>
+        <IconLogount onClick={() => logout()} />
       </HeaderDashboard>
       <aside>
         <ButtonAside
@@ -178,7 +198,9 @@ function DashboardMorador() {
           <span className="material-icons">person_add</span>
           <span>Adicionar visitantes</span>
         </ButtonAside>
-        <ButtonAside>
+        <ButtonAside onClick={() => {
+          setIsVotacao(true);
+        }}>
           <span className="material-icons">how_to_vote</span>
           <span>Votação online</span>
         </ButtonAside>
@@ -191,7 +213,7 @@ function DashboardMorador() {
           <span>Pagar Mensalidade</span>
         </ButtonAside>
       </aside>
-    </ContentDashboard>
+    </ContentDashboard >
   );
 }
 
