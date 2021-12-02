@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-
 import InputTayler from "../../../components/InputTayler";
 import { api } from "../../../services/api";
 import { getUser } from "../../../services/securitySindico";

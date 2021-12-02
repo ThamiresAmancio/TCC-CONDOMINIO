@@ -22,7 +22,7 @@ import RegisterVisitante from './Pages/Register/Visitante';
 import VisualizarMoradores from './Pages/VisualizarMoradores';
 import DashboardPorteiros from './Pages/Dashboards/Dash-Porteiros';
 import { Redirect } from "react-router";
-import { getUser,isSignedIn} from './services/security'
+import { isSignedIn} from './services/security'
 
 function PrivateRoute({ role, children, ...rest }) {
 

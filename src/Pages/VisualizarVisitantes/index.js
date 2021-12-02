@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { api } from "../../services/api";
-import { ContainerVisualizar, Header, IconEdit, IconRemove, List , Text } from "./style";
+import { ContainerVisualizar, Header, List , Text } from "./style";
 
 function VisualizarVisitantes() {
 

@@ -5,7 +5,7 @@ export const ContentAgendamento = styled.section`
     width: 85%;
     min-height: 31.25rem;
     height: 70%;
-    border-radius: 3rem;
+    border-radius: 2rem;
     box-shadow: 5px 5px 15px 5px rgba(28,28,28,0.32);
     padding: 2% 4%;
     display: flex;
@@ -19,7 +19,7 @@ export const ContentAgendamento = styled.section`
         justify-content: center;
         align-items: center;
         background-color: #fff;
-        border-bottom: 0.07rem solid #1c1c1c;
+        border-bottom: .3rem solid #1c1c1c;
         margin-bottom: 1rem;
 
         >h1{
@@ -29,19 +29,26 @@ export const ContentAgendamento = styled.section`
         }
     }
 
-    >div:first-of-type{
+    >form{
+        display: flex;
+        flex-direction: column;
+        gap: 3%;
+    }
+
+    form>div:first-of-type{
         width: 65%;
         margin-bottom: 1rem;
     }
 
-    >div:first-of-type+div{
-        width: 40%;
+    form>div:first-of-type+div{
+        width: 20%;
         margin-bottom: 1rem;
     }
 
-    >#boxHorario{
+    form>#boxHorario{
         >label{
             font-weight: bold;
+            user-select: none;
         }
 
         >select:first-of-type{
@@ -49,7 +56,7 @@ export const ContentAgendamento = styled.section`
         }
     }
 
-    >button:first-of-type{
+    form>button:first-of-type{
         background-color: var(--colorPrimary);
         
         :hover{
@@ -58,7 +65,7 @@ export const ContentAgendamento = styled.section`
         }
     }
 
-    >button:last-of-type{
+    form>button:last-of-type{
         background-color: transparent;
         color: #1c1c1c;
         border: solid 0.06rem #1c1c1c;
@@ -68,10 +75,10 @@ export const ContentAgendamento = styled.section`
         }
     }
 
-    >button{
+    form>button{
         margin-left: auto;
         margin-right: auto;
-        height: 3rem;
+        height: 4rem;
         border-radius: 1.25rem;
         color: #fff;
 

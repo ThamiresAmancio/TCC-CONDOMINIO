@@ -20,6 +20,7 @@ import VisualizarMoradores from "../../VisualizarMoradores";
 import { IconLogount, SindicoMain } from "./styles";
 import { getUser, signOut } from "../../../services/securitySindico";
 import { ContentAvisoViewOfSindico, HeaderAvisoSindico } from "../../../components/AvisosViewOfSindico/styles";
+import Agendamento from "../../Agendamento";
 
 function DashboardSindico() {
 
@@ -53,9 +54,13 @@ function DashboardSindico() {
   const [isChat, setChat] = useState(false);
   //ja este aviso é como ele vai ser setado
   const [isCreateAviso, setCreateAviso] = useState(false);
+
+  const [isAgendamento, setIsAgendamento] = useState(false);
+
   const [isVendoAviso, setIsVendoAviso] = useState(false);
 
   const [isCadastrandoVisitante, setCadastrandoVisitante] = useState(false);
+  
   const [isPagamento, setPagamento] = useState(false);
 
   const [isVisualizar, setVisualizar] = useState(false);
@@ -76,7 +81,11 @@ function DashboardSindico() {
         >
           notification_important
         </ButtonMenu>
-        <ButtonMenu className="material-icons" title="Agendamento">event</ButtonMenu>
+        <ButtonMenu
+        onClick={()=> {
+          setIsAgendamento(true);
+        }}
+        className="material-icons" title="Agendamento">event</ButtonMenu>
         <ButtonMenu
           title="Chat"
           className="material-icons"
@@ -103,6 +112,21 @@ function DashboardSindico() {
             </BtnFecharModal>
           </>
         ) : (
+          <div hidden></div>
+        )}
+
+        {isAgendamento?(
+          <>
+            <Agendamento/>
+            <BtnFecharModal
+              onClick={() => {
+                setIsAgendamento(false)
+              }}
+            >
+              X
+            </BtnFecharModal>
+          </>
+        ):(
           <div hidden></div>
         )}
 
