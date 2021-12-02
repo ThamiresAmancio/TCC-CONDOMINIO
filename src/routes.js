@@ -72,7 +72,7 @@ routes.delete("/visitantes/morador/:id", visitanteMoradorControler.delete);
 
 //rotas públicas condominio
 routes.post("/condominio/:id", cadastradoCondominioCoontroller.store);
-routes.get("/condominios/:id", cadastradoCondominioCoontroller.index);
+
 
 routes.get("/condominio/:id", cadastradoCondominioCoontroller.find);
 routes.put("/condominios/:id", cadastradoCondominioCoontroller.update);
@@ -105,13 +105,12 @@ routes.put("/avisos/:id", avisoController.update);
 routes.delete("/avisos/:id", avisoController.delete);
 
 
-routes.get("/blocos/:id", blocoController.index);
-routes.get("/apartamentos/:id", apartamentoController.index);
+
 
 routes.use(authMiddleware)
 
-
-
-
+routes.get("/blocos", blocoController.index);
+routes.get("/apartamentos", apartamentoController.index);
+routes.get("/condominios", cadastradoCondominioCoontroller.index);
 
 module.exports = routes;

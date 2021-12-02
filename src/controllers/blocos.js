@@ -6,10 +6,9 @@ module.exports = {
 
   async index(req, res) {
   
+    const  {userId}  = req 
     try {
     
-      const  userId  = req.params.id
-
       const condominios = await Condominio.findAll({
         where: {
           admin_id: userId
@@ -31,7 +30,7 @@ module.exports = {
 
       if (!bloco) return res.status(404).send({ error: 'bloco não encontrado' })
 
-      return res.status(200).send({ Blocos: bloco })
+      return res.status(200).send(bloco)
     } catch (error) {
       res.status(500).send({ error });
     }

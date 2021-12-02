@@ -5,9 +5,9 @@ module.exports = {
 
   async index(req, res) {
 
-    try {
+    const  {userId}  = req 
 
-      const  userId  = req.params.id
+    try {
 
       const apartamento = await apartamentos.findAll({
         attributes: ["id", "numero"],
