@@ -34,7 +34,7 @@ module.exports = {
 
     try {
       const sindico = await Sindico.findByPk(userId)
-console.log(sindico)
+
       const apartamento = await Apartamento.findOne({
         where: {
           id: sindico.ApartamentoId
@@ -54,7 +54,9 @@ console.log(sindico)
       // })
 
       const morador = await Morador.findAll({
-        apartamento_id: apartamento.id
+        where: {
+          apartamento_id: apartamento.id
+        }
       })
 
       res.send(morador);

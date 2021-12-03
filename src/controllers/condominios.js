@@ -5,19 +5,21 @@ module.exports = {
 
   async index(req, res) {
  
-
-      const  {userId}  = req
-    
       try {
+
+        const id = req.params.id
+        
+        let admin= await CadastroAdmin.findByPk(id)
+
+        if(!admin)
+        return res.status(404).send({error:'Admin não encontrado'})
 
         const condominio = await CadastroCondominio.findAll({
           where:{
-            admin_id: userId
+            admin_id: id
           }
         });
-
         res.send(condominio);
-        
         } catch (error) {
           console.log(error);
           res.status(500).send({ error: "Condominio não encontrado"});
