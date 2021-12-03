@@ -113,5 +113,6 @@ routes.get("/apartamentos", apartamentoController.index);
 routes.get("/condominios", cadastradoCondominioCoontroller.index);
 routes.get("/buscar_moradores", cadastroMoradorController.findMorador);
 routes.get("/buscar_porteiros", porteiroController.findPorteiro);
+routes.get("/buscar_sindicos", sindicoController.findSindico);
 
 module.exports = routes;

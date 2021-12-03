@@ -1,8 +1,2 @@
-listar os moradores/porteiro/sindico conforme o condominio dele
-
-listar aviso de acordo com condominio {
-    só listar os avisos referente aos moradores do próprio
-}
-
 agendamento de datas para usar as coisas de um usuario somente para o condominio dele
 

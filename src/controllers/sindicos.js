@@ -1,4 +1,6 @@
 const CadastroSindico = require("../models/Sindico");
+const Condominio = require("../models/Condomino");
+const Blocos = require("../models/Bloco")
 const bcrypt = require("bcryptjs")
 const { generateToken } = require("../util");
 const Apartamento = require("../models/Apartamento");
@@ -46,6 +48,57 @@ module.exports = {
           res.status(500).send({ error });
         }
 
+    },
+
+    async findSindico(req, res) {
+
+      const { userId } = req
+  
+      try {
+  
+        const condominio = await Condominio.findOne({
+          where: {
+            admin_id: userId
+          }
+        })
+  
+        
+
+        const blocos = await Blocos.findAll({
+          where: {
+            condominio_id: condominio.id
+          }
+        })
+
+        const blocosID = blocos.map((data) => {
+          const { id, ...props } = data.dataValues
+          return id
+        })
+
+        const apartamento = await Apartamento.findAll({
+          where: {
+            bloco_id: blocosID
+          }
+        })
+
+        const apartamentoID = apartamento.map((data) => {
+          const { id, ...props } = data.dataValues
+          return id
+        })
+
+
+        const sindico = await CadastroSindico.findAll({
+          where: {
+            apartamento_id: apartamentoID
+          }
+        })
+  
+        res.send(sindico);
+        
+      } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+      }
     },
 
     async store(req, res) {
