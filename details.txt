@@ -1,2 +1,6 @@
 agendamento de datas para usar as coisas de um usuario somente para o condominio dele
 
+
+
+sindico e morador cria o agendamento 
+agendamento unico

@@ -28,6 +28,55 @@ module.exports = {
     }
   },
 
+  async findMoradorAdmin(req, res) {
+
+    const { userId } = req
+
+    try {
+
+      const condominio = await Condominio.findOne({
+        where: {
+          admin_id: userId
+        }
+      })
+
+      const blocos = await Bloco.findAll({
+        where: {
+          condominio_id: condominio.id
+        }
+      })
+      
+      const blocosID = blocos.map((data) => {
+        const { id, ...props } = data.dataValues
+        return id
+      })
+      
+      const apartamento = await Apartamento.findAll({
+        where: {
+          bloco_id: blocosID
+        }
+      })
+      
+      const apartamentoID = apartamento.map((data) => {
+        const { id, ...props } = data.dataValues
+        return id
+      })
+      
+      const morador = await Morador.findAll({
+        where: {
+          apartamento_id: apartamentoID
+        }
+      })
+      console.log(morador)
+      res.send(morador);
+      
+    } catch (error) {
+      console.log(error);
+      res.status(500).send(error);
+    }
+  },
+
+
   async findMorador(req, res) {
 
     const { userId } = req
