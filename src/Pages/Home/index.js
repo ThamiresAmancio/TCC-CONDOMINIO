@@ -45,17 +45,99 @@ function Home() {
 
                 </figure>
                 <main class="box-3">
-                    <h1>
-                        Nossos serviços
-                    </h1>
-                    <p>
-                        Nossos serviços são acessados em duas maneiras:
-                    <br/>
-                        <u>Sistema Web</u> e <u>Aplicativo Mobile</u> (android).
-                    <br/>
-                        Para acessa-lo informe ao administrador do seu condomínio que deseja um login.
-                    </p>
+                    <h1>Nossos Serviços</h1>
+                    <div>
+                        <div>
+                            <h1>
+                                Moradores
+                            </h1>
+                            <span class="material-icons">
+                                person
+                            </span>
+                        </div>
+                        <div>
+                            <p>
+                                Pagamento do condomínio
+                            </p>
+                            <p>
+                                Cadastrar Visitantes
+                            </p>
+                            <p>
+                                Agendamentos
+                            </p>
+                            <p>
+                                Votações
+                            </p>
+                            <p>
+                                Avisos
+                            </p>
+                            <p>
+                                Chat
+                            </p>
+                        </div>
+                    </div>
 
+                    <div>
+                        <div>
+                            <h1>
+                                Síndico
+                            </h1>
+                            <span class="material-icons">
+                                support_agent
+                            </span>
+                        </div>
+                        <div>
+                            <p>
+                                Pagamento do condomínio
+                            </p>
+                            <p>
+                                Cadastrar Visitantes
+                            </p>
+                            <p>
+                                Agendamentos
+                            </p>
+                            <p>
+                                Votações
+                            </p>
+                            <p>
+                                Avisos
+                            </p>
+                            <p>
+                                Chat
+                            </p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div>
+                            <h1>
+                                Admin
+                            </h1>
+                            <span class="material-icons">
+                                admin_panel_settings
+                            </span>
+                        </div>
+                        <div>
+                            <p>
+                                Pagamento do condomínio
+                            </p>
+                            <p>
+                                Cadastrar Visitantes
+                            </p>
+                            <p>
+                                Agendamentos
+                            </p>
+                            <p>
+                                Votações
+                            </p>
+                            <p>
+                                Avisos
+                            </p>
+                            <p>
+                                Chat
+                            </p>
+                        </div>
+                    </div>
                 </main>
                 <figure class="box-2 figure-right">
 

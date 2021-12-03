@@ -163,43 +163,53 @@ body {
         align-items: center;
         justify-content: center;
         background-color: var(--colorPrimary);
-
     }
 
     .section-services > main{
         width: 100%;
         height: 100%;
         grid-area: main-services;
-        text-align: justify;
-        color: white;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas: "morador sindico admin";
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+    } 
+
+    .section-services>main>h1{
+        position: absolute;
+        top: 0%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1.2rem;
+        color: #fff;
+        margin-top: 1%;
+    }
+
+    .section-services>main>div{
+        height: 90%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
-        grid-gap: 1%;
-        gap: 1%;
-        line-height: 10px;
-        text-align: start;
-        padding: 2% 2%;
-        position: relative;
+        width: 33.33%;
     }
     
-    .section-services > main > p{
-        text-align: center;
-        font-size: 1.rem;
-        line-height: 2rem;
-    }
-    .section-services > main > h1{
-        position: absolute;
-        top: 23%;
-        text-decoration: underline;
-        text-underline-position: under;
+    .section-services>main>div:first-of-type{
+        grid-area: morador;
+        background-color: red;
     }
 
-    h1{
-        font-size: 1.5rem;
+    .section-services>main>div:first-of-type+div{
+        grid-area: sindico;
+        background-color: beige;
     }
 
+    .section-services>main>div:last-of-type{
+        grid-area: admin;
+        background-color: red;
+    }
+    
     .figure-left{
         width: 100%;
         height: 80%;
