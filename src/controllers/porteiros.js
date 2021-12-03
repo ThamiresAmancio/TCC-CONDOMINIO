@@ -15,6 +15,31 @@ module.exports = {
     }
   },
 
+  async findPorteiro(req, res) {
+
+    const { userId } = req
+
+    try {
+
+      const condominio = await Condominio.findOne({
+        where: {
+          admin_id: userId
+        }
+      })
+
+      const porteiro = await CadastroPorteiro.findAll({
+        where: {
+          condominio_id: condominio.id
+        }
+      })
+
+      res.send(porteiro);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send(error);
+    }
+  },
+
   async find(req, res) {
     const porteiroId = req.params.id;
 
@@ -36,15 +61,15 @@ module.exports = {
 
   async store(req, res) {
     //recebendo os dados no body
-    const { name, telephone, email, password, condominio_id} = req.body;
+    const { name, telephone, email, password, condominio_id } = req.body;
 
     // const { id } = req.params;
 
-   try {
-       let condominio = await Condominio.findByPk(condominio_id);
+    try {
+      let condominio = await Condominio.findByPk(condominio_id);
 
-       if (!condominio)
-         return res.status(404).send({ error: "Condomínio não encontrado" });
+      if (!condominio)
+        return res.status(404).send({ error: "Condomínio não encontrado" });
 
       let porteiro = await CadastroPorteiro.findOne({
         where: {
@@ -59,13 +84,13 @@ module.exports = {
           .send({ error: "Este Porteiro já está cadastrado" });
       }
 
-      
+
 
       const passwordHash = bcrypt.hashSync(password);
 
       console.log('aaaaaaaa' + condominio_id)
       porteiro = await CadastroPorteiro.create({
-        
+
         name: name,
         telephone: telephone,
         email: email,
