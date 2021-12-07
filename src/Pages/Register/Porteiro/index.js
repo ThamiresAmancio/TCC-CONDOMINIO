@@ -15,7 +15,7 @@ function RegisterPorteiros() {
   const [condominios, setCondominios] = useState([]);
 
   useEffect(() => {
-    api.get(`/condominios/${admin.adminId}`).then(({ data }) => {
+    api.get(`/condominios`).then(({ data }) => {
       setCondominios(data);
     });
   }, []);

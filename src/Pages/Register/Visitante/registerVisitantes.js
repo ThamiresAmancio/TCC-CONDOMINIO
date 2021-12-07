@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
-
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import InputTayler from "../../../components/InputTayler";
 import { api } from "../../../services/api";
 import { getUser } from "../../../services/securityMorador";
@@ -53,6 +54,7 @@ function RegisterVisitanteMorador() {
 
     try {
       const response = await api.post(`/visitantes/morador/${morador.moradorId}`, data);
+      toast.POSITION("Visitante Cadastrado com sucesso");
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -60,6 +62,9 @@ function RegisterVisitanteMorador() {
   };
 
   return (
+    <>
+          <ToastContainer/>
+
     <ContentVisitante>
       <h1>Registrar um visitante</h1>
       <div>
@@ -101,6 +106,7 @@ function RegisterVisitanteMorador() {
         Finalizar Cadastro
       </button>
     </ContentVisitante>
+    </>
   );
 }
 

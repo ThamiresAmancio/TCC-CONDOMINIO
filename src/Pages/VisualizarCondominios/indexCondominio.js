@@ -11,7 +11,7 @@ function VisualizarCondominios(){
     const admin = getUser()
     
     useEffect(()=>{
-        api.get(`/condominios/${admin.adminId}`).then(({data}) =>{
+        api.get(`/condominios`).then(({data}) =>{
             setCondominios(data)
         });
     },[]);

@@ -6,11 +6,14 @@ import { api } from "../../../services/api";
 import InputHoshi from "../../../components/input";
 import { getUser } from "../../../services/security";
 function RegisterApto() {
+
   const admin = getUser();
+
   const [blocos, setBlocos] = useState([]);
+
   useEffect(() => {
     try {
-      api.get(`/blocos/${admin.adminId}`).then(({ data }) => {
+      api.get(`/blocos`).then(({ data }) => {
         setBlocos(data);
       });
     } catch (error) {
@@ -18,9 +21,9 @@ function RegisterApto() {
     }
   }, []);
 
+
   const history = useHistory();
   console.log(blocos)
-  
   
   const [apartamentos, setApartamentos] = useState({
     numero: "",

@@ -8,7 +8,7 @@ function VisualizarPorteiros() {
     const [porteiros, setPorteiros] = useState([])
     
     useEffect(()=>{
-        api.get("/porteiros").then(({data}) =>{
+        api.get("/buscar_porteiros").then(({data}) =>{
             setPorteiros(data)
         });
     },[]);

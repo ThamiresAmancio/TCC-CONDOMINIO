@@ -16,8 +16,9 @@ function RegisterSindico() {
   const [apartamentos, setApartamentos] = useState([]);
 
   useEffect(() => {
-    api.get(`/apartamentos/${admin.adminId}`).then(({ data }) => {
+    api.get(`/apartamentos`).then(({ data }) => {
       setApartamentos(data);
+      console.log(data)
     });
   }, []);
 

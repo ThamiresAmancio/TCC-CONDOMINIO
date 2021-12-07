@@ -24,15 +24,15 @@ import DashboardPorteiros from './Pages/Dashboards/Dash-Porteiros';
 import { Redirect } from "react-router";
 import { isSignedIn} from './services/security'
 
-function PrivateRoute({ role, children, ...rest }) {
+// function PrivateRoute({ role, children, ...rest }) {
 
-         if (!isSignedIn()) {
-             return <Redirect to="/Login" />
-         }
-        else{
-             return <Route {...rest}>{children} </Route>;
-     }
-}
+//          if (!isSignedIn()) {
+//              return <Redirect to="/Login" />
+//          }
+//         else{
+//              return <Route {...rest}>{children} </Route>;
+//      }
+// }
 
 function Rotas() {
 
@@ -60,9 +60,9 @@ function Rotas() {
                 <Route exact path="/Register/Admin">
                     <RegisterAdmin />
                 </Route>
-                <PrivateRoute exact path="/Dashboard/Admin">
+                <Route exact path="/Dashboard/Admin">
                     <AdminDashboard/>
-                </PrivateRoute>
+                </Route>
                 <Route exact path="/Dashboard/Morador">
                     <DashboardMorador/>
                 </Route>
