@@ -23,6 +23,7 @@ import VisualizarMoradores from './Pages/VisualizarMoradores';
 import DashboardPorteiros from './Pages/Dashboards/Dash-Porteiros';
 import { Redirect } from "react-router";
 import { isSignedIn} from './services/security'
+import Testeee from './Pages/default/teste';
 
 // function PrivateRoute({ role, children, ...rest }) {
 
@@ -104,6 +105,9 @@ function Rotas() {
                 </Route>
                 <Route exact path="/Dashboard/Porteiros">
                     <DashboardPorteiros/>
+                </Route>
+                <Route exact path="/Default/Teste">
+                    <Testeee/>
                 </Route>
             </Switch>
         </BrowserRouter>

@@ -7,6 +7,7 @@ import { api } from "../../../services/api";
 import { signIn } from "../../../services/security"
 import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Inputinha from '../../../components/Inputinha';
 
 function LoginMorador() {
     const history = useHistory();
@@ -73,11 +74,11 @@ function LoginMorador() {
                 <form onSubmit={handleSubmit}>
                     <div style={{ marginBottom: '1.5rem' }}>
                         <label for="email">Email:</label>
-                        <InputHoshi id="email" name="email"  type="email" value={login.email} handler={handleInput} required />
+                        <Inputinha placeholder=" " id="email" name="email"  type="email" value={login.email} handler={handleInput} required />
                     </div>
                     <div style={{ marginBottom: '10%' }}>
                         <label for="password">Senha:</label>
-                        <InputHoshi id="password" name="passwor" type="password" value={login.password} handler={handleInput} required/>
+                        <Inputinha placeholder=" " id="password" name="passwor" type="password" value={login.password} handler={handleInput} required/>
                     </div>
                     <button style={{marginBottom: '2%'}}>continuar</button>
 
