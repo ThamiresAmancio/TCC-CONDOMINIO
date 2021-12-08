@@ -15,7 +15,7 @@ import { mascaraCpf } from "../../../utils";
     const [apartamentos, setApartamentos] = useState([]);
   
     useEffect(() => {
-      api.get(`/apartamentos`).then(({ data }) => {
+      api.get(`/apartamentos/${admin.adminId}`).then(({ data }) => {
         setApartamentos(data);
       });
     }, []);

@@ -13,7 +13,7 @@ function AvisosVisaoDoSindico({ title, link, informacoes, urgencia }) {
   const [avisosVIew, setAvisosView] = useState([]);
 
   useEffect(() => {
-    api.get("/avisos").then(({ data }) => {
+    api.get("/buscar_avisos").then(({ data }) => {
       setAvisosView(data);
     });
   }, []);

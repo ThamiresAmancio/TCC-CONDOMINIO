@@ -9,11 +9,13 @@ function RegisterApto() {
 
   const admin = getUser();
 
+  console.log(admin)
+
   const [blocos, setBlocos] = useState([]);
 
   useEffect(() => {
     try {
-      api.get(`/blocos`).then(({ data }) => {
+      api.get(`/blocos/${admin.adminId}`).then(({ data }) => {
         setBlocos(data);
       });
     } catch (error) {
@@ -23,6 +25,7 @@ function RegisterApto() {
 
 
   const history = useHistory();
+
   console.log(blocos)
   
   const [apartamentos, setApartamentos] = useState({
@@ -30,28 +33,32 @@ function RegisterApto() {
     bloco_id: "",
   });
 
-  const [isLoading, setIsLoading] = useState(false);
+  console.log(apartamentos)
+
   const [blocoId, setBlocoId] = useState(undefined);
+
   const handleInput = (e) => {
     setApartamentos({ ...apartamentos, [e.target.id]: e.target.value });
   };
+
   const handleBlocoSelId = (e) => {
     setBlocoId(e.target.value);
   };
+
   const handleSubmit = async () => {
-    setIsLoading(true);
+
     try {
       const {numero} = apartamentos;
       const response = await api.post(`/apartamentos`, {
         numero,
         bloco_id: blocoId,
       });
-      setIsLoading(false);
+
+      console.log(response)
       history.push("/Dashboard/Admin");
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
-      setIsLoading(false);
     }
   };
   return (
@@ -90,7 +97,7 @@ function RegisterApto() {
               </label>
             </div>
             <div className="btn-post">
-              <button type="submit">
+              <button>
                 Finalizar Cadastro
                 <span className="material-icons">check_circle_outline</span>
               </button>
