@@ -45,7 +45,7 @@ module.exports = {
   },
     
   down: async (queryInterface, Sequelize) => {
-   
+
        queryInterface.dropTable('admins');
 
   }

@@ -5,11 +5,13 @@ module.exports = {
 
   async index(req, res) {
 
-    const  {userId} = req;
+    // const  {userId} = req;
 
     try {
 
-      // const  userId = req.params.id
+      const  userId = req.params.id
+
+      if(!userId) return res.status(404).send({error:'User não encontrado'});
 
       const apartamento = await apartamentos.findAll({
         attributes: ["id", "numero"],

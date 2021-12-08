@@ -6,11 +6,11 @@ module.exports = {
 
   async index(req, res) {
 
-    const {userId} = req;
+    // const {userId} = req;
   
     try {
 
-      // const  userId = req.params.id
+      const  userId = req.params.id
       
       const condominios = await Condominio.findAll({
         where: {

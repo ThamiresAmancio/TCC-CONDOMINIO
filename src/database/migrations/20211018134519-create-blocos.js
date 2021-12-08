@@ -33,6 +33,7 @@ module.exports = {
     
   
   down: async (queryInterface, Sequelize) => {
+    queryInterface.removeColumn('condominios', "condominio_id")
        queryInterface.dropTable('blocos');
   }
 };

@@ -87,17 +87,26 @@ routes.delete("/moradores/:id", cadastroMoradorController.delete);
 
 //apartamentos
 routes.post("/apartamentos", apartamentoController.store );
+
 routes.get("/apartamento/:id", apartamentoController.find);
+
 routes.put("/apartamentos/:id", apartamentoController.update);
+
 routes.delete("/apartamentos/:id", apartamentoController.delete);
-// routes.get("/apartamentos/:id", apartamentoController.index);
+
+routes.get("/apartamentos/:id", apartamentoController.index);
 
 //rotas bloco
 routes.post("/blocos", blocoController.store );
-// routes.get("/blocos/:id", blocoController.index);
+
+routes.get("/blocos/:id", blocoController.index);
+
 routes.get("/bloco/:id", blocoController.find);
+
 routes.put("/blocos/:id", blocoController.update);
+
 routes.delete("/blocos/:id", blocoController.delete);
+
 
 
 routes.post("/avisos", avisoController.store);
@@ -109,8 +118,8 @@ routes.delete("/avisos/:id", avisoController.delete);
 
 routes.use(authMiddleware)
 
- routes.get("/blocos", blocoController.index);
-routes.get("/apartamentos", apartamentoController.index);
+// routes.get("/blocos", blocoController.index);
+// routes.get("/apartamentos", apartamentoController.index);
 routes.get("/condominios", cadastradoCondominioCoontroller.index);
 routes.get("/buscar_moradores", cadastroMoradorController.findMorador);
 routes.get("/buscar_porteiros", porteiroController.findPorteiro);
