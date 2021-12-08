@@ -51,6 +51,9 @@ function Home() {
                             <h1>
                                 Moradores
                             </h1>
+                        </div>
+
+                        <div>
                             <span class="material-icons">
                                 person
                             </span>
@@ -63,13 +66,13 @@ function Home() {
                                 Cadastrar Visitantes
                             </p>
                             <p>
-                                Agendamentos
+                                Efetuar agendamentos
                             </p>
                             <p>
-                                Votações
+                                Realizar votações
                             </p>
                             <p>
-                                Avisos
+                                Receber avisos
                             </p>
                             <p>
                                 Chat
@@ -82,25 +85,28 @@ function Home() {
                             <h1>
                                 Síndico
                             </h1>
+                        </div>
+
+                        <div>
                             <span class="material-icons">
                                 support_agent
                             </span>
                         </div>
                         <div>
                             <p>
-                                Pagamento do condomínio
+                                Criar votações
                             </p>
                             <p>
-                                Cadastrar Visitantes
+                                Criar avisos
+                            </p>
+                            <p>
+                                Cadastrar visitantes
+                            </p>
+                            <p>
+                                Visualizar moradores
                             </p>
                             <p>
                                 Agendamentos
-                            </p>
-                            <p>
-                                Votações
-                            </p>
-                            <p>
-                                Avisos
                             </p>
                             <p>
                                 Chat
@@ -113,28 +119,31 @@ function Home() {
                             <h1>
                                 Admin
                             </h1>
+                        </div>
+
+                        <div>
                             <span class="material-icons">
                                 admin_panel_settings
                             </span>
                         </div>
                         <div>
                             <p>
-                                Pagamento do condomínio
+                                Cadastrar condomínio
                             </p>
                             <p>
-                                Cadastrar Visitantes
+                                Cadastrar apartamento
                             </p>
                             <p>
-                                Agendamentos
+                                Cadastrar blocos
                             </p>
                             <p>
-                                Votações
+                                Cadastrar moradores
                             </p>
                             <p>
-                                Avisos
+                                Cadastrar síndicos
                             </p>
                             <p>
-                                Chat
+                                Cadastrar porteiros
                             </p>
                         </div>
                     </div>

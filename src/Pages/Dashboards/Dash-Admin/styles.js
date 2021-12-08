@@ -100,7 +100,7 @@ export const ButtonActionDashboard = styled.button`
 
 
 export const IconLogount = styled(RiLoginBoxLine)`
-    font-size: 30px;
+    font-size: 50px;
     display: flex;
     color: white;
     align-items: center;

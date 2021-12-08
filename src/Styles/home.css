@@ -174,6 +174,8 @@ body {
         position: relative;
         display: flex;
         align-items: flex-end;
+        justify-content: space-evenly;
+        padding: 1% 0%;
     } 
 
     .section-services>main>h1{
@@ -184,30 +186,95 @@ body {
         font-size: 1.2rem;
         color: #fff;
         margin-top: 1%;
+        justify-content: space-evenly;
     }
 
+    
     .section-services>main>div{
         height: 90%;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        width: 33.33%;
+        width: 30%;
+        border-radius: 0.7rem;
+        background: green;
+        box-shadow: 5px 5px 15px 5px #008000;
     }
     
+    .section-services>main>div>div:first-child{
+        height: 15%;
+        width: 100%;
+        border-top-left-radius: .5rem;
+        border-top-right-radius: .5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--colorPrimary);
+    }
+
+    .section-services>main>div>div:first-child>h1{
+        font-size: 1.15rem;
+        font-weight: 600;
+
+        @media only screen and (min-width: 1500) {
+            font-size: 1.5rem;
+        }
+    }
+
+    .section-services>main>div>div:nth-child(2){
+        height: 30%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .section-services>main>div>div:nth-child(2)>span{
+        font-size: 5rem;
+        color: #fefefe;
+
+        @media only screen and (min-width: 1500) {
+            font-size: 7rem;
+        }
+    }
+
+    .section-services>main>div>div:last-child{
+        background: green;
+        width: 100%;
+        height: 55%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        grid-gap: 2%;
+        gap: 3%;
+        border-end-end-radius: 0.7rem;
+        border-end-start-radius: 0.7rem;
+        padding: 2%;
+    }
+
+    .section-services>main>div>div:last-child>p{
+        width: 100%;
+        height: 15%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--colorPrimary);
+        color: #fefefe;
+        text-align: center;
+        border-radius: 0.5rem;
+    }
+
     .section-services>main>div:first-of-type{
         grid-area: morador;
-        background-color: red;
     }
 
     .section-services>main>div:first-of-type+div{
         grid-area: sindico;
-        background-color: beige;
     }
 
     .section-services>main>div:last-of-type{
         grid-area: admin;
-        background-color: red;
     }
     
     .figure-left{
