@@ -4,7 +4,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     
-      await queryInterface.createTable('visitantes_moradors', 
+      await queryInterface.createTable('visitante_moradors', 
         { 
           
           
@@ -52,7 +52,7 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     
     queryInterface.removeColumn('moradors', "morador_id")
-      await queryInterface.dropTable('visitantes_moradors');
+      await queryInterface.dropTable('visitante_moradors');
      
   }
 };

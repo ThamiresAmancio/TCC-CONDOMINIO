@@ -51,7 +51,7 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     
      queryInterface.removeColumn('sindicos', "sindico_id")
-      await queryInterface.dropTable('visitantes');
+      await queryInterface.dropTable('visitantes_sindicos');
      
   }
 };
