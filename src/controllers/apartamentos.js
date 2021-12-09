@@ -1,5 +1,7 @@
 const apartamentos = require("../models/Apartamento");
 const Bloco = require("../models/Bloco");
+const Condominio = require("../models/Condomino");
+
 
 module.exports = {
 
@@ -8,9 +10,35 @@ module.exports = {
     try {
 
       const  userId = req.params.id
-
       if(!userId) return res.status(404).send({error:'User não encontrado'});
+      const condominios = await Condominio.findAll({
+        where: {
+          admin_id: userId
+        }
+      })
 
+      if (!condominios) return res.status(404).send({ error: 'Condomínio não encontrado' })
+
+      const condominioID = condominios.map((data) => {
+        const { id, ...props } = data.dataValues
+        return id
+      })
+
+      const bloco = await Bloco.findAll({
+        where: {
+          condominio_id: condominioID
+        }
+      })
+
+      if (!bloco) return res.status(404).send({ error: 'bloco não encontrado' });
+      
+
+      const blocoID = bloco.map((data) => {
+        const { id, ...props } = data.dataValues
+        return id
+      })
+
+      console.log(blocoID)
       const apartamento = await apartamentos.findAll({
         attributes: ["id", "numero"],
         include: [
@@ -20,14 +48,14 @@ module.exports = {
           },
         ],
         where: {
-          bloco_id: userId
+          bloco_id: blocoID
         }
       });
 
       res.send(apartamento);
     } catch (error) {
       console.log(error);
-      res.status(500).send({ error: "Apartamento não encontrado" });
+      res.status(500).send(error);
     }
   },
 
