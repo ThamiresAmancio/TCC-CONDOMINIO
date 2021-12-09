@@ -52,7 +52,6 @@ module.exports = {
 
       const {id} = req.params;
 
-      
       try {
         let admin= await CadastroAdmin.findByPk(id)
 

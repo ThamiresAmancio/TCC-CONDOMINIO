@@ -62,8 +62,6 @@ module.exports = {
           }
         })
   
-        
-
         const blocos = await Blocos.findAll({
           where: {
             condominio_id: condominio.id

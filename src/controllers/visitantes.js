@@ -18,7 +18,6 @@ module.exports = {
 
         async find(req, res) {
 
-
         const visitanteId = req.params.id;
 
         try {

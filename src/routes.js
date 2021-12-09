@@ -14,6 +14,7 @@ const uploadSingleImage = require("./middlewares/uploadSingleImage");
 const visitanteSindicoControler = require("./controllers/visitantes");
 const visitanteMoradorControler = require("./controllers/visitanteMorador");
 const avisoController = require("./controllers/avisos");
+const agendamentoController = require("./controllers/agendamento");
 const uploadImageFirebase = require("./services/firebase");
 
 //sessions
@@ -115,8 +116,14 @@ routes.get("/buscar_avisos/:id", avisoController.findPorMorador);
 routes.put("/avisos/:id", avisoController.update);
 routes.delete("/avisos/:id", avisoController.delete);
 
+routes.get("/agendamentos", agendamentoController.index);
+routes.put("/agendamentos/:id", agendamentoController.update);
+routes.delete("/agendamentos/:id", agendamentoController.delete);
+routes.post("/agendamentos", agendamentoController.store);
+routes.get("/agendamento/:id", agendamentoController.findPorMorador);
 
 routes.use(authMiddleware)
+
 
 // routes.get("/blocos", blocoController.index);
 // routes.get("/apartamentos", apartamentoController.index);
