@@ -62,7 +62,9 @@ function REgisterCondominio({handleReload}) {
 }, [condominio.cep]);
 
 
-const handleSubmit = async () => {
+const handleSubmit = async (e) => {
+
+  e.preventDefault();
 
   setIsLoading(true);
 
@@ -86,6 +88,7 @@ const handleSubmit = async () => {
 
         
         history.push("/Dashboard/Admin");
+        alert('Condomínio Cadastrado');
       } catch (error) {
         console.error(error);
         alert(error.response.data.error);

@@ -21,7 +21,7 @@ function DashboardPorteiros() {
 
   const userPorteiro = getUser();
 
-
+  console.log(userPorteiro);
 
   const history = useHistory();
 

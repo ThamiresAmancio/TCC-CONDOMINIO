@@ -16,14 +16,14 @@ function VisualizarCondominios(){
         });
     },[]);
 
-    // function delet(id) {
-    //     api.delete(`/condominios/${id}`)
-    //     setCondominios(condominios.filter(item => item.condominioId !== id));
-    // }
-
     function delet(id) {
-        api.delete(`/condominios/:${id}`);
-      }
+        api.delete(`/condominios/${id}`)
+        setCondominios(condominios.filter(item => item.condominioId !== id));
+    }
+
+    // function delet(id) {
+    //     api.delete(`/condominios/:${id}`);
+    //   }
 
     return(
 

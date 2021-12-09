@@ -63,8 +63,10 @@ function RegisterVisitante() {
     data.append("sindico_id", sindico)
 
     try {
+
       const response = await api.post(`/visitantes/sindico/${sindico.sindicoId}`, data);
-      toast.POSITION("Visitante Cadastrado com sucesso");
+
+      
       console.log(response);
     } catch (error) {
       console.log(error);

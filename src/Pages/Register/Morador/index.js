@@ -52,10 +52,11 @@ import { mascaraCpf } from "../../../utils";
    setApartamentoId(e.target.value)
  }
 
-const handleSubmit = async () => {
+const handleSubmit = async (e) => {
 
   setIsLoading(true);
 
+  e.preventDefault();
 
   try {
     const { name, surname, cpf, birth , email,password} = morador;
@@ -71,7 +72,6 @@ const handleSubmit = async () => {
     });
 
        signIn(response.data);
-  
         setIsLoading(false);
       } catch (error) {
         console.error(error);
@@ -80,7 +80,6 @@ const handleSubmit = async () => {
       }
     };
 
-  
 
   return (
     <main>
@@ -123,7 +122,7 @@ const handleSubmit = async () => {
             </div>
             <label>
               Escolha um Nº de Apartamento :
-              <select id={apartamentos.apartamento_id} value={apartamentoId} onChange={hadleSelect}> 
+              <select id='apartamentoId' value={apartamentoId} onChange={hadleSelect}> 
                 <option value="">Selecione</option>
                 {apartamentos.map((a) => (
                   <option key={a.id} value={a.id}>

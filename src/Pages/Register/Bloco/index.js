@@ -6,7 +6,8 @@ import "../../../Styles/styles.css";
 import { api } from "../../../services/api";
 import InputHoshi from "../../../components/input";
 import { getUser } from "../../../services/security";
-
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function RegisterBlocos() {
   const history = useHistory();
@@ -43,21 +44,23 @@ function RegisterBlocos() {
 
   console.log(bloco)
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+
+    e.preventDefault();
 
     setIsLoading(true);
 
     try {
-      const {name, condominio_id} = bloco;
+      const {name} = bloco;
 
       const response = await api.post(`/blocos`, {
         name,
         condominio_id: condominioSelId
       });
 
-      setIsLoading(false);
 
-      history.push("/Dashboard/Admin");
+      alert("Bloco Cadastrado");
+
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
@@ -67,6 +70,7 @@ function RegisterBlocos() {
 
   return (
     <main>
+      <ToastContainer/> 
       <div className="card-post">
         <h1>Registrar Blocos</h1>
         <div className="line-post"></div>

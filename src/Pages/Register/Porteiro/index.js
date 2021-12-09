@@ -51,7 +51,9 @@ function RegisterPorteiros() {
     setCondominioSelId(e.target.value)
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+
+    e.preventDefault();
     
     setIsLoading(true);
 
@@ -66,7 +68,7 @@ function RegisterPorteiros() {
         condominio_id: condominioSelId
       });
       
-      setIsLoading(false);
+      alert('Porteiro Cadastrado');
      
     } catch (error) {
       console.error(error);

@@ -17,6 +17,7 @@ import { IconLogount } from "../Dash-Admin/styles";
 import VisualizarMoradores from "../../VisualizarMoradores";
 import VisualizarPorteiros from '../../visualizarPorteiros';
 import VisualizarCondominios from '../../VisualizarCondominios/indexCondominio';
+import VisualizarSindicos from '../../VisualizarSindicos.js';
 
 
 function AdminDashboard() {
@@ -46,7 +47,7 @@ function AdminDashboard() {
     const [isVisualizar, setVisualizar] = useState(false);
     const [isVisualizarPorteiros, setVisualizarPorteiros] = useState(false);
     const [isVisualizarCondominios, setVisualizarCondominios] = useState(false);
-    
+    const [isVisualizarSindicos, setVisualizarSindicos] = useState(false);
     
     function logout(){
     const removeUser = signOut()
@@ -72,6 +73,11 @@ function AdminDashboard() {
                     setVisualizarPorteiros(true);
                 }}>
                     contact_phone
+                </NavButtonIcon>
+                <NavButtonIcon className="material-icons" onClick={() => {
+                    setVisualizarSindicos(true);
+                }}>
+                    person_search
                 </NavButtonIcon>
             </NavDashboard>
             <MainDashboard id="main">
@@ -175,6 +181,22 @@ function AdminDashboard() {
                         <BtnFecharModal
                         onClick={() => {
                             setVisualizarCondominios(false);
+                        }}
+                        >
+                        X
+                        </BtnFecharModal>
+                    </>
+                    ): (
+                        <div hidden></div>
+                    )
+                }
+                 {
+                    isVisualizarSindicos ? (
+                        <>
+                        <VisualizarSindicos></VisualizarSindicos>
+                        <BtnFecharModal
+                        onClick={() => {
+                            setVisualizarSindicos(false);
                         }}
                         >
                         X

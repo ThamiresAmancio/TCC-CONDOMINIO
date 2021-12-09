@@ -43,16 +43,19 @@ function RegisterApto() {
     setBlocoSelId(e.target.value);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+
+    
 
     try {
-      const {numero,bloco_id} = apartamentos;
+      const {numero} = apartamentos;
       const response = await api.post(`/apartamentos`, {
         numero,
         bloco_id: blocoSelId,
       });
       console.log(response)
 
+      alert('Apartamento Cadastrado');
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);

@@ -53,7 +53,10 @@ function RegisterSindico() {
    setApartamentoId(e.target.value)
  }
 
-const handleSubmit = async () => {
+const handleSubmit = async (e) => {
+
+  e.preventDefault();
+
 
   setIsLoading(true);
 
@@ -72,8 +75,8 @@ const handleSubmit = async () => {
     });
 
        signIn(response.data);
+       alert("Síndico cadastrado")
   
-        setIsLoading(false);
       } catch (error) {
         console.error(error);
         alert(error.response.data.error);
