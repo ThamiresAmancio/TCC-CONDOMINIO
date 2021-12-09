@@ -67,8 +67,7 @@ module.exports = {
 
     try {
       let bloco = await Bloco.findByPk(bloco_id)
-
-
+      
       if (!bloco)
         return res.status(404).send({ error: 'Bloco não encontrado' })
 

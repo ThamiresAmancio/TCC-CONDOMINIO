@@ -111,7 +111,7 @@ routes.delete("/blocos/:id", blocoController.delete);
 
 routes.post("/avisos", avisoController.store);
 routes.get("/avisos", avisoController.index);
-routes.get("/buscar_avisos", avisoController.findPorMorador);
+routes.get("/buscar_avisos/:id", avisoController.findPorMorador);
 routes.put("/avisos/:id", avisoController.update);
 routes.delete("/avisos/:id", avisoController.delete);
 

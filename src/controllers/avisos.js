@@ -24,9 +24,11 @@ module.exports = {
 
   async findPorMorador(req, res) {
 
-    const { condominio_id } = req.body
 
     try {
+
+      const condominio_id = req.params.id;
+
       const aviso = await Avisos.findAll({
         include: [
           {
