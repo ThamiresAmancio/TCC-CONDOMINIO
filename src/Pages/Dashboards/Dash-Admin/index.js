@@ -61,20 +61,17 @@ function AdminDashboard() {
                 <NavButtonIcon className="material-icons" id="home" >
                     home
                 </NavButtonIcon>
-                <NavButtonIcon className="material-icons" onClick={() => {
-                    setVisualizarCondominios(true);
-                }} >
-                    event
-                </NavButtonIcon>
-                <NavButtonIcon className="material-icons" onClick={() => {
+
+                <NavButtonIcon title="Visualizar moradores" className="material-icons" onClick={() => {
                     setVisualizar(true);
                 }}>
                     person_search
                 </NavButtonIcon>
-                <NavButtonIcon className="material-icons" onClick={() => {
+
+                <NavButtonIcon title="Visualizar porteiros" className="material-icons" onClick={() => {
                     setVisualizarPorteiros(true);
                 }}>
-                    person_search
+                    contact_phone
                 </NavButtonIcon>
             </NavDashboard>
             <MainDashboard id="main">
@@ -207,7 +204,7 @@ function AdminDashboard() {
                     <span>Cadastrar Condomínio</span>
                 </ButtonAside>
                 <ButtonAside onClick={() => { setCadastrandoBlocos(true) }}>
-                    <span className="material-icons">business</span>
+                    <span className="material-icons">dashboard</span>
                     <span>Cadastrar Blocos</span>
                 </ButtonAside>
                 <ButtonAside onClick={() => { setCadastrandoApartamento(true) }}>

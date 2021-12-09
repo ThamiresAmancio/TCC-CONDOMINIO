@@ -55,13 +55,11 @@ function Home() {
 
                         <div>
                             <span class="material-icons">
-                                person
+                                groups
                             </span>
                         </div>
                         <div>
-                            <p>
-                                Pagamento do condomínio
-                            </p>
+                            
                             <p>
                                 Cadastrar Visitantes
                             </p>
@@ -103,9 +101,6 @@ function Home() {
                                 Cadastrar visitantes
                             </p>
                             <p>
-                                Visualizar moradores
-                            </p>
-                            <p>
                                 Agendamentos
                             </p>
                             <p>
@@ -140,10 +135,7 @@ function Home() {
                                 Cadastrar moradores
                             </p>
                             <p>
-                                Cadastrar síndicos
-                            </p>
-                            <p>
-                                Cadastrar porteiros
+                                Cadastrar funcionários
                             </p>
                         </div>
                     </div>

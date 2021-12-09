@@ -6,8 +6,6 @@ function VisualizarVisitantes() {
 
     const [visitantes, setVisitantes] = useState([])
 
-
-
     useEffect(()=>{
         api.get("/visitantes/sindico").then(({data}) =>{
             console.log(visitantes)
@@ -41,16 +39,16 @@ function VisualizarVisitantes() {
             
             <Header>
                 <div>
-                <p>Foto</p>
+                <p>Foto:</p>
                 </div>
                 <div>
-                    <p>Nome</p>
+                    <p>Nome:</p>
                 </div>
                 <div>
-                <p>RG</p>
+                <p>RG:</p>
                 </div>
                 <div>
-                <p>Data</p>
+                <p>Data:</p>
                 </div>
             </Header>
             <ContainerVisualizar>

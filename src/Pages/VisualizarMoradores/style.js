@@ -5,7 +5,7 @@ import {FaPencilAlt} from 'react-icons/fa'
 export const Header = styled.header `
  
     width: 90%;
-    height: 10%;
+    height: 4.5rem;
     background-color: var(--colorPrimary);
     display: flex;
     align-items: center;
@@ -32,7 +32,25 @@ export const ContainerVisualizar = styled.div`
     flex-direction: row;
     justify-content: space-around;
     margin-top: -1%;
+    gap: 2%;
+
+    overflow-y: scroll;
+
+    ::-webkit-scrollbar {
+        width: 10px;
+        background: #fff; 
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #fff; 
+    }
  
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: green; 
+        border-radius: 50px;
+    }
 `
 
 export const List = styled.div`
@@ -43,10 +61,19 @@ export const List = styled.div`
     border-left: 2px solid black;
     display: flex;
     justify-content: space-between;
+
     >div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 20%;
         height: 48px;
         border-right: 2px solid black;
+    }
+
+    >div:last-child{
+        justify-content: center;
+        gap: 10%;
     }
 `
 
@@ -61,21 +88,9 @@ export const Text = styled.p`
 
 export const IconRemove = styled(FaRegTrashAlt)`
     font-size: 19px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5px;
     cursor: pointer;
 `
 export const IconEdit = styled(FaPencilAlt)`
     font-size: 19px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 40px;
-    float: right;
-    margin-top: -20px;
     cursor: pointer;
 `

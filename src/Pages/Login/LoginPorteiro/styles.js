@@ -55,6 +55,10 @@ export const RightSideLogin = styled.section`
             font-weight: 600;
         }
 
+        >span>input{
+            font-size: 1.5rem;
+        }
+
         >input{
             padding-left: 1.5%;
             font-size: 2rem;

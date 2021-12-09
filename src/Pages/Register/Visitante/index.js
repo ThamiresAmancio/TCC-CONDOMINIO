@@ -6,6 +6,7 @@ import { getUser } from "../../../services/securitySindico";
 import { mascaraCpf, mascaraRg } from "../../../utils";
 import { ContentVisitante } from "./styles";
 import 'react-toastify/dist/ReactToastify.css';
+import Inputinha from '../../../components/Inputinha';
 
 
 function RegisterVisitante() {
@@ -91,19 +92,22 @@ function RegisterVisitante() {
         />
       </div>
       <form onSubmit={addVisit}>
-        <InputTayler
+        <Inputinha
+          placeholder=" "
           id="name"
           label="Nome"
           value={visitante.name}
           handler={handleInput}
         />
-        <InputTayler
+        <Inputinha
+          placeholder=" "
           id="rg"
           label="Rg"
           value={visitante.rg}
           handler={handleRg}
         />
-        <InputTayler
+        <Inputinha
+          placeholder=" "
           id="data"
           label="Data"
           value={visitante.data}

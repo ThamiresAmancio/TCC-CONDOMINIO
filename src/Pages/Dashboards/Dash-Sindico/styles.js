@@ -18,12 +18,12 @@ export const SindicoMain = styled.main`
 
 
 export const IconLogount = styled(RiLoginBoxLine)`
-    font-size: 50px;
-    display: flex;
-    color: white;
-    align-items: center;
-    justify-content: center;
-    margin-right: 40px;
-    float: right;
-    cursor: pointer;
+  font-size: 50px;
+  display: flex;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  margin-right: 40px;
+  float: right;
+  cursor: pointer;
 `

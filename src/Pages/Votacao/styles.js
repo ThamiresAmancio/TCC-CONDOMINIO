@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const ContentVotacao = styled.form`
     min-width: 50vw;
-    width: 80%;
-    height: 60%;
+    width: 90%;
+    min-height: 75%;
+    height: auto;
     border-radius: 1.5rem;
     padding: 2% 2%;
     box-shadow: 0px 0px 15px 1px rgba(28,28,28,0.59);

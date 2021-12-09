@@ -4,18 +4,17 @@ import {FaPencilAlt} from 'react-icons/fa'
 
 export const Header = styled.header `
  
-    width: 80%;
-    height: 9%;
+    width: 90%;
+    min-height: 5rem;
     background-color: var(--colorPrimary);
     display: flex;
     align-items: center;
     flex-direction:row;
     justify-content: space-between;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-    margin-top: -30px;
+    border-top-left-radius: .7rem;
+    border-top-right-radius: .7rem;
+    
+    margin: 1rem 0 1rem 0;
     >div{
        min-width: 30px ;
         height: 25px;
@@ -31,8 +30,8 @@ export const ContainerVisualizar = styled.div`
     padding: 1.875rem 1.5rem;
     box-shadow: 0px 0px 1rem #1c1c1ca2;
     color: #1c1c1c;
-    width: 80%;
-    min-height: 90%;
+    width: 90%;
+    min-height: 75%;
     height: auto;
     display: flex;
     flex-direction: row;
@@ -40,7 +39,23 @@ export const ContainerVisualizar = styled.div`
     flex-direction: row;
     justify-content: space-around;
     margin-top: -1%;
+    overflow-y: scroll;
  
+    ::-webkit-scrollbar {
+        width: 10px;
+        background: #fff; 
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #fff; 
+    }
+ 
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: green; 
+        border-radius: 50px;
+    }
 `
 export const List = styled.div`
     width: 100%;

@@ -136,6 +136,11 @@ export const LoginRightSide = styled.div`
     height: auto;
     text-align: center;
   }
+
+  form>div>span>input{
+    font-size: 1.5rem;
+  }
+
 `;
 
 export const CardIconePerfil = styled.div`

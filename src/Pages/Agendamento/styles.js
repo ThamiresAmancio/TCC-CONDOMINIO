@@ -41,7 +41,7 @@ export const ContentAgendamento = styled.section`
     }
 
     form>div:first-of-type+div{
-        width: 20%;
+        width: 30%;
         margin-bottom: 1rem;
     }
 
@@ -49,6 +49,7 @@ export const ContentAgendamento = styled.section`
         >label{
             font-weight: bold;
             user-select: none;
+            margin-right: .7rem;
         }
 
         >select:first-of-type{
