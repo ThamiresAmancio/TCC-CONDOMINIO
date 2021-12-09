@@ -32,13 +32,14 @@ function DashboardMorador() {
   const [isVotacao, setIsVotacao] = useState(false);
 
   const morador = getUser();
-  console.log(morador);
 
   useEffect(() => {
-    api.get("/avisos").then(({ data }) => {
+    api.get(`/buscar_avisos/${morador.condominio.id}`).then(({ data }) => {
       setAvisos(data);
     });
   }, []);
+
+  console.log(avisos)
 
   const [isCadastrandoVisitante, setCadastrandoVisitante] = useState(false);
 

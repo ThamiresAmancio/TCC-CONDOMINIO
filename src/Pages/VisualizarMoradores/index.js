@@ -23,6 +23,7 @@ function VisualizarMoradores() {
     setMoradores(moradores.filter((item) => item.moradorId !== id));
   }
 
+    
   return (
     <>
       <Header>

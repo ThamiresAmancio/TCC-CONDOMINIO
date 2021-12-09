@@ -73,8 +73,7 @@ function RegisterVisitante() {
 
   return (
     <>
-          <ToastContainer/>
-
+    <ToastContainer/>
     <ContentVisitante>
       <h1>Registrar um visitante</h1>
       <div>

@@ -63,8 +63,7 @@ function RegisterVisitanteMorador() {
 
   return (
     <>
-          <ToastContainer/>
-
+    <ToastContainer/>
     <ContentVisitante>
       <h1>Registrar um visitante</h1>
       <div>
@@ -95,8 +94,8 @@ function RegisterVisitanteMorador() {
           handler={handleRg}
         />
         <InputTayler
-          id="cpf"
-          label="CPF"
+          id="data"
+          label="Data"
           value={visitante.data}
           handler={handleCpf}
         />

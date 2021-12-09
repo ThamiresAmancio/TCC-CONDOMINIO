@@ -26,22 +26,19 @@ import Votacao from "../../Votacao";
 function DashboardSindico() {
 
   const sindico = getUser();
-  console.log(sindico);
 
   const history = useHistory();
   const [avisos, setAvisos] = useState([]);
 
   useEffect(() => {
-    api.get("/avisos").then(({ data }) => {
+    api.get(`/buscar_avisos/${sindico.condominio.id}`).then(({ data }) => {
       setAvisos(data);
     });
   }, []);
 
   function deleteAviso(id) {
     api.delete(`/avisos/${id}`);
-
     setAvisos(avisos.filter(avisos => avisos.id !== id))
-
   }
 
   function logout() {
