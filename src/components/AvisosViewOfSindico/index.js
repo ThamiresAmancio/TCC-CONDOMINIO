@@ -2,18 +2,22 @@ import { ContentAvisoViewOfSindico, HeaderAvisoSindico } from "./styles";
 import "../../Styles/styles.css";
 import { api } from "../../services/api";
 import { useEffect, useState } from "react";
+import { getUser } from "../../services/securitySindico";
 
 function AvisosVisaoDoSindico({ title, link, informacoes, urgencia }) {
+
   const [avisos, setAvisos] = useState([]);
 
   function deleteAviso(id) {
     api.delete(`/avisos/:${id}`);
   }
 
+  const sindico= getUser()
+
   const [avisosVIew, setAvisosView] = useState([]);
 
   useEffect(() => {
-    api.get("/buscar_avisos").then(({ data }) => {
+    api.get(`/buscar_avisos/${sindico.condominio.id}`).then(({ data }) => {
       setAvisosView(data);
     });
   }, []);

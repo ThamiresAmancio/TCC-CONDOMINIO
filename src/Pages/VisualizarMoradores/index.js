@@ -13,10 +13,13 @@ function VisualizarMoradores() {
         });
     },[]);
 
+
     function delet(id) {
         api.delete(`/moradores/${id}`)
         setMoradores(moradores.filter(item => item.moradorId !== id));
     }
+
+    
 
     return(
         <>

@@ -37,7 +37,7 @@ export const ContainerVisualizar = styled.div`
 
 export const List = styled.div`
     width: 100%;
-    height: 50px;
+    height: 75px;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
     border-left: 2px solid black;
@@ -45,7 +45,7 @@ export const List = styled.div`
     justify-content: space-between;
     >div{
         width: 20%;
-        height: 48px;
+        height: 73px;
         border-right: 2px solid black;
     }
 `

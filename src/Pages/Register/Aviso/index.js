@@ -5,6 +5,7 @@ import { api } from "../../../services/api";
 import { ContentFormAviso } from "./styles";
 
 function CriandoAviso() {
+
   const [condominios, setCondominios] = useState([]);
 
   useEffect(() => {

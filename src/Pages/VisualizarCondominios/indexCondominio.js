@@ -16,10 +16,14 @@ function VisualizarCondominios(){
         });
     },[]);
 
+    // function delet(id) {
+    //     api.delete(`/condominios/${id}`)
+    //     setCondominios(condominios.filter(item => item.condominioId !== id));
+    // }
+
     function delet(id) {
-        api.delete(`/condominios/${id}`)
-        setCondominios(condominios.filter(item => item.condominioId !== id));
-    }
+        api.delete(`/condominios/:${id}`);
+      }
 
     return(
 
@@ -67,7 +71,7 @@ function VisualizarCondominios(){
                             <Text>{item.cnpj}</Text>
                             </div>
                             <div>
-                               <IconRemove onClick={() => delet(item.id)} />
+                               <IconRemove onClick={() => {delet(item.id)}}/>
                                <IconEdit />
                             </div>
                     </List>

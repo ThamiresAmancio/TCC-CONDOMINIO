@@ -41,12 +41,14 @@ function RegisterBlocos() {
     setCondominioSelId(e.target.value)
   }
 
+  console.log(bloco)
+
   const handleSubmit = async () => {
 
     setIsLoading(true);
 
     try {
-      const { name} = bloco;
+      const {name, condominio_id} = bloco;
 
       const response = await api.post(`/blocos`, {
         name,
@@ -81,7 +83,7 @@ function RegisterBlocos() {
             </div>
             <label>
               Escolha um Condomínio :
-              <select id={condominios.condominio_id} value={condominioSelId} onChange={handleCondominioSelId}> 
+              <select id='condominioId' value={condominioSelId} onChange={handleCondominioSelId}> 
                 <option value="">Selecione</option>
                 {condominios.map((c) => (
                   <option key={c.id} value={c.id}>

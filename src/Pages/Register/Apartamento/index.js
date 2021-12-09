@@ -9,8 +9,6 @@ function RegisterApto() {
 
   const admin = getUser();
 
-  console.log(admin)
-
   const [blocos, setBlocos] = useState([]);
 
   useEffect(() => {
@@ -35,27 +33,26 @@ function RegisterApto() {
 
   console.log(apartamentos)
 
-  const [blocoId, setBlocoId] = useState(undefined);
+  const [blocoSelId, setBlocoSelId] = useState(undefined);
 
   const handleInput = (e) => {
     setApartamentos({ ...apartamentos, [e.target.id]: e.target.value });
   };
 
   const handleBlocoSelId = (e) => {
-    setBlocoId(e.target.value);
+    setBlocoSelId(e.target.value);
   };
 
   const handleSubmit = async () => {
 
     try {
-      const {numero} = apartamentos;
+      const {numero,bloco_id} = apartamentos;
       const response = await api.post(`/apartamentos`, {
         numero,
-        bloco_id: blocoId,
+        bloco_id: blocoSelId,
       });
-
       console.log(response)
-      history.push("/Dashboard/Admin");
+
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
@@ -81,30 +78,30 @@ function RegisterApto() {
               <label>
                 Escolha um Bloco :
                 <select
-                  id={blocos.condominio_id}
-                  value={blocoId}
+                  id='blocoId'
+                  value={blocoSelId}
                   onChange={handleBlocoSelId}
                 >
                   <option value="">Selecione</option>
-                  {blocos.length != 0 ? (
-                    blocos.map((resposta) => (
-                      <option id={resposta.id}>{resposta.name}</option>
-                    ))
-                  ) : (
-                    <option>teste</option>
+                  {blocos.map((b)=>
+                    (
+                      <option key={b.id} value={b.id}>
+                      {b.name}
+                    </option>
+                    )
                   )}
                 </select>
               </label>
             </div>
-            <div className="btn-post">
+          </form>
+      </div>
+      <div className="btn-post" onClick={() =>{ handleSubmit()}}>
               <button>
                 Finalizar Cadastro
                 <span className="material-icons">check_circle_outline</span>
               </button>
             </div>
-          </form>
         </div>
-      </div>
     </main>
   );
 }
