@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     
-      await queryInterface.createTable('visitantes', 
+      await queryInterface.createTable('visitantes_sindicos', 
         { 
           
           

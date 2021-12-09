@@ -8,7 +8,14 @@ module.exports = {
   async index(req, res) {
 
     try {
-      const agendamento = await Agendamento.findAll()
+      const agendamento = await Agendamento.findAll({
+        include: [
+          {
+            association: "Condominio",
+            attributes: ["id", "name"],
+          },
+        ]
+      });
       res.send(agendamento);
     } catch (error) {
       console.log(error);
@@ -18,9 +25,11 @@ module.exports = {
 
   async findPorMorador(req, res) {
 
-    const condominio_id  = req.params.id
 
     try {
+
+      const condominio_id  = req.params.id
+
       const agendamento = await Agendamento.findAll({
         include: [
           {
