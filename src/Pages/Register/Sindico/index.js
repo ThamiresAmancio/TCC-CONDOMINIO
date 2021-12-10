@@ -9,82 +9,68 @@ import InputHoshi from "../../../components/input";
 import { mascaraCpf } from "../../../utils";
 
 function RegisterSindico() {
-  
-
-  const admin = getUser(); 
+  const admin = getUser();
 
   const [apartamentos, setApartamentos] = useState([]);
 
   useEffect(() => {
     api.get(`/apartamentos/${admin.adminId}`).then(({ data }) => {
       setApartamentos(data);
-      console.log(data)
+      console.log(data);
     });
   }, []);
 
-  console.log(apartamentos)
+  console.log(apartamentos);
 
   const [sindico, setSindico] = useState({
-    name:"",
+    name: "",
     surname: "",
-    cpf:"",
-    birth:"",
-    email:"",
+    cpf: "",
+    birth: "",
+    email: "",
     password: "",
-    apartamento_id :""
+    apartamento_id: "",
   });
 
-  const handleCpf = (e) =>{
+  const handleCpf = (e) => {
     let cpf = e.target.value;
     cpf = mascaraCpf(cpf);
     setSindico({ ...sindico, cpf: cpf });
-}
+  };
 
-  const [isLoading,setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [apartamentoId, setApartamentoId] = useState(undefined)
-
+  const [apartamentoId, setApartamentoId] = useState(undefined);
 
   const handleInput = (e) => {
-   setSindico({ ...sindico, [e.target.id]: e.target.value });
- };
+    setSindico({ ...sindico, [e.target.id]: e.target.value });
+  };
 
- const hadleSelect = (e) => {
-   setApartamentoId(e.target.value)
- }
+  const hadleSelect = (e) => {
+    setApartamentoId(e.target.value);
+  };
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { name, surname, cpf, birth, email, password } = sindico;
 
-  e.preventDefault();
-
-
-  setIsLoading(true);
-
-
-  try {
-    const { name, surname, cpf, birth , email,password} = sindico;
-
-    const response = await api.post("/sindicos", {
-      name,
-      surname,
-      cpf,
-      birth,
-      email,
-      password,
-      apartamento_id : apartamentoId
-    });
-
-       signIn(response.data);
-       alert("Síndico cadastrado")
-  
-      } catch (error) {
-        console.error(error);
-        alert(error.response.data.error);
-        setIsLoading(false);
-      }
-    };
-
-  
+      const response = await api.post("/sindicos", {
+        name,
+        surname,
+        cpf,
+        birth,
+        email,
+        password,
+        apartamento_id: apartamentoId,
+      });
+      alert("Síndico cadastrado");
+    } catch (error) {
+      console.error(error);
+      alert(error.response.data.error);
+      setIsLoading(false);
+    }
+  };
 
   return (
     <main>
@@ -92,42 +78,79 @@ const handleSubmit = async (e) => {
         <h1>Registrar Síndico</h1>
         <div className="line-post"></div>
         <div className="card-body-post">
-          <form id="form" onSubmit={handleSubmit} >
+          <form id="form" onSubmit={handleSubmit}>
             <div className="fields">
               <label>Nome</label>
-              <InputHoshi id="name" type="text" value={sindico.name} handler={handleInput} />
+              <InputHoshi
+                id="name"
+                type="text"
+                value={sindico.name}
+                handler={handleInput}
+              />
             </div>
 
             <div className="fields">
               <label>Sobrenome</label>
-              <InputHoshi id="surname" type="text"  name="surname" value={sindico.surname}  handler={handleInput} />
-  
+              <InputHoshi
+                id="surname"
+                type="text"
+                name="surname"
+                value={sindico.surname}
+                handler={handleInput}
+              />
             </div>
 
             <div className="fields">
               <label>cpf</label>
-              <InputHoshi id="cpf" type="text" name="cpf" value={sindico.cpf} handler={handleCpf} maxLength='14'/> 
+              <InputHoshi
+                id="cpf"
+                type="text"
+                name="cpf"
+                value={sindico.cpf}
+                handler={handleCpf}
+                maxLength="14"
+              />
             </div>
-
 
             <div className="fields">
               <label>Nascimento</label>
-              <InputHoshi id="birth" type="date" name="birth"  value={sindico.birth} handler={handleInput} />
+              <InputHoshi
+                id="birth"
+                type="date"
+                name="birth"
+                value={sindico.birth}
+                handler={handleInput}
+              />
             </div>
 
-            
             <div className="fields">
               <label>Email</label>
-              <InputHoshi id="email" type="text" name="email"value={sindico.email} handler={handleInput} />
+              <InputHoshi
+                id="email"
+                type="text"
+                name="email"
+                value={sindico.email}
+                handler={handleInput}
+              />
             </div>
 
             <div className="fields">
               <label>Senha</label>
-              <InputHoshi id="password" type="password" name="password" value={sindico.password} handler={handleInput}/>
+              <InputHoshi
+                id="password"
+                type="password"
+                name="password"
+                value={sindico.password}
+                handler={handleInput}
+              />
             </div>
             <label>
               Escolha um Nº de Apartamento :
-              <select id={apartamentos.apartamento_id} value={apartamentoId} onChange={hadleSelect}> 
+              <select
+                id={apartamentos.apartamento_id}
+                value={apartamentoId}
+                onChange={hadleSelect}
+              >
                 <option value="">Selecione</option>
                 {apartamentos.map((a) => (
                   <option key={a.id} value={a.id}>
@@ -138,10 +161,8 @@ const handleSubmit = async (e) => {
             </label>
             <div className="btn-post">
               <button type="submit">
-                  Finalizar Cadastro
-                  <span className="material-icons">
-                    check_circle_outline
-                  </span>
+                Finalizar Cadastro
+                <span className="material-icons">check_circle_outline</span>
               </button>
             </div>
           </form>
