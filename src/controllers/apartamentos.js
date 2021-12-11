@@ -38,7 +38,6 @@ module.exports = {
         return id
       })
 
-      console.log(blocoID)
       const apartamento = await apartamentos.findAll({
         attributes: ["id", "numero"],
         include: [

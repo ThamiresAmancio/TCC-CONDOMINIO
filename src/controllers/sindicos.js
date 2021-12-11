@@ -87,6 +87,12 @@ module.exports = {
 
 
         const sindico = await CadastroSindico.findAll({
+          include: [
+            {
+              association: "Apartamento",
+              attributes: ["id", "numero", "bloco_id"],
+            },
+          ],
           where: {
             apartamento_id: apartamentoID
           }

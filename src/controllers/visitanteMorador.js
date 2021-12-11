@@ -49,9 +49,10 @@ module.exports = {
           return res.status(400).send({ error: "Campo imagem é obrigatório" });
 
         const{name,rg,data} = req.body;
+
+
         const {id} = req.params;
     
-
         try {
           let morador= await Morador.findByPk(id)
 

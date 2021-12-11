@@ -62,6 +62,12 @@ module.exports = {
       })
       
       const morador = await Morador.findAll({
+        include: [
+          {
+            association: "Apartamento",
+            attributes: ["id", "numero", "bloco_id"],
+          },
+        ],
         where: {
           apartamento_id: apartamentoID
         }
@@ -77,7 +83,6 @@ module.exports = {
 
 
   async findMorador(req, res) {
-
 
     try {
 
@@ -104,6 +109,12 @@ module.exports = {
       // })
 
       const morador = await Morador.findAll({
+        include: [
+          {
+            association: "Apartamento",
+            attributes: ["id", "numero", "bloco_id"],
+          },
+        ],
         where: {
           apartamento_id: apartamento.id
         }
