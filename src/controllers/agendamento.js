@@ -25,7 +25,6 @@ module.exports = {
 
   async findPorMorador(req, res) {
 
-
     try {
 
       const condominio_id  = req.params.id

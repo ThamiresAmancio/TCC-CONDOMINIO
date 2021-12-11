@@ -17,9 +17,11 @@ module.exports = {
 
   async findPorteiro(req, res) {
 
-    const { userId } = req
+    
 
     try {
+
+      const  userId  = req.params.id
 
       const condominio = await Condominio.findOne({
         where: {

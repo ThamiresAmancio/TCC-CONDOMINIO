@@ -50,7 +50,9 @@ routes.post("/porteiros/", porteiroController.store);
 routes.put("/porteiros/:id", porteiroController.update);
 routes.delete("/porteiros/:id", porteiroController.delete);
 
+routes.get("/buscar_porteiros/:id", porteiroController.findPorteiro);
 
+routes.get("/buscar_sindicos/:id", sindicoController.findSindico);
 //rotas de cadastro síndico
 routes.get("/sindicos", sindicoController.index);
 routes.get("/sindicos/:id", sindicoController.find);
@@ -85,6 +87,9 @@ routes.get("/moradores", cadastroMoradorController.index);
 routes.get("/moradores/:id", cadastroMoradorController.find);
 routes.put("/moradores/:id", cadastroMoradorController.update);
 routes.delete("/moradores/:id", cadastroMoradorController.delete);
+routes.get("/buscar_moradores_admin/:id", cadastroMoradorController.findMoradorAdmin);
+routes.get("/buscar_moradores/:id", cadastroMoradorController.findMorador);
+
 
 //apartamentos
 routes.post("/apartamentos", apartamentoController.store );
@@ -128,9 +133,6 @@ routes.use(authMiddleware)
 // routes.get("/blocos", blocoController.index);
 // routes.get("/apartamentos", apartamentoController.index);
 routes.get("/condominios", cadastradoCondominioCoontroller.index);
-routes.get("/buscar_moradores", cadastroMoradorController.findMorador);
-routes.get("/buscar_porteiros", porteiroController.findPorteiro);
-routes.get("/buscar_sindicos", sindicoController.findSindico);
-routes.get("/buscar_moradores_admin", cadastroMoradorController.findMoradorAdmin);
+
 
 module.exports = routes;

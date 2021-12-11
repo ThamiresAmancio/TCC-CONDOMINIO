@@ -29,10 +29,9 @@ module.exports = {
   },
 
   async findMoradorAdmin(req, res) {
-
-    const { userId } = req
-
     try {
+
+      const  userId  = req.params.id
 
       const condominio = await Condominio.findOne({
         where: {
@@ -79,9 +78,11 @@ module.exports = {
 
   async findMorador(req, res) {
 
-    const { userId } = req
 
     try {
+
+      const  userId  = req.params.id
+
       const sindico = await Sindico.findByPk(userId)
 
       const apartamento = await Apartamento.findOne({
