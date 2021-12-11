@@ -18,6 +18,7 @@ import VisualizarMoradores from "../../VisualizarMoradores";
 import VisualizarPorteiros from '../../visualizarPorteiros';
 import VisualizarCondominios from '../../VisualizarCondominios/indexCondominio';
 import VisualizarSindicos from '../../VisualizarSindicos.js';
+import VisualizarMoradoresAdmin from '../../VisualizarMoradores/indexAdminMoradores';
 
 
 function AdminDashboard() {
@@ -44,13 +45,13 @@ function AdminDashboard() {
     /* Cadastrando Porteiros */
     let [isCadastrandoPorteiros, setCadastrandoPorteiros] = useState(false);
 
-    const [isVisualizar, setVisualizar] = useState(false);
     const [isVisualizarPorteiros, setVisualizarPorteiros] = useState(false);
     const [isVisualizarCondominios, setVisualizarCondominios] = useState(false);
     const [isVisualizarSindicos, setVisualizarSindicos] = useState(false);
+    const [isVisualizarMoradores, setVisualizarMoradores] = useState(false)
     
     function logout(){
-    const removeUser = signOut()
+    signOut()
     history.push('/Login')
     }
 
@@ -63,8 +64,8 @@ function AdminDashboard() {
                     home
                 </NavButtonIcon>
 
-                <NavButtonIcon title="Visualizar moradores" className="material-icons" onClick={() => {
-                    setVisualizar(true);
+                <NavButtonIcon title="Visualizar Condomínios" className="material-icons" onClick={() => {
+                    setVisualizarCondominios(true);
                 }}>
                     person_search
                 </NavButtonIcon>
@@ -74,8 +75,13 @@ function AdminDashboard() {
                 }}>
                     contact_phone
                 </NavButtonIcon>
-                <NavButtonIcon className="material-icons" onClick={() => {
+                <NavButtonIcon title="Visualizar síndicos" className="material-icons" onClick={() => {
                     setVisualizarSindicos(true);
+                }}>
+                    person_search
+                </NavButtonIcon>
+                <NavButtonIcon title="Visualizar moradores" className="material-icons" onClick={() => {
+                    setVisualizarMoradores(true);
                 }}>
                     person_search
                 </NavButtonIcon>
@@ -146,12 +152,12 @@ function AdminDashboard() {
                     </>
                 ):(<div hidden></div>)}
 
-                {isVisualizar ? (
+                {isVisualizarCondominios ? (
                     <>
-                        <VisualizarMoradores></VisualizarMoradores>
+                        <VisualizarCondominios></VisualizarCondominios>
                         <BtnFecharModal
                         onClick={() => {
-                            setVisualizar(false);
+                            setVisualizarCondominios(false);
                         }}
                         >
                         X
@@ -160,6 +166,7 @@ function AdminDashboard() {
                     ) : (
                 <div hidden></div>
                 )}
+
                  {isVisualizarPorteiros ? (
                     <>
                         <VisualizarPorteiros></VisualizarPorteiros>
@@ -203,6 +210,22 @@ function AdminDashboard() {
                         </BtnFecharModal>
                     </>
                     ): (
+                        <div hidden></div>
+                    )
+                }
+                {
+                    isVisualizarMoradores? (
+                        <>
+                        <VisualizarMoradoresAdmin></VisualizarMoradoresAdmin>
+                        <BtnFecharModal
+                        onClick={() => {
+                            setVisualizarMoradores(false);
+                        }}
+                        >
+                        X
+                        </BtnFecharModal>
+                        </>
+                    ):(
                         <div hidden></div>
                     )
                 }

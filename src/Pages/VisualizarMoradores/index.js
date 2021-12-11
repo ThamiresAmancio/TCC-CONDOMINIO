@@ -9,11 +9,15 @@ import {
   Text,
 } from "./style";
 
+import { getUser} from "../../services/securitySindico";
+
+
 function VisualizarMoradores() {
   const [moradores, setMoradores] = useState([]);
 
+  const sindico = getUser()
   useEffect(() => {
-    api.get("/moradores").then(({ data }) => {
+    api.get(`/buscar_moradores/${sindico.sindicoId}`).then(({ data }) => {
       setMoradores(data);
     });
   }, []);

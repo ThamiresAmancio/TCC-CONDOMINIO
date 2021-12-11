@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
+import { getUser} from "../../services/security";
+
 import {
   ContainerVisualizar,
   Header,
@@ -12,8 +14,9 @@ import {
 function VisualizarSindicos() {
   const [sindicos, setSindicos] = useState([]);
 
+  const admin = getUser()
   useEffect(() => {
-    api.get(`/sindicos/`).then(({ data }) => {
+    api.get(`/buscar_sindicos/${admin.adminId}`).then(({ data }) => {
       setSindicos(data);
     });
   }, []);

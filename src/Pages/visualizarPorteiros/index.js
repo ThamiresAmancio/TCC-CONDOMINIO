@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { ContainerVisualizar, Header, IconEdit, IconRemove, List , Text } from "./style";
+import { getUser} from "../../services/security";
 
 
 function VisualizarPorteiros() {
 
     const [porteiros, setPorteiros] = useState([])
     
+    const admin = getUser()
     useEffect(()=>{
-        api.get("/buscar_porteiros").then(({data}) =>{
+        api.get(`/buscar_porteiros/${admin.adminId}`).then(({data}) =>{
             setPorteiros(data)
         });
     },[]);
