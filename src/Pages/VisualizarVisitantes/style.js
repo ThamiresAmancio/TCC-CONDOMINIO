@@ -69,6 +69,13 @@ export const List = styled.div`
         width: 20%;
         height: 96px;
         border-right: 2px solid black;
+
+        >img{
+            width:90px;
+            height: 90px;
+            border-radius:50%;
+            margin-left:25px
+        }
     }
 `
 

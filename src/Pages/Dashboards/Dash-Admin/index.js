@@ -50,10 +50,10 @@ function AdminDashboard() {
     const [isVisualizarSindicos, setVisualizarSindicos] = useState(false);
     const [isVisualizarMoradores, setVisualizarMoradores] = useState(false)
     
-    function logout(){
-    signOut()
-    history.push('/Login')
-    }
+    function logout() {
+        const removeUser = signOut()
+        history.push('/Login')
+      }
 
     return (
         <ContentDashboard>
@@ -67,7 +67,7 @@ function AdminDashboard() {
                 <NavButtonIcon title="Visualizar Condomínios" className="material-icons" onClick={() => {
                     setVisualizarCondominios(true);
                 }}>
-                    person_search
+                    apartment
                 </NavButtonIcon>
 
                 <NavButtonIcon title="Visualizar porteiros" className="material-icons" onClick={() => {

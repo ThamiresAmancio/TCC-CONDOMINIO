@@ -14,14 +14,14 @@ import VisualizarVisitantes from "../../VisualizarVisitantes";
 import { signOut } from '../../../services/security';
 import { PorteiroMain } from "./style";
 import { useHistory } from 'react-router';
-import { IconLogount } from "../Dash-Admin/styles";
-import { getUser } from "../../../services/securityMorador";
+import { IconLogount } from "../Dash-Porteiros/style";
+import {getUser} from "../../../services/securityPortaria";
 
 function DashboardPorteiros() {
 
-  const userPorteiro = getUser();
+  const porteiro = getUser();
 
-  console.log(userPorteiro);
+  
 
   const history = useHistory();
 
@@ -66,8 +66,8 @@ function DashboardPorteiros() {
               account_circle
           </figure>
           <div>
-              <h1>Portaria</h1>
-              <h3>porteiro@email.com</h3>
+              <h1>{porteiro.porteiro.name}</h1>
+              <h3>{porteiro.porteiro.email}</h3>
           </div>
         </div>
         <IconLogount onClick={() => logout()}/>

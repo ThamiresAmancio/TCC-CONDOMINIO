@@ -54,7 +54,7 @@ function RegisterVisitanteMorador() {
 
     try {
       const response = await api.post(`/visitantes/morador/${morador.moradorId}`, data);
-      toast.POSITION("Visitante Cadastrado com sucesso");
+     alert("Visitante Cadastrado com sucesso");
       console.log(response);
     } catch (error) {
       console.log(error);

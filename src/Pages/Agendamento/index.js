@@ -6,7 +6,7 @@ function Agendamento() {
     return (
         <ContentAgendamento>
             <header>
-                <h1>A G E N D A M E N T O</h1>
+                <h1>A G E N D A R S A L Ã O D E F E S T A</h1>
             </header>
             <form>
                 <InputTayler placeholder="Nome:" />

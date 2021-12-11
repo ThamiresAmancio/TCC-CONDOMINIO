@@ -15,8 +15,6 @@ function VisualizarVisitantes() {
 
     const [visitantesMoradores, setVisitantesMoradores] = useState([])
 
-    
-
     useEffect(()=>{
         api.get("/visitantes/morador").then(({data}) =>{
             console.log(visitantes)
@@ -55,10 +53,10 @@ function VisualizarVisitantes() {
             {
                     visitantes.map((item) =>{
                     return <>
-                    
+                    {console.log(item)}
                     <List key={item.id}>
                         <div>
-                           
+                        <img src={item.image}/>
                         </div>
                         <div>
                         <Text>{item.name}</Text>
@@ -79,7 +77,7 @@ function VisualizarVisitantes() {
                     
                     <List key={item.id}>
                         <div>
-                            
+                        <img src={item.image}/>
                         </div>
                         <div>
                         <Text>{item.name}</Text>

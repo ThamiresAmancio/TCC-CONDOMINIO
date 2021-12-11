@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
-import InputTayler from "../../../components/InputTayler";
 import { api } from "../../../services/api";
 import { getUser } from "../../../services/securitySindico";
 import { mascaraCpf, mascaraRg } from "../../../utils";
@@ -65,7 +64,7 @@ function RegisterVisitante() {
     try {
 
       const response = await api.post(`/visitantes/sindico/${sindico.sindicoId}`, data);
-
+      alert("Visitante Cadastrado com sucesso");
       
       console.log(response);
     } catch (error) {
@@ -75,9 +74,10 @@ function RegisterVisitante() {
 
   return (
     <>
-    <ToastContainer/>
+    <ToastContainer/>    
     <ContentVisitante>
       <h1>Registrar um visitante</h1>
+      
       <div>
         {
           <figure>
