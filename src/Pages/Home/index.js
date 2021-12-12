@@ -5,7 +5,7 @@ import '../../Styles/home.css';
 function Home() {
     return (
         <>
-            <header>
+            <header id="headerHome">
                 <h1>Towers Admin</h1>
                 <nav class="box-6">
                     <ul>
