@@ -95,7 +95,7 @@ function AdminDashboard() {
             setVisualizarSindicos(true);
           }}
         >
-          support_agent
+          person_search
         </NavButtonIcon>
         <NavButtonIcon
           title="Visualizar moradores"
@@ -272,13 +272,14 @@ function AdminDashboard() {
       </MainDashboard>
       <HeaderDashboard>
         <div>
-          <figure className="material-icons">account_circle</figure>
+          {/* <figure className="material-icons">account_circle</figure> */}
           <div>
             <h1>{admin.name}</h1>
             <h3>{admin.email}</h3>
           </div>
+          <button className="material-icons" onClick={() => logout()}>logout</button>
         </div>
-        <button className="material-icons" onClick={() => logout()}>logout</button>
+        {/* <button className="material-icons" onClick={() => logout()}>logout</button> */}
         {/* <IconLogount onClick={() => logout()} /> */}
       </HeaderDashboard>
       <aside>

@@ -19,7 +19,7 @@ function CriandoAviso() {
     titulo: "",
     mensagem: "",
     link: "",
-    status: "Importante",
+    status: "",
     data: new Date(),
     condominio_id: "",
   });
@@ -85,7 +85,7 @@ function CriandoAviso() {
         />
 
         <InputTayler
-          id="urgencia"
+          id="status"
           value={aviso.status}
           handler={handleInput}
           placeholder="Status:"

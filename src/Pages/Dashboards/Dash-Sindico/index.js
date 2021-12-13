@@ -246,15 +246,15 @@ function DashboardSindico() {
 
       <HeaderDashboard>
         <div>
-          <figure className="material-icons">
-            account_circle
-          </figure>
           <div>
             <h1>{sindico.name}</h1>
             <h3>{sindico.email}</h3>
           </div>
+          <button className="material-icons" onClick={() => logout()} >
+            logout
+          </button>
         </div>
-        <IconLogount onClick={() => logout()} />
+        {/* <IconLogount onClick={() => logout()} /> */}
       </HeaderDashboard>
       <aside>
         <ButtonAside

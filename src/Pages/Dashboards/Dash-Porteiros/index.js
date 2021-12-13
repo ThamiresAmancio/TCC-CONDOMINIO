@@ -62,15 +62,14 @@ function DashboardPorteiros() {
 
       <HeaderDashboard>
         <div>
-          <figure className="material-icons">
-              account_circle
-          </figure>
           <div>
-              <h1>{porteiro.porteiro.name}</h1>
-              <h3>{porteiro.porteiro.email}</h3>
+            <h1>{porteiro.porteiro.name}</h1>
+            <h3>{porteiro.porteiro.email}</h3>
           </div>
+          <button className="material-icons" onClick={() => logout()}>
+              logout
+          </button>
         </div>
-        <IconLogount onClick={() => logout()}/>
       </HeaderDashboard>
       <aside>
         <ButtonAside onClick={() => {setVisualizar(true)}}>

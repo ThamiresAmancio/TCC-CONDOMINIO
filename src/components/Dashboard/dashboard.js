@@ -24,64 +24,35 @@ export const BtnFecharModal = styled.button`
 `;
 
 export const HeaderDashboard = styled.header`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  background-color: gray;
+  border-bottom: solid 0.12rem #dedede;
 
   > div {
-    background-color: orange;
+    width: 100%;
+    height: 100%;
+    padding: 0 2% 0 10%;
 
-    width: 80%;
-    height: inherit;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
     align-items: center;
+    justify-content: space-between;
+  
+    >div{
 
-    > div {
-      background-color: red;
-
-      > h1 {
-        color: #fff;
+      >h1{
+        font-weight: bold;
       }
 
-      > h3 {
+      >h3{
         font-weight: lighter;
-        color: #fff;
       }
+
     }
 
-    > figure {
-      width: 5vw;
-      height: 5vw;
-      border-radius: 50%;
-      font-size: 4rem;
-      color: #fff;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-align-items: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-
-      @media only screen and (max-width: 1360px) {
-        font-size: 3rem;
-      }
-    }
-  }
-  > button {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-
-    :hover{
-        transform: scale(1.1);
+    >div+button{
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #1c1c1c;
+      cursor: pointer;
     }
   }
 `;

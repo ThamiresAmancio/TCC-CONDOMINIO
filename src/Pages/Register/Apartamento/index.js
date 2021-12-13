@@ -39,13 +39,12 @@ function RegisterApto() {
     setApartamentos({ ...apartamentos, [e.target.id]: e.target.value });
   };
 
+  /* select */
   const handleBlocoSelId = (e) => {
     setBlocoSelId(e.target.value);
   };
 
   const handleSubmit = async (e) => {
-
-    
 
     try {
       const {numero} = apartamentos;

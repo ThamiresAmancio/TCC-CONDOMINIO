@@ -180,15 +180,12 @@ function DashboardMorador() {
       </MoradorMain>
       <HeaderDashboard>
         <div>
-          <figure className="material-icons">
-            account_circle
-          </figure>
           <div>
             <h1>{morador.name}</h1>
             <h3>{morador.email}</h3>
           </div>
+          <button className="material-icons" onClick={() => logout()}>logout</button>
         </div>
-        <IconLogount onClick={() => logout()} />
       </HeaderDashboard>
       <aside>
         <ButtonAside

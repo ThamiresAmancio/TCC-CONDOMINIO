@@ -46,6 +46,9 @@ export const ContentFormAviso = styled.form`
 
     >div{
         width: 90%;
+        >input{
+          background: transparent;
+        }
     }
 
     >div:last-of-type{
