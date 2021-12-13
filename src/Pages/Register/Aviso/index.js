@@ -11,7 +11,7 @@ function CriandoAviso() {
   console.log("aquiiiiii");
 
   useEffect(() => {
-    api.get("/condominios/${sindico.condominio.id}").then(({ data }) => {
+    api.get("/condominios").then(({ data }) => {
       setCondominios(data);
     });
    

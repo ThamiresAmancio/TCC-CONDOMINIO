@@ -20,10 +20,6 @@ function VisualizarCondominios(){
         setCondominios(condominios.filter(item => item.condominioId !== id));
     }
 
-    // function delet(id) {
-    //     api.delete(`/condominios/:${id}`);
-    //   }
-
     return(
 
         <>

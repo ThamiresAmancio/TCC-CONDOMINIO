@@ -31,10 +31,8 @@ function VisualizarVisitantes() {
     imgRef.current.src = URL.createObjectURL(e.target.files[0]);
   };
 
-
     return(
         <>
-            
             <Header>
                 <div>
                 <p>Foto:</p>

@@ -227,20 +227,6 @@ function AdminDashboard() {
         ) : (
           <div hidden></div>
         )}
-        {isVisualizarCondominios ? (
-          <>
-            <VisualizarCondominios></VisualizarCondominios>
-            <BtnFecharModal
-              onClick={() => {
-                setVisualizarCondominios(false);
-              }}
-            >
-              X
-            </BtnFecharModal>
-          </>
-        ) : (
-          <div hidden></div>
-        )}
         {isVisualizarSindicos ? (
           <>
             <VisualizarSindicos></VisualizarSindicos>
