@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router";
 import "./bloco.css";
 import "../../../Styles/styles.css";
 
 import { api } from "../../../services/api";
 import InputHoshi from "../../../components/input";
 import { getUser } from "../../../services/security";
-import { ToastContainer,toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function RegisterBlocos() {
-  const history = useHistory();
 
   const admin = getUser(); 
 
@@ -29,11 +27,8 @@ function RegisterBlocos() {
     condominio_id :""
   });
 
-  const [isLoading,setIsLoading] = useState(false);
-
   const [condominioSelId, setCondominioSelId] = useState(undefined);
 
-  
   const handleInput = (e) => {
     setBloco({ ...bloco, [e.target.id]: e.target.value });
   };
@@ -47,8 +42,6 @@ function RegisterBlocos() {
   const handleSubmit = async (e) => {
 
     e.preventDefault();
-
-    setIsLoading(true);
 
     try {
       const {name} = bloco;
@@ -64,7 +57,6 @@ function RegisterBlocos() {
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
-      setIsLoading(false);
     }
   };
 

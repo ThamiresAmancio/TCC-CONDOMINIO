@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router";
 import "./porteiros.css";
 import "../../../Styles/styles.css";
 import { api } from "../../../services/api";
 import InputHoshi from "../../../components/input";
 import { mascaraCel } from "../../../utils";
-import { getUser } from "../../../services/security";
 
 
 function RegisterPorteiros() {
-  const history = useHistory();
 
-  const admin = getUser();
   const [condominios, setCondominios] = useState([]);
 
   useEffect(() => {
@@ -36,13 +32,9 @@ function RegisterPorteiros() {
     cell = mascaraCel(cell);
     setPorteiros({ ...porteiros, telephone: cell });
 }
-  
-
-  const [isLoading, setIsLoading] = useState(false);
 
   const [condominioSelId, setCondominioSelId] = useState(undefined);
 
-  
   const handleInput = (e) => {
     setPorteiros({ ...porteiros, [e.target.id]: e.target.value });
   };
@@ -54,8 +46,6 @@ function RegisterPorteiros() {
   const handleSubmit = async (e) => {
 
     e.preventDefault();
-    
-    setIsLoading(true);
 
     try {
       const { name, telephone, email, password , condominio_id } = porteiros;
@@ -73,7 +63,6 @@ function RegisterPorteiros() {
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
-      setIsLoading(false);
     }
   };
 

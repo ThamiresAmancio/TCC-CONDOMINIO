@@ -2,13 +2,12 @@
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { ContainerVisualizar, Header, IconEdit, IconRemove, List , Text } from "./style";
-import { getUser} from "../../services/security";
 
 function VisualizarCondominios(){
 
     const [condominios, setCondominios] = useState([])
 
-    const admin = getUser()
+    // const admin = getUser()
     
     useEffect(()=>{
         api.get(`/condominios`).then(({data}) =>{

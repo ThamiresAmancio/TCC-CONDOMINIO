@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import {  ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import InputTayler from "../../../components/InputTayler";
 import { api } from "../../../services/api";
@@ -41,7 +41,7 @@ function RegisterVisitanteMorador() {
     setVisitantes({ ...visitante, rg: rg });
   };
 
-   const teste = 1
+  //  const teste = 1
 
   const addVisit = async () => {
     const data = new FormData();

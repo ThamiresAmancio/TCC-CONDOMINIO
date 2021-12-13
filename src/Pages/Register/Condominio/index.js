@@ -12,7 +12,7 @@ function REgisterCondominio({handleReload}) {
   
   let [isCadastrandoCondominio, setIsCadastrandoCondominio] = useState(false);
 
-  const history = useHistory();
+  // const history = useHistory();
 
   const usuario = getUser()
 
@@ -29,8 +29,6 @@ function REgisterCondominio({handleReload}) {
     cnpj: "",
 
   });
-
-  const [isLoading,setIsLoading] = useState(false);
 
   const handleInputCondominio = (e) => {
    setCondominio({ ...condominio, [e.target.id]: e.target.value });
@@ -63,11 +61,7 @@ function REgisterCondominio({handleReload}) {
 
 
 const handleSubmit = async (e) => {
-
   e.preventDefault();
-
-  setIsLoading(true);
-
 
   try {
     const { name, bairro, estado, cep , rua,cidade, numero,cnpj} = condominio;
@@ -84,15 +78,11 @@ const handleSubmit = async (e) => {
       cnpj
     });
 
-        setIsLoading(false);
-
-        
-        history.push("/Dashboard/Admin");
+        // history.push("/Dashboard/Admin");
         alert('Condomínio Cadastrado');
       } catch (error) {
         console.error(error);
         alert(error.response.data.error);
-        setIsLoading(false);
       }
     };
 

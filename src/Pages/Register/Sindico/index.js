@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router";
 import "./sindico.css";
 import "../../../Styles/styles.css";
 
 import { api } from "../../../services/api";
-import { getUser, signIn } from "../../../services/security";
+import { getUser } from "../../../services/security";
 import InputHoshi from "../../../components/input";
 import { mascaraCpf } from "../../../utils";
 
@@ -38,8 +37,6 @@ function RegisterSindico() {
     setSindico({ ...sindico, cpf: cpf });
   };
 
-  const [isLoading, setIsLoading] = useState(false);
-
   const [apartamentoId, setApartamentoId] = useState(undefined);
 
   const handleInput = (e) => {
@@ -68,7 +65,6 @@ function RegisterSindico() {
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
-      setIsLoading(false);
     }
   };
 

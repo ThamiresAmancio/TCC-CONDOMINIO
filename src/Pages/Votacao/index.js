@@ -1,4 +1,3 @@
-import InputTayler from "../../components/InputTayler";
 import { ContentVotacao } from "./styles";
 
 function Votacao({ mensagem }) {

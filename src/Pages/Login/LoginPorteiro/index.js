@@ -1,6 +1,5 @@
 import { Link , useHistory } from 'react-router-dom';
 import { useState } from "react";
-import InputHoshi from "../../../components/input";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BodyLoginPerfils, LoginLeftSide, LogoTowers } from '../styles';
@@ -14,8 +13,6 @@ import Inputinha from '../../../components/Inputinha';
 function LoginPorteiros() {
     const history = useHistory();
 
-    const [isLoading, setIsLoading] = useState(false);
-
     const [message, setMessage] = useState(undefined);
 
     const [login, setLogin] = useState({
@@ -26,14 +23,10 @@ function LoginPorteiros() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setIsLoading(true);
-
     try {
       const response = await api.post("/sessionsPorteiros", login);
 
       signIn(response.data);
-
-      setIsLoading(false);
 
       history.push("/Dashboard/Porteiros");
       
@@ -41,7 +34,6 @@ function LoginPorteiros() {
       console.error(error);
       toast.error("usuário e/ou senha inválidos")
       setMessage({ title: "Ops...", description: error.response.data.error });
-      setIsLoading(false);
     }
   };
 

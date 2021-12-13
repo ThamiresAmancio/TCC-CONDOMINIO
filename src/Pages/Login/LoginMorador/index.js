@@ -2,7 +2,6 @@ import { Link, useHistory } from 'react-router-dom';
 import { RightSideLoginAdmin } from '../LoginAdmin/styles';
 import { BodyLoginPerfils, LoginLeftSide, LogoTowers } from '../styles';
 import { useState } from "react";
-import InputHoshi from "../../../components/input";
 import { api } from "../../../services/api";
 import { signIn } from "../../../services/security"
 import { ToastContainer,toast } from 'react-toastify';
@@ -11,8 +10,6 @@ import Inputinha from '../../../components/Inputinha';
 
 function LoginMorador() {
     const history = useHistory();
-
-    const [isLoading, setIsLoading] = useState(false);
 
     const [message, setMessage] = useState(undefined);
 
@@ -24,21 +21,16 @@ function LoginMorador() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setIsLoading(true);
-
     try {
       const response = await api.post("/sessionsMoradores", login);
 
       signIn(response.data);
-
-      setIsLoading(false);
 
       history.push("/Dashboard/Morador");
     } catch (error) {
       console.error(error);
      toast.error("usuário e/ou senha inválidos")
      setMessage({ title: "Ops...", description: error.response.data.error });
-      setIsLoading(false);
     }
   };
 

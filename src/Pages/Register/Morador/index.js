@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router";
 import "./morador.css";
 import "../../../Styles/styles.css";
 
 import { api } from "../../../services/api";
-import { getUser, signIn } from "../../../services/security";
+import { getUser } from "../../../services/security";
 import InputHoshi from "../../../components/input";
 
 import { mascaraCpf } from "../../../utils";
@@ -36,8 +35,6 @@ function RegisterMoradores() {
     cpf = mascaraCpf(cpf);
     setMorador({ ...morador, cpf: cpf });
   };
-
-  const [isLoading, setIsLoading] = useState(false);
 
   const [apartamentoId, setApartamentoId] = useState(undefined);
 

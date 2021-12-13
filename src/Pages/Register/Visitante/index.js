@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { api } from "../../../services/api";
 import { getUser } from "../../../services/securitySindico";
 import { mascaraCpf, mascaraRg } from "../../../utils";

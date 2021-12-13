@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router";
 import "./apto.css";
 import "../../../Styles/styles.css";
 import { api } from "../../../services/api";
@@ -20,9 +19,6 @@ function RegisterApto() {
       console.log(error);
     }
   }, []);
-
-
-  const history = useHistory();
 
   console.log(blocos)
   

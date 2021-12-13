@@ -1,7 +1,4 @@
-import { data } from "jquery";
 import { useEffect, useRef, useState } from "react";
-import { act } from "react-dom/test-utils";
-import { ContainerAmigao } from "./styles";
 
 function PagamentoBeta() {
   const [paid, setPaid] = useState(false);
