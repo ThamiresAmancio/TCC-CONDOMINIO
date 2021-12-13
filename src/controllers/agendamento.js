@@ -56,10 +56,10 @@ module.exports = {
       nome,
       data,
       horainicio,
-      horatermino ,
-     condominio_id } = req.body
+      horatermino } = req.body
 
-    //const { userId } = req
+     const condominio_id  = req.params.id
+
 
     try {
 
@@ -67,14 +67,6 @@ module.exports = {
 
       if (!condominio)
         return res.status(404).send({ error: 'Condomínio não encontrado' })
-
-      // const morador = await Morador.findOne({
-      //   where: {
-      //     id: userId
-      //   }
-      // })
-
-      // if (!morador) return res.status(404).send("Morador não encontrado")
 
       let agendamento = await Agendamento.findOne({
         where: {
