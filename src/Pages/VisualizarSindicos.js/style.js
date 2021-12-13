@@ -55,11 +55,13 @@ export const ContainerVisualizar = styled.div`
 export const List = styled.div`
   width: 100%;
   height: 50px;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-  border-left: 2px solid black;
+  border: 0.12rem solid gray;
   display: flex;
   justify-content: space-between;
+
+  > div:last-of-type{
+    border-right: none;
+  }
 
   > div {
     display: flex;
@@ -67,7 +69,7 @@ export const List = styled.div`
     justify-content: center;
     width: 20%;
     height: 48px;
-    border-right: 2px solid black;
+    border-right: 2px solid gray;
   }
 
   > div:last-child {

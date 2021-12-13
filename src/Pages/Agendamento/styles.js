@@ -33,6 +33,27 @@ export const ContentAgendamento = styled.section`
         display: flex;
         flex-direction: column;
         gap: 3%;
+
+        >span{
+            >input{
+                margin-bottom: .5rem;
+            }
+
+            >input+label{
+                >span{
+                    padding: 0;
+                }
+            }
+        }
+
+        >span:first-of-type{
+            width: 80%;
+        }
+
+        >span:last-of-type{
+            width: 30%; 
+        }
+
     }
 
     form>div:first-of-type{

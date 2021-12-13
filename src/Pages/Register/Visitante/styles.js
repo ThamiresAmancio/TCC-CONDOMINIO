@@ -31,8 +31,11 @@ export const ContentVisitante = styled.section`
     padding: 1rem 0;
 
     > figure {
-        width: 10vw;
-        height: 10vw;
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+
         border-radius: 100%;
         background-position: center;
         background-size: contain;
@@ -42,7 +45,6 @@ export const ContentVisitante = styled.section`
           width: 250px;
           height: 250px;
           border-radius: 50%;
-          margin-left: -30px;
         }
     }
 
