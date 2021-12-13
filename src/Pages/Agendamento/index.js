@@ -5,7 +5,6 @@ import { getUser } from "../../services/securityMorador";
 import { ContentAgendamento } from "./styles";
 
 function Agendamento() {
-
   const user = getUser();
 
   const [agendamento, setAgendamento] = useState({
@@ -13,6 +12,7 @@ function Agendamento() {
     data: "",
     horainicio: "",
     horatermino: "",
+    condominio_id: "",
   });
 
   const handleInput = (e) => {
@@ -31,21 +31,20 @@ function Agendamento() {
   //   setTerminoSelId(e.target.value)
   // }
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const { nome, data, horainicio, horatermino } = agendamento;
-      await api.post(`/agendamentos/${user.condominio.id}`, {
+      const { nome, data, horainicio, horatermino, condominio_id } = agendamento;
+      await api.post("/agendamentos", {
         nome,
         data,
         horainicio,
         horatermino,
-
+        condominio_id: user.condominio.id,
       });
 
-      alert("Deu certo :P");
+      alert("Dia: " + data + ", das: " + horainicio + " até as: " + horatermino + " agendado com sucesso!");
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
@@ -77,40 +76,41 @@ function Agendamento() {
           type="date"
           value={agendamento.data}
           handler={handleInput}
+          require
         />
-         <Inputinha
+
+        <div id="boxHorario">
+          <Inputinha
             id="horainicio"
             label="Hora de inicio:"
-            placeholder=" "
-            type="text"
             value={agendamento.horainicio}
-            handler={handleInput}   
-          />
-         <Inputinha
-            id="horatermino"
-            label="Hora de terminio:"
+            handler={handleInput}
             placeholder=" "
-            type="text"
-            value={agendamento.horatermino}
-            handler={handleInput}   
+            list="horaInicio"
           />
-        {/* <div id="boxHorario">
-         
-          <datalist id="horaInicio" value={inicioSelId} onChange={handleInicio}>
+          <datalist id="horaInicio">
             <option value="08:30" />
             <option value="10:00" />
             <option value="11:30" />
             <option value="12:00" />
           </datalist>
 
-          <datalist id="horaTermino" value={terminoSelId} onChange={handleTerminio}>
+          <Inputinha
+            id="horatermino"
+            label="Hora de término:"
+            value={agendamento.horatermino}
+            handler={handleInput}
+            placeholder=" "
+            list="horaTermino"
+          />
+          <datalist id="horaTermino">
             <option value="14:00" />
             <option value="16:00" />
             <option value="18:30" />
             <option value="19:30" />
             <option value="21:00" />
           </datalist>
-        </div> */}
+        </div>
         <button type="submit">AGENDAR</button>
         <button type="reset">CANCELAR</button>
       </form>
