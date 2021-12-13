@@ -130,8 +130,6 @@ routes.get("/agendamento/:id", agendamentoController.findPorMorador);
 routes.use(authMiddleware)
 
 
-// routes.get("/blocos", blocoController.index);
-// routes.get("/apartamentos", apartamentoController.index);
 routes.get("/condominios", cadastradoCondominioCoontroller.index);
 
 

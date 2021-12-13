@@ -88,14 +88,6 @@ module.exports = {
 
       const  userId  = req.params.id
 
-      const sindico = await Sindico.findByPk(userId)
-
-      const apartamento = await Apartamento.findOne({
-        where: {
-          id: sindico.ApartamentoId
-        }
-      })
-
       // const bloco = await Bloco.findOne({
       //   where: {
       //     id: apartamento.bloco_id
@@ -107,6 +99,16 @@ module.exports = {
       //     id: bloco.condominio_id
       //   }
       // })
+
+      const sindico = await Sindico.findByPk(userId)
+
+      const apartamento = await Apartamento.findOne({
+        where: {
+          id: sindico.ApartamentoId
+        }
+      })
+
+      
 
       const morador = await Morador.findAll({
         include: [
