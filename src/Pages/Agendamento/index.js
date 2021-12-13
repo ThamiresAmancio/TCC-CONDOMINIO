@@ -17,23 +17,11 @@ function Agendamento() {
     setAgendamento({ ...agendamento, [e.target.id]: e.target.value });
   };
 
-  /* select horario de inicio */
-  const [selectHrInicio, setSelectHrInicio] = useState(undefined);
-  const handleSelectHrInicio = (e) => {
-    setAgendamento({ ...agendamento, [e.target.id]: e.target.value });
-  };
-
-  /* select horario de termino */
-  const [selectHrTermino, setSelectHrTermino] = useState(undefined);
-  const handleSelectHrTermino = (e) => {
-    setAgendamento({ ...agendamento, [e.target.id]: e.target.value });
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { nome, data, horainicio, horatermino, condominio_id } = agendamento;
-
+      const { nome, data, horainicio, horatermino, condominio_id } =
+        agendamento;
       const response = await api.post("/agendamentos", {
         nome,
         data,
@@ -53,14 +41,12 @@ function Agendamento() {
   const moradorTeste = getUser();
   console.log(moradorTeste);
 
-
   return (
     <ContentAgendamento>
       <header>
         <h1>A G E N D A M E N T O</h1>
       </header>
       <form onSubmit={handleSubmit}>
-
         <Inputinha
           id="nome"
           placeholder=" "
@@ -78,22 +64,36 @@ function Agendamento() {
           handler={handleInput}
         />
         <div id="boxHorario">
-          <label>Horário de inicio:</label>
-          <select onChange={handleSelectHrInicio} id="selectHrInicio">
-            <option id="hora1" value={selectHrTermino}>09:30</option>
-            <option id="hora2" value={selectHrTermino}>10:30</option>
-            <option id="hora3" value={selectHrTermino}>09:00</option>
-            <option id="hora4" value={selectHrTermino}>11:30</option>
-          </select>
+          <Inputinha
+            id="horainicio"
+            label="Hora de inicio:"
+            value={agendamento.horainicio}
+            handler={handleInput}
+            placeholder=" "
+            list="horaInicio"
+          />
+          <datalist id="horaInicio">
+            <option value="08:30" />
+            <option value="10:00" />
+            <option value="11:30" />
+            <option value="12:00" />
+          </datalist>
 
-          <label>Horário de término:</label>
-          <select onChange={handleSelectHrTermino} id="selectHrTermino">
-            <option id="horatermino1" value={selectHrTermino}>14:00</option>
-            <option id="horatermino2" value={selectHrTermino}>16:00</option>
-            <option id="horatermino3" value={selectHrTermino}>18:00</option>
-            <option id="horatermino4" value={selectHrTermino}>20:00</option>
-            <option id="horatermino5" value={selectHrTermino}>22:00</option>
-          </select>
+          <Inputinha
+            id="horatermino"
+            label="Hora de término:"
+            value={agendamento.horatermino}
+            handler={handleInput}
+            placeholder=" "
+            list="horaTermino"
+          />
+          <datalist id="horaTermino">
+            <option value="14:00" />
+            <option value="16:00" />
+            <option value="18:30" />
+            <option value="19:30" />
+            <option value="21:00" />
+          </datalist>
         </div>
         <button type="submit">AGENDAR</button>
         <button type="reset">CANCELAR</button>

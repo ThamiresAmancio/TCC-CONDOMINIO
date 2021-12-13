@@ -7,9 +7,11 @@ import { ContentFormAviso } from "./styles";
 function CriandoAviso() {
 
   const [condominios, setCondominios] = useState([]);
+  console.log(condominios);
+  console.log("aquiiiiii");
 
   useEffect(() => {
-    api.get("/condominios").then(({ data }) => {
+    api.get("/condominios/${sindico.condominio.id}").then(({ data }) => {
       setCondominios(data);
     });
    

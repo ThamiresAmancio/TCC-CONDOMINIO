@@ -26,6 +26,7 @@ import Votacao from "../../Votacao";
 function DashboardSindico() {
 
   const sindico = getUser();
+  console.log(sindico);
 
   const history = useHistory();
   const [avisos, setAvisos] = useState([]);
