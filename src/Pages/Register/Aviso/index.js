@@ -37,7 +37,6 @@ function CriandoAviso() {
   };
 
   const handleSubmit = async () => {
-
     try {
       const { titulo, mensagem, link, status, data, condominio_id } = aviso;
       const response = await api.post(`/avisos`, {

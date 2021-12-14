@@ -77,7 +77,6 @@ function DashboardMorador() {
           setChat(true);
         }}
         >question_answer</ButtonMenu>
-        <ButtonMenu className="material-icons" title="Denúncias">feedback</ButtonMenu>
       </MenuDashboard>
       <MoradorMain>
 
