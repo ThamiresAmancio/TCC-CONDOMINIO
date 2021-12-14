@@ -8,7 +8,7 @@ function Agendamento() {
   const user = getUser();
 
   const [agendamento, setAgendamento] = useState({
-    nome: user.name,
+    nome: user.name +" "+ user.surname,
     data: "",
     horainicio: "",
     horatermino: "",
@@ -18,18 +18,6 @@ function Agendamento() {
   const handleInput = (e) => {
     setAgendamento({ ...agendamento, [e.target.id]: e.target.value });
   };
-
-  // const [inicioSelId, setInicioSelId] = useState(undefined);
-
-  // const handleInicio = (e) => {
-  //   setInicioSelId(e.target.value)
-  // }
-
-  // const [terminoSelId, setTerminoSelId] = useState(undefined);
-
-  // const handleTerminio = (e) => {
-  //   setTerminoSelId(e.target.value)
-  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault();

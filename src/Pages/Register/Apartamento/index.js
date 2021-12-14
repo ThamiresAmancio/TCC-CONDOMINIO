@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./apto.css";
-import "../../../Styles/styles.css";
 import { api } from "../../../services/api";
-import InputHoshi from "../../../components/input";
 import { getUser } from "../../../services/security";
+import {
+  AlignSelect,
+  BtnSubmite,
+  Conteudos,
+  SeparatorIputs,
+} from "../../../components/Dashboard/dashboard";
+import Inputinha from "../../../components/Inputinha";
 function RegisterApto() {
-
   const admin = getUser();
 
   const [blocos, setBlocos] = useState([]);
@@ -20,14 +24,14 @@ function RegisterApto() {
     }
   }, []);
 
-  console.log(blocos)
-  
+  console.log(blocos);
+
   const [apartamentos, setApartamentos] = useState({
     numero: "",
     bloco_id: "",
   });
 
-  console.log(apartamentos)
+  console.log(apartamentos);
 
   const [blocoSelId, setBlocoSelId] = useState(undefined);
 
@@ -41,66 +45,63 @@ function RegisterApto() {
   };
 
   const handleSubmit = async (e) => {
-
     try {
-      const {numero} = apartamentos;
+      const { numero } = apartamentos;
       const response = await api.post(`/apartamentos`, {
         numero,
         bloco_id: blocoSelId,
       });
-      console.log(response)
+      console.log(response);
 
-      alert('Apartamento Cadastrado');
+      alert("Apartamento: " +numero+ ", cadastrado com sucesso!");
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
     }
   };
+
   return (
-    <main>
-      <div className="card-post">
-        <h1>Registrar Apartamentos</h1>
-        <div className="line-post"></div>
-        <div className="card-body-post">
-          <form id="form" onSubmit={handleSubmit}>
-            <div className="fields">
-              <label>Nº Apto</label>
-              <InputHoshi
-                id="numero"
-                type="text"
-                value={apartamentos.numero}
-                handler={handleInput}
-              />
-            </div>
-            <div className="fields">
-              <label>
-                Escolha um Bloco :
-                <select
-                  id='blocoId'
-                  value={blocoSelId}
-                  onChange={handleBlocoSelId}
-                >
-                  <option value="">Selecione</option>
-                  {blocos.map((b)=>
-                    (
-                      <option key={b.id} value={b.id}>
-                      {b.name}
-                    </option>
-                    )
-                  )}
-                </select>
-              </label>
-            </div>
-          </form>
-      </div>
-      <div className="btn-post" onClick={() =>{ handleSubmit()}}>
-              <button>
-                Finalizar Cadastro
-                <span className="material-icons">check_circle_outline</span>
-              </button>
-            </div>
-        </div>
-    </main>
+    <Conteudos>
+      <h1>Registrar Apartamentos</h1>
+      <section>
+        <form id="form" onSubmit={handleSubmit}>
+          <SeparatorIputs>
+            <Inputinha
+              id="numero"
+              type="text"
+              value={apartamentos.numero}
+              handler={handleInput}
+              placeholder=" "
+              label="Nº Apto"
+            />
+            <AlignSelect className="box-select">
+              <label>Escolha um Bloco :</label>
+              <select
+                id="blocoId"
+                value={blocoSelId}
+                onChange={handleBlocoSelId}
+              >
+                <option value="">Selecione</option>
+                {blocos.map((b) => (
+                  <option key={b.id} value={b.id}>
+                    {b.name}
+                  </option>
+                ))}
+              </select>
+            </AlignSelect>
+          </SeparatorIputs>
+        </form>
+      </section>
+      <BtnSubmite
+        onClick={() => {
+          handleSubmit();
+        }}
+      >
+        Finalizar Cadastro
+        <span>check_circle_outline</span>
+      </BtnSubmite>
+    </Conteudos>
   );
 }
+
 export default RegisterApto;

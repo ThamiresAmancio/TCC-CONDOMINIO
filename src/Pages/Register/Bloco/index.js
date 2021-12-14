@@ -1,30 +1,35 @@
 import React, { useEffect, useState } from "react";
 import "./bloco.css";
-import "../../../Styles/styles.css";
+// import "../../../Styles/styles.css";
 
 import { api } from "../../../services/api";
-import InputHoshi from "../../../components/input";
 import { getUser } from "../../../services/security";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {
+  AlignSelect,
+  BtnSubmite,
+  Conteudos,
+  SeparatorIputs,
+} from "../../../components/Dashboard/dashboard";
+import Inputinha from "../../../components/Inputinha";
 
 function RegisterBlocos() {
+  const admin = getUser();
 
-  const admin = getUser(); 
-
-  console.log(admin)
+  console.log(admin);
   const [condominios, setCondominios] = useState([]);
 
   useEffect(() => {
     api.get(`/condominios`).then(({ data }) => {
       setCondominios(data);
-      console.log(admin.adminId)
+      console.log(admin.adminId);
     });
   }, []);
 
   const [bloco, setBloco] = useState({
     name: "",
-    condominio_id :""
+    condominio_id: "",
   });
 
   const [condominioSelId, setCondominioSelId] = useState(undefined);
@@ -34,26 +39,23 @@ function RegisterBlocos() {
   };
 
   const handleCondominioSelId = (e) => {
-    setCondominioSelId(e.target.value)
-  }
+    setCondominioSelId(e.target.value);
+  };
 
-  console.log(bloco)
+  console.log(bloco);
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
 
     try {
-      const {name} = bloco;
+      const { name } = bloco;
 
       const response = await api.post(`/blocos`, {
         name,
-        condominio_id: condominioSelId
+        condominio_id: condominioSelId,
       });
 
-
-      alert("Bloco Cadastrado");
-
+      alert("Bloco: " +name+ " cadastrado com com sucesso!");
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
@@ -61,43 +63,45 @@ function RegisterBlocos() {
   };
 
   return (
-    <main>
-      <ToastContainer/> 
-      <div className="card-post">
+    <>
+      <ToastContainer />
+      <Conteudos>
         <h1>Registrar Blocos</h1>
-        <div className="line-post"></div>
-        <div className="card-body-post">
+        <section>
           <form id="form" onSubmit={handleSubmit}>
-            <div className="fields">
-              <label>Nome</label>
-              <InputHoshi
+            <SeparatorIputs>
+              <Inputinha
                 id="name"
                 type="text"
                 value={bloco.name}
                 handler={handleInput}
+                placeholder=" "
+                label="Nome"
               />
-            </div>
-            <label>
-              Escolha um Condomínio :
-              <select id='condominioId' value={condominioSelId} onChange={handleCondominioSelId}> 
-                <option value="">Selecione</option>
-                {condominios.map((c) => (
-                  <option key={c.id} value={c.id}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <div className="btn-post">
-              <button type="submit">
-                Finalizar Cadastro
-                <span className="material-icons">check_circle_outline</span>
-              </button>
-            </div>
+              <AlignSelect className="box-select select-large">
+                <label>Escolha um Condomínio :</label>
+                <select
+                  id="condominioId"
+                  value={condominioSelId}
+                  onChange={handleCondominioSelId}
+                >
+                  <option value="">Selecione</option>
+                  {condominios.map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.name}
+                    </option>
+                  ))}
+                </select>
+              </AlignSelect>
+            </SeparatorIputs>
           </form>
-        </div>
-      </div>
-    </main>
+        </section>
+        <BtnSubmite onClick={handleSubmit}>
+          Finalizar Cadastro
+          <span>check_circle_outline</span>
+        </BtnSubmite>
+      </Conteudos>
+    </>
   );
 }
 

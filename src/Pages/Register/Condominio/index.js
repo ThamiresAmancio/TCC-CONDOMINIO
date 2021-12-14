@@ -1,154 +1,181 @@
 import React, { useEffect, useState } from "react";
-import { useHistory} from "react-router";
-import "./condominio.css";
+// import "./condominio.css";
 import "../../../Styles/styles.css";
 
 import { api } from "../../../services/api";
-import { getUser} from "../../../services/security";
-import InputHoshi from "../../../components/input";
+import { getUser } from "../../../services/security";
 import { mascaraCep, mascaraCnpj } from "../../../utils";
+import {
+  BtnSubmite,
+  Conteudos,
+  SeparatorIputs,
+} from "../../../components/Dashboard/dashboard";
+import Inputinha from "../../../components/Inputinha";
 
-function REgisterCondominio({handleReload}) {
-  
+function REgisterCondominio({ handleReload }) {
   let [isCadastrandoCondominio, setIsCadastrandoCondominio] = useState(false);
 
-  // const history = useHistory();
-
-  const usuario = getUser()
+  const usuario = getUser();
 
   console.log(usuario);
 
   const [condominio, setCondominio] = useState({
-    name:"",
+    name: "",
     bairro: "",
-    estado:"",
-    cep:"",
-    rua:"",
+    estado: "",
+    cep: "",
+    rua: "",
     cidade: "",
     numero: "",
     cnpj: "",
-
   });
 
   const handleInputCondominio = (e) => {
-   setCondominio({ ...condominio, [e.target.id]: e.target.value });
- };
+    setCondominio({ ...condominio, [e.target.id]: e.target.value });
+  };
 
- const handleCepCondominio = (e) => {
-   let cep = e.target.value
-   cep = mascaraCep(cep)
-   setCondominio({...condominio,cep:cep})
- }
+  const handleCepCondominio = (e) => {
+    let cep = e.target.value;
+    cep = mascaraCep(cep);
+    setCondominio({ ...condominio, cep: cep });
+  };
 
- const handleCnpj = (e) =>{
-   let cnpj = e.target.value
-   cnpj = mascaraCnpj(cnpj)
-   setCondominio({...condominio,cnpj:cnpj})
-   console.log(cnpj);
- }
+  const handleCnpj = (e) => {
+    let cnpj = e.target.value;
+    cnpj = mascaraCnpj(cnpj);
+    setCondominio({ ...condominio, cnpj: cnpj });
+    console.log(cnpj);
+  };
 
- useEffect(() => {
-   const getEndereco = async (cep) =>{
-     const dados = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-     const endereco = await dados.json();
-     setCondominio({...condominio, rua: endereco.logradouro, bairro:endereco.bairro, cidade:endereco.localidade, estado:endereco.uf  })
-   };
- 
-   if (condominio.cep.length === 9) {
-    getEndereco(condominio.cep);
-  }
-}, [condominio.cep]);
-
-
-const handleSubmit = async (e) => {
-  e.preventDefault();
-
-  try {
-    const { name, bairro, estado, cep , rua,cidade, numero,cnpj} = condominio;
-
-    const response = await api.post(`/condominio/${usuario.adminId}`, {
-
-      name,
-      bairro,
-      estado,
-      cep,
-      rua,
-      cidade,
-      numero,
-      cnpj
-    });
-
-        // history.push("/Dashboard/Admin");
-        alert('Condomínio Cadastrado');
-      } catch (error) {
-        console.error(error);
-        alert(error.response.data.error);
-      }
+  useEffect(() => {
+    const getEndereco = async (cep) => {
+      const dados = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+      const endereco = await dados.json();
+      setCondominio({
+        ...condominio,
+        rua: endereco.logradouro,
+        bairro: endereco.bairro,
+        cidade: endereco.localidade,
+        estado: endereco.uf,
+      });
     };
 
+    if (condominio.cep.length === 9) {
+      getEndereco(condominio.cep);
+    }
+  }, [condominio.cep]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const { name, bairro, estado, cep, rua, cidade, numero, cnpj } =
+        condominio;
+
+      const response = await api.post(`/condominio/${usuario.adminId}`, {
+        name,
+        bairro,
+        estado,
+        cep,
+        rua,
+        cidade,
+        numero,
+        cnpj,
+      });
+
+      alert("Condomínio: " +name+ " cadastrado com sucesso!");
+    } catch (error) {
+      console.error(error);
+      alert(error.response.data.error);
+    }
+  };
+
   return (
-    <main>
-      <div className="card-post">
-        <h1>Registrar Condomínio</h1>
-        <div className="line-post"></div>
-        <div className="card-body-post">
-          <form id="form" onSubmit={handleSubmit} >
-            <div className="fields">
-              <label>Nome</label>
-              <InputHoshi id="name" type="text" value={condominio.name} handler={handleInputCondominio} />
-            </div>
+    <Conteudos>
+      <h1>Registrar Condomínio</h1>
+      <section>
+        <form id="form" onSubmit={handleSubmit}>
+          <SeparatorIputs>
+            <Inputinha
+              id="name"
+              type="text"
+              value={condominio.name}
+              handler={handleInputCondominio}
+              label="Nome:"
+              placeholder=" "
+            />
 
-            <div className="fields">
-              <label>Bairro</label>
-              <InputHoshi id="bairro" type="text"   value={condominio.bairro}  handler={handleInputCondominio}  />
-  
-            </div>
+            <Inputinha
+              label="Bairro:"
+              placeholder=" "
+              id="bairro"
+              type="text"
+              value={condominio.bairro}
+              handler={handleInputCondominio}
+            />
 
-            <div className="fields">
-              <label>Estado</label>
-              <InputHoshi id="estado" type="text"   value={condominio.estado} handler={handleInputCondominio} />
-            </div>
+            <Inputinha
+              label="Estado:"
+              placeholder=" "
+              id="estado"
+              type="text"
+              value={condominio.estado}
+              handler={handleInputCondominio}
+            />
 
+            <Inputinha
+              label="CEP:"
+              placeholder=" "
+              id="cep"
+              type="text"
+              value={condominio.cep}
+              handler={handleCepCondominio}
+            />
 
-            <div className="fields">
-              <label>CEP</label>
-              <InputHoshi id="cep" type="text" value={condominio.cep} handler={handleCepCondominio} />
-            </div>
+            <Inputinha
+              label="Rua:"
+              placeholder=" "
+              id="rua"
+              type="text"
+              value={condominio.rua}
+              handler={handleInputCondominio}
+            />
 
-            
-            <div className="fields">
-              <label>Rua</label>
-              <InputHoshi id="rua" type="text" value={condominio.rua} handler={handleInputCondominio} />
-            </div>
+            <Inputinha
+              label="Cidade:"
+              placeholder=" "
+              id="cidade"
+              type="text"
+              value={condominio.cidade}
+              handler={handleInputCondominio}
+            />
 
-            <div className="fields">
-              <label>Cidade</label>
-              <InputHoshi id="cidade" type="text" value={condominio.cidade} handler={handleInputCondominio}/>
-            </div>
+            <Inputinha
+              label="Número:"
+              placeholder=" "
+              id="numero"
+              type="text"
+              value={condominio.numero}
+              handler={handleInputCondominio}
+            />
 
-            <div className="fields">
-              <label>Número</label>
-              <InputHoshi id="numero" type="text" value={condominio.numero} handler={handleInputCondominio}/>
-            </div>
-
-            <div className="fields">
-              <label>CNPJ</label>
-              <InputHoshi id="cnpj" type="text" value={condominio.cnpj} handler={handleCnpj} />
-            </div>
-
-            <div className="btn-post">
-              <button type="submit">
-                  Finalizar Cadastro
-                  <span className="material-icons">
-                    check_circle_outline
-                  </span>
-              </button>
-              
-            </div>
-          </form>
-        </div>
-      </div>
-    </main>
+            <Inputinha
+              label="CNPJ:"
+              placeholder=" "
+              id="cnpj"
+              type="text"
+              value={condominio.cnpj}
+              handler={handleCnpj}
+            />
+          </SeparatorIputs>
+          
+        </form>
+      </section>
+      <BtnSubmite type="submit" onClick={handleSubmit}>
+        Finalizar Cadastro
+        <span>check_circle_outline</span>
+      </BtnSubmite>
+    </Conteudos>
   );
 }
 

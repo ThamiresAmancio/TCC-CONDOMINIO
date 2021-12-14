@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
-import "./porteiros.css";
 import "../../../Styles/styles.css";
 import { api } from "../../../services/api";
-import InputHoshi from "../../../components/input";
 import { mascaraCel } from "../../../utils";
-
+import {
+  AlignSelect,
+  BtnSubmite,
+  Conteudos,
+  SeparatorIputs,
+} from "../../../components/Dashboard/dashboard";
+import Inputinha from "../../../components/Inputinha";
 
 function RegisterPorteiros() {
-
   const [condominios, setCondominios] = useState([]);
 
   useEffect(() => {
@@ -16,22 +19,21 @@ function RegisterPorteiros() {
     });
   }, []);
 
-  console.log(condominios[0])
+  console.log(condominios[0]);
 
   const [porteiros, setPorteiros] = useState({
     name: "",
     telephone: "",
     email: "",
     password: "",
-    condominio_id: ""
+    condominio_id: "",
   });
 
-
-  const handleCell = (e) =>{
+  const handleCell = (e) => {
     let cell = e.target.value;
     cell = mascaraCel(cell);
     setPorteiros({ ...porteiros, telephone: cell });
-}
+  };
 
   const [condominioSelId, setCondominioSelId] = useState(undefined);
 
@@ -40,26 +42,24 @@ function RegisterPorteiros() {
   };
 
   const handleCondominioSelId = (e) => {
-    setCondominioSelId(e.target.value)
-  }
+    setCondominioSelId(e.target.value);
+  };
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
 
     try {
-      const { name, telephone, email, password , condominio_id } = porteiros;
+      const { name, telephone, email, password, condominio_id } = porteiros;
 
       const response = await api.post(`/porteiros/`, {
         name,
         telephone,
         email,
         password,
-        condominio_id: condominioSelId
+        condominio_id: condominioSelId,
       });
-      
-      alert('Porteiro Cadastrado');
-     
+
+      alert("Porteiro: "+name+", cadastrado com sucesso!");
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
@@ -67,54 +67,54 @@ function RegisterPorteiros() {
   };
 
   return (
-    <main>
-      <div className="card-post">
-        <h1>Registrar Porteiros</h1>
-        <div className="line-post"></div>
-        <div className="card-body-post">
-          <form id="form" onSubmit={handleSubmit}>
-            <div className="fields">
-              <label>Nome</label>
-              <InputHoshi
-                id="name"
-                type="text"
-                value={porteiros.name}
-                handler={handleInput}
-              />
-            </div>
+    <Conteudos>
+      <h1>Registrar Porteiro</h1>
+      <section>
+        <form id="form" onSubmit={handleSubmit}>
+          <SeparatorIputs>
+            <Inputinha
+              label="Nome:"
+              placeholder=" "
+              id="name"
+              type="text"
+              value={porteiros.name}
+              handler={handleInput}
+            />
 
-            <div className="fields">
-              <label>Telefone</label>
-              <InputHoshi
-                id="telephone"
-                type="text"
-                value={porteiros.telephone}
-                handler={handleCell}
-              />
-            </div>
+            <Inputinha
+              label="Telefone:"
+              placeholder=" "
+              id="telephone"
+              type="text"
+              value={porteiros.telephone}
+              handler={handleCell}
+            />
 
-            <div className="fields">
-              <label>Email</label>
-              <InputHoshi
-                id="email"
-                type="text"
-                value={porteiros.email}
-                handler={handleInput}
-              />
-            </div>
+            <Inputinha
+              label="Email:"
+              placeholder=" "
+              id="email"
+              type="text"
+              value={porteiros.email}
+              handler={handleInput}
+            />
 
-            <div className="fields">
-              <label>Senha</label>
-              <InputHoshi
-                id="password"
-                type="password"
-                value={porteiros.password}
-                handler={handleInput}
-              />
-            </div>
-            <label>
-              Escolha um Condomínio :
-              <select id={condominios.condominio_id} value={condominioSelId} onChange={handleCondominioSelId}> 
+            <Inputinha
+              label="Senha:"
+              placeholder=" "
+              id="password"
+              type="password"
+              value={porteiros.password}
+              handler={handleInput}
+            />
+
+            <AlignSelect className="box-select select-large">
+              <label>Escolha um Condomínio :</label>
+              <select
+                id={condominios.condominio_id}
+                value={condominioSelId}
+                onChange={handleCondominioSelId}
+              >
                 <option value="">Selecione</option>
                 {condominios.map((c) => (
                   <option key={c.id} value={c.id}>
@@ -122,17 +122,70 @@ function RegisterPorteiros() {
                   </option>
                 ))}
               </select>
-            </label>
-            <div className="btn-post">
-              <button type="submit">
-                Finalizar Cadastro
-                <span className="material-icons">check_circle_outline</span>
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </main>
+            </AlignSelect>
+          </SeparatorIputs>
+
+          {/* <div className="fields">
+            <label>Nome</label>
+            <InputHoshi
+              id="name"
+              type="text"
+              value={porteiros.name}
+              handler={handleInput}
+            />
+          </div> */}
+
+          {/* <div className="fields">
+            <label>Telefone</label>
+            <InputHoshi
+              id="telephone"
+              type="text"
+              value={porteiros.telephone}
+              handler={handleCell}
+            />
+          </div> */}
+
+          {/* <div className="fields">
+            <label>Email</label>
+            <InputHoshi
+              id="email"
+              type="text"
+              value={porteiros.email}
+              handler={handleInput}
+            />
+          </div> */}
+
+          {/* <div className="fields">
+            <label>Senha</label>
+            <InputHoshi
+              id="password"
+              type="password"
+              value={porteiros.password}
+              handler={handleInput}
+            />
+          </div> */}
+          {/* <label>
+            Escolha um Condomínio :
+            <select
+              id={condominios.condominio_id}
+              value={condominioSelId}
+              onChange={handleCondominioSelId}
+            >
+              <option value="">Selecione</option>
+              {condominios.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
+          </label> */}
+        </form>
+      </section>
+      <BtnSubmite type="submit" onClick={handleSubmit}>
+        Finalizar Cadastro
+        <span>check_circle_outline</span>
+      </BtnSubmite>
+    </Conteudos>
   );
 }
 

@@ -34,20 +34,18 @@ export const HeaderDashboard = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-  
-    >div{
 
-      >h1{
+    > div {
+      > h1 {
         font-weight: bold;
       }
 
-      >h3{
+      > h3 {
         font-weight: lighter;
       }
-
     }
 
-    >div+button{
+    > div + button {
       background: transparent;
       border: none;
       outline: none;
@@ -195,4 +193,140 @@ export const BtnCloseModal = styled.button`
   color: #fff;
   background-color: red;
   cursor: pointer;
+`;
+
+/* Estilização dos conteudos que vão ficar na main das dashbords */
+export const Conteudos = styled.div`
+  background-color: #fff;
+  padding: 1.875rem 4.375rem;
+  border-radius: 0.938rem;
+  box-shadow: 0px 0px 1rem #1c1c1ca2;
+  color: #1c1c1c;
+  width: 80%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  > h1 {
+    font-weight: 800;
+    text-align: center;
+    color: #1c1c1c;
+    font-size: 3rem;
+    margin-bottom: 5px;
+    border-bottom: solid 0.15rem gray;
+    width: 100%;
+    padding: 2% 0;
+
+    @media only screen and (min-width: 1500px) {
+      border-bottom: solid 0.25rem gray;
+    }
+  }
+
+  > section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 5%;
+
+    > span {
+      width: 47%;
+      margin-bottom: 1rem;
+    }
+
+    > form {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: ceter;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 5%;
+    }
+  }
+
+  > section + div {
+    width: 100%;
+    min-height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: ceter;
+    align-items: center;
+
+    > button {
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--colorPrimary);
+      background-color: transparent;
+      border: 0;
+      border-radius: 10px;
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+`;
+
+export const SeparatorIputs = styled.div`
+  min-width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 5%;
+  flex-wrap: wrap;
+
+  > span {
+    width: 46%;
+  }
+
+  > .box-select {
+    width: 40%;
+    margin-top: 1rem;
+  }
+
+  > .select-large{
+    margin-top: 1rem;
+    width: 80%;
+  }
+
+`;
+
+export const AlignSelect = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+`;
+
+export const BtnSubmite = styled.button`
+  font-weight: 800;
+  font-size: 1.3rem;
+
+  padding: 5px 50px;
+  color: var(--colorPrimary);
+  background-color: transparent;
+
+  border: 0;
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  margin: 3rem 0 1rem 0;
+  width: 60%;
+  min-height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > span {
+    font-family: "Material Icons" !important;
+    font-size: 1.5rem;
+  }
 `;

@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
-import "./morador.css";
+// import "./morador.css";
 import "../../../Styles/styles.css";
 
 import { api } from "../../../services/api";
 import { getUser } from "../../../services/security";
-import InputHoshi from "../../../components/input";
 
 import { mascaraCpf } from "../../../utils";
+import {
+  AlignSelect,
+  BtnSubmite,
+  Conteudos,
+  SeparatorIputs,
+} from "../../../components/Dashboard/dashboard";
+import Inputinha from "../../../components/Inputinha";
 function RegisterMoradores() {
   const admin = getUser();
 
@@ -61,6 +67,8 @@ function RegisterMoradores() {
         password,
         apartamento_id: apartamentoId,
       });
+
+      alert("Morador: " +name+" "+ +surname+", cadastrado com sucesso!");
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
@@ -68,79 +76,73 @@ function RegisterMoradores() {
   };
 
   return (
-    <main>
-      <div className="card-post">
-        <h1>Registrar Morador</h1>
-        <div className="line-post"></div>
-        <div className="card-body-post">
-          <form id="form" onSubmit={handleSubmit}>
-            <div className="fields">
-              <label>Nome</label>
-              <InputHoshi
-                id="name"
-                type="text"
-                value={morador.name}
-                handler={handleInput}
-              />
-            </div>
+    <Conteudos>
+      <h1>Registrar Morador</h1>
+      <section>
+        <form id="form" onSubmit={handleSubmit}>
+          <SeparatorIputs>
+            <Inputinha
+              label="Nome:"
+              placeholder=" "
+              id="name"
+              type="text"
+              value={morador.name}
+              handler={handleInput}
+            />
 
-            <div className="fields">
-              <label>Sobrenome</label>
-              <InputHoshi
-                id="surname"
-                type="text"
-                name="surname"
-                value={morador.surname}
-                handler={handleInput}
-              />
-            </div>
+            <Inputinha
+              label="Sobrenome:"
+              placeholder=" "
+              id="surname"
+              type="text"
+              name="surname"
+              value={morador.surname}
+              handler={handleInput}
+            />
 
-            <div className="fields">
-              <label>cpf</label>
-              <InputHoshi
-                id="cpf"
-                type="text"
-                name="cpf"
-                value={morador.cpf}
-                handler={handleCpf}
-                maxLength="14"
-              />
-            </div>
+            <Inputinha
+              label="CPF:"
+              placeholder=" "
+              id="cpf"
+              type="text"
+              name="cpf"
+              value={morador.cpf}
+              handler={handleCpf}
+              maxLength="14"
+            />
 
-            <div className="fields">
-              <label>Nascimento</label>
-              <InputHoshi
-                id="birth"
-                type="date"
-                name="birth"
-                value={morador.birth}
-                handler={handleInput}
-              />
-            </div>
+            <Inputinha
+              label="Nascimento:"
+              placeholder=" "
+              id="birth"
+              type="date"
+              name="birth"
+              value={morador.birth}
+              handler={handleInput}
+            />
 
-            <div className="fields">
-              <label>Email</label>
-              <InputHoshi
-                id="email"
-                type="text"
-                name="email"
-                value={morador.email}
-                handler={handleInput}
-              />
-            </div>
+            <Inputinha
+              label="Email:"
+              placeholder=" "
+              id="email"
+              type="text"
+              name="email"
+              value={morador.email}
+              handler={handleInput}
+            />
 
-            <div className="fields">
-              <label>Senha</label>
-              <InputHoshi
-                id="password"
-                type="password"
-                name="password"
-                value={morador.password}
-                handler={handleInput}
-              />
-            </div>
-            <label>
-              Escolha um Nº de Apartamento :
+            <Inputinha
+              label="Senha:"
+              placeholder=" "
+              id="password"
+              type="password"
+              name="password"
+              value={morador.password}
+              handler={handleInput}
+            />
+
+            <AlignSelect className="box-select select-large">
+              <label>Escolha um Condomínio :</label>
               <select
                 id="apartamentoId"
                 value={apartamentoId}
@@ -153,17 +155,15 @@ function RegisterMoradores() {
                   </option>
                 ))}
               </select>
-            </label>
-            <div className="btn-post">
-              <button type="submit">
-                Finalizar Cadastro
-                <span className="material-icons">check_circle_outline</span>
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </main>
+            </AlignSelect>
+          </SeparatorIputs>
+        </form>
+      </section>
+      <BtnSubmite type="submit" onClick={handleSubmit}>
+        Finalizar Cadastro
+        <span>check_circle_outline</span>
+      </BtnSubmite>
+    </Conteudos>
   );
 }
 

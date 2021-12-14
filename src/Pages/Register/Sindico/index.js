@@ -6,6 +6,13 @@ import { api } from "../../../services/api";
 import { getUser } from "../../../services/security";
 import InputHoshi from "../../../components/input";
 import { mascaraCpf } from "../../../utils";
+import {
+  AlignSelect,
+  BtnSubmite,
+  Conteudos,
+  SeparatorIputs,
+} from "../../../components/Dashboard/dashboard";
+import Inputinha from "../../../components/Inputinha";
 
 function RegisterSindico() {
   const admin = getUser();
@@ -61,7 +68,7 @@ function RegisterSindico() {
         password,
         apartamento_id: apartamentoId,
       });
-      alert("Síndico cadastrado");
+      alert("Síndico: " +name+" "+surname+ ", cadastrado com sucesso!");
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
@@ -69,79 +76,72 @@ function RegisterSindico() {
   };
 
   return (
-    <main>
-      <div className="card-post">
-        <h1>Registrar Síndico</h1>
-        <div className="line-post"></div>
-        <div className="card-body-post">
-          <form id="form" onSubmit={handleSubmit}>
-            <div className="fields">
-              <label>Nome</label>
-              <InputHoshi
-                id="name"
-                type="text"
-                value={sindico.name}
-                handler={handleInput}
-              />
-            </div>
+    <Conteudos>
+      <h1>Registrar Síndico</h1>
+      <section>
+        <form id="form" onSubmit={handleSubmit}>
+          <SeparatorIputs>
+            <Inputinha
+              placeholder=" "
+              label="Nome:"
+              id="name"
+              type="text"
+              value={sindico.name}
+              handler={handleInput}
+            />
 
-            <div className="fields">
-              <label>Sobrenome</label>
-              <InputHoshi
-                id="surname"
-                type="text"
-                name="surname"
-                value={sindico.surname}
-                handler={handleInput}
-              />
-            </div>
+            <Inputinha
+              placeholder=" "
+              label="Sobrenome:"
+              id="surname"
+              type="text"
+              name="surname"
+              value={sindico.surname}
+              handler={handleInput}
+            />
 
-            <div className="fields">
-              <label>cpf</label>
-              <InputHoshi
-                id="cpf"
-                type="text"
-                name="cpf"
-                value={sindico.cpf}
-                handler={handleCpf}
-                maxLength="14"
-              />
-            </div>
+            <Inputinha
+              placeholder=" "
+              label="CPF:"
+              id="cpf"
+              type="text"
+              name="cpf"
+              value={sindico.cpf}
+              handler={handleCpf}
+              maxLength="14"
+            />
 
-            <div className="fields">
-              <label>Nascimento</label>
-              <InputHoshi
-                id="birth"
-                type="date"
-                name="birth"
-                value={sindico.birth}
-                handler={handleInput}
-              />
-            </div>
+            <Inputinha
+              placeholder=" "
+              label="Nascimento:"
+              id="birth"
+              type="date"
+              name="birth"
+              value={sindico.birth}
+              handler={handleInput}
+            />
 
-            <div className="fields">
-              <label>Email</label>
-              <InputHoshi
-                id="email"
-                type="text"
-                name="email"
-                value={sindico.email}
-                handler={handleInput}
-              />
-            </div>
+            <Inputinha
+              placeholder=" "
+              label="Email:"
+              id="email"
+              type="text"
+              name="email"
+              value={sindico.email}
+              handler={handleInput}
+            />
 
-            <div className="fields">
-              <label>Senha</label>
-              <InputHoshi
-                id="password"
-                type="password"
-                name="password"
-                value={sindico.password}
-                handler={handleInput}
-              />
-            </div>
-            <label>
-              Escolha um Nº de Apartamento :
+            <Inputinha
+              placeholder=" "
+              label="Senha:"
+              id="password"
+              type="password"
+              name="password"
+              value={sindico.password}
+              handler={handleInput}
+            />
+            <AlignSelect className="box-select select-large">
+              <label>Escolha um Nº de Apartamento :</label>
               <select
                 id={apartamentos.apartamento_id}
                 value={apartamentoId}
@@ -154,17 +154,15 @@ function RegisterSindico() {
                   </option>
                 ))}
               </select>
-            </label>
-            <div className="btn-post">
-              <button type="submit">
-                Finalizar Cadastro
-                <span className="material-icons">check_circle_outline</span>
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </main>
+            </AlignSelect>
+          </SeparatorIputs>
+        </form>
+      </section>
+      <BtnSubmite type="submit" onClick={handleSubmit}>
+        Finalizar Cadastro
+        <span>check_circle_outline</span>
+      </BtnSubmite>
+    </Conteudos>
   );
 }
 
