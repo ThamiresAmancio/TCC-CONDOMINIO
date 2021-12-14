@@ -331,35 +331,7 @@ function DashboardSindico() {
         ) : (
           <div hidden></div>
         )}
-        {isPagamento ? (
-          <>
-            <PagamentoBeta />
-            <BtnFecharModal
-              onClick={() => {
-                setPagamento(false);
-              }}
-            >
-              X
-            </BtnFecharModal>
-          </>
-        ) : (
-          <div hidden></div>
-        )}
-
-        {isVisualizar ? (
-          <>
-            <VisualizarMoradores></VisualizarMoradores>
-            <BtnFecharModal
-              onClick={() => {
-                setVisualizar(false);
-              }}
-            >
-              X
-            </BtnFecharModal>
-          </>
-        ) : (
-          <div hidden></div>
-        )}
+       
       </SindicoMain>
 
       <HeaderDashboard>
@@ -375,14 +347,7 @@ function DashboardSindico() {
         {/* <IconLogount onClick={() => logout()} /> */}
       </HeaderDashboard>
       <aside>
-        <ButtonAside
-          onClick={() => {
-            setVisualizar(true);
-          }}
-        >
-          <span className="material-icons">person_pin</span>
-          <span>Visualizar moradores</span>
-        </ButtonAside>
+
         <ButtonAside
           onClick={() => {
             setIsCriandoVotacao(true);
@@ -398,14 +363,6 @@ function DashboardSindico() {
         >
           <span className="material-icons">person_add</span>
           <span>Adicionar visitantes</span>
-        </ButtonAside>
-        <ButtonAside
-          onClick={() => {
-            setPagamento(true);
-          }}
-        >
-          <span className="material-icons">attach_money</span>
-          <span>Pagar Mensalidade</span>
         </ButtonAside>
       </aside>
     </ContentDashboard>

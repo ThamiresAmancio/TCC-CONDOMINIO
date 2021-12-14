@@ -93,21 +93,7 @@ function DashboardMorador() {
           </>
         ) : (<div hidden></div>)}
 
-        {isPagandoMensalidade ? (
-          <>
-            <BtnFecharModal
-              onClick={() => {
-                setIsPagandoMensalidade(false);
-              }}
-            >
-              X
-            </BtnFecharModal>
-            <PagamentoBeta />
-          </>
-        ) : (
-          <div hidden></div>
-        )}
-
+  
         {isVendoAviso ? (
           <>
             <BtnFecharModal
@@ -200,14 +186,6 @@ function DashboardMorador() {
         }}>
           <span className="material-icons">how_to_vote</span>
           <span>Votação online</span>
-        </ButtonAside>
-        <ButtonAside
-          onClick={() => {
-            setIsPagandoMensalidade(true);
-          }}
-        >
-          <span className="material-icons">attach_money</span>
-          <span>Pagar Mensalidade</span>
         </ButtonAside>
       </aside>
     </ContentDashboard >

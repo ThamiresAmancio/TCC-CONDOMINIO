@@ -68,7 +68,7 @@ function RegisterMoradores() {
         apartamento_id: apartamentoId,
       });
 
-      alert("Morador: " +name+" "+ +surname+", cadastrado com sucesso!");
+      alert("Morador: " +name+" , cadastrado com sucesso!");
     } catch (error) {
       console.error(error);
       alert(error.response.data.error);
@@ -142,7 +142,7 @@ function RegisterMoradores() {
             />
 
             <AlignSelect className="box-select select-large">
-              <label>Escolha um Condomínio :</label>
+              <label>Escolha um Apartamento :</label>
               <select
                 id="apartamentoId"
                 value={apartamentoId}
