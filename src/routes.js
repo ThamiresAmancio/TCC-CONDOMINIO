@@ -122,10 +122,15 @@ routes.put("/avisos/:id", avisoController.update);
 routes.delete("/avisos/:id", avisoController.delete);
 
 routes.get("/agendamentos", agendamentoController.index);
+
 routes.put("/agendamentos/:id", agendamentoController.update);
+
 routes.delete("/agendamentos/:id", agendamentoController.delete);
-routes.post("/agendamento/:id", agendamentoController.store);
+
+routes.post("/agendamentos", agendamentoController.store);
+
 routes.get("/agendamento/:id", agendamentoController.findPorMorador);
+
 
 routes.use(authMiddleware)
 

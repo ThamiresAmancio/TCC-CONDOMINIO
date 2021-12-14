@@ -108,8 +108,6 @@ module.exports = {
         }
       })
 
-      
-
       const morador = await Morador.findAll({
         include: [
           {

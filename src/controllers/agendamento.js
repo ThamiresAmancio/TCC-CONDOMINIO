@@ -56,9 +56,10 @@ module.exports = {
       nome,
       data,
       horainicio,
-      horatermino } = req.body
+      horatermino,
+      condominio_id  } = req.body
 
-     const condominio_id  = req.params.id
+    //  const condominio_id  = req.params.id
 
 
     try {
