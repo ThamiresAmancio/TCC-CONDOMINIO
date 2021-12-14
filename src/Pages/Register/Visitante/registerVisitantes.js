@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
-import {  ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Inputinha from "../../../components/Inputinha";
 import InputTayler from "../../../components/InputTayler";
 import { api } from "../../../services/api";
 import { getUser } from "../../../services/securityMorador";
@@ -20,10 +21,13 @@ function RegisterVisitanteMorador() {
   const [visitante, setVisitantes] = useState({
     name: "",
     rg: "",
-    data:  new Date(Date.now()).getDate() + "/" +  new Date(Date.now()).getMonth() + "/" + new Date(Date.now()).getFullYear()
+    data:
+      new Date(Date.now()).getDate() +
+      "/" +
+      new Date(Date.now()).getMonth() +
+      "/" +
+      new Date(Date.now()).getFullYear(),
   });
-  
-
 
   const handleInput = (e) => {
     setVisitantes({ ...visitante, [e.target.id]: e.target.value });
@@ -50,11 +54,14 @@ function RegisterVisitanteMorador() {
     data.append("rg", visitante.rg);
     data.append("data", visitante.data);
     data.append("image", image);
-    data.append("morador_id", morador)
+    data.append("morador_id", morador);
 
     try {
-      const response = await api.post(`/visitantes/morador/${morador.moradorId}`, data);
-     alert("Visitante: " +data.name+ ", cadastrado com sucesso!");
+      const response = await api.post(
+        `/visitantes/morador/${morador.moradorId}`,
+        data
+      );
+      alert("Visitante: " + visitante.name + ", cadastrado com sucesso!");
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -63,48 +70,51 @@ function RegisterVisitanteMorador() {
 
   return (
     <>
-    <ToastContainer/>
-    <ContentVisitante>
-      <h1>Registrar um visitante</h1>
-      <div>
-        {
-          <figure>
-            <img ref={imgRef} />
-          </figure>
-        }
-        <label for="imageUpload">Escolher Imagem</label>
-        <input
-          id="imageUpload"
-          type="file"
-          accept="image/*"
-          onChange={handleFile}
-        />
-      </div>
-      <form onSubmit={addVisit}>
-        <InputTayler
-          id="name"
-          label="Nome"
-          value={visitante.name}
-          handler={handleInput}
-        />
-        <InputTayler
-          id="rg"
-          label="Rg"
-          value={visitante.rg}
-          handler={handleRg}
-        />
-        <InputTayler
-          id="data"
-          label="Data"
-          value={visitante.data}
-          handler={handleCpf}
-        />
-      </form>
-      <button onClick={addVisit}>
-        <span className="material-icons">check_circle_outline</span>
-        Finalizar Cadastro
-      </button>
-    </ContentVisitante>
+      <ToastContainer />
+      <ContentVisitante>
+        <h1>Registrar um visitante</h1>
+        <div>
+          {
+            <figure>
+              <img ref={imgRef} />
+            </figure>
+          }
+          <label for="imageUpload">Escolher Imagem</label>
+          <input
+            id="imageUpload"
+            type="file"
+            accept="image/*"
+            onChange={handleFile}
+          />
+        </div>
+        <form onSubmit={addVisit}>
+          <Inputinha
+            placeholder=" "
+            id="name"
+            label="Nome"
+            value={visitante.name}
+            handler={handleInput}
+          />
+          <Inputinha
+            placeholder=" "
+            id="rg"
+            label="Rg"
+            value={visitante.rg}
+            handler={handleRg}
+          />
+          <Inputinha
+            placeholder=" "
+            id="data"
+            label="Data"
+            value={visitante.data}
+            handler={handleCpf}
+          />
+        </form>
+        <button onClick={addVisit}>
+          <span className="material-icons">check_circle_outline</span>
+          Finalizar Cadastro
+        </button>
+      </ContentVisitante>
     </>
   );
 }
