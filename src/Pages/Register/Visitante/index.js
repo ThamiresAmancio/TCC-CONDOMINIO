@@ -64,7 +64,7 @@ function RegisterVisitante() {
     try {
 
       const response = await api.post(`/visitantes/sindico/${sindico.sindicoId}`, data);
-      alert("Visitante Cadastrado com sucesso");
+      alert("Visitante: " +visitante.name+ ", cadastrado com sucesso!");
       
       console.log(response);
     } catch (error) {

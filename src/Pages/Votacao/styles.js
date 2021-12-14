@@ -118,13 +118,12 @@ export const ContentVotacao = styled.form`
             height: 4rem;
             width: 18rem;
             border-radius: 2rem;
-            background-color: var(--colorPrimary);
-            color: #fff;
+            background-color: #fff;
+            color: #1c1c1c;
             text-transform: uppercase;
             cursor: pointer;
 
             :hover{
-                border: solid 0.2rem #fff;
                 box-shadow: 5px 5px 15px 5px rgba(28,28,28,0.41);
             }
         }
