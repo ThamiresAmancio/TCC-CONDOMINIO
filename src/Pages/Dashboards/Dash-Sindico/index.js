@@ -39,7 +39,7 @@ function DashboardSindico() {
     api.get(`/buscar_avisos/${sindico.condominio.id}`).then(({ data }) => {
       setAvisos(data);
     });
-  }, []);
+  }, [avisos]);
 
   function deleteAviso(id) {
     api.delete(`/avisos/${id}`);
